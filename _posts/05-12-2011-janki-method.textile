@@ -221,7 +221,7 @@ This point is best illustrated by example. Let’s multiply 130 by 30 using two 
 
 In approach 1, the problem was labour intensive because you did not use knowledge to ease your calculation. This wasn’t the case in approach 2, where you reasoned using higher order chunks of knowledge, so solving an otherwise lengthy problem with ease. I call this application of remembered chunks of knowledge to problems *chunking*.
 
-If you remember the answer to a question, you have no need to deduce it in the moment, and so your mind is free to work on harder and more abstract concepts. This is the value of chunking.
+_If you remember the answer to a question, you have no need to deduce it in the moment, and so your mind is free to deduce more abstract concepts. This is the value of chunking._
 
 *Janki Method* encourages chunking. This was an unexpected benefit, yet ultimately the most useful to me. After six months of daily application you will reason about programming concepts using mental shortcuts equivalent to those used to simplify the multiplication problem in approach 2. Maximize chunking by adding increasingly abstract rules and concepts to your decks, and making an effort to draw on these ideas when solving problems.
 
