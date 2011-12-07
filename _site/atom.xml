@@ -4,7 +4,7 @@
  <title>Jack Kinsella</title>
  <link href="http://www.jackinsella.ie/atom.xml" rel="self"/>
  <link href="http://www.jackkinsella.ie/"/>
- <updated>2011-12-06T18:52:55-08:00</updated>
+ <updated>2011-12-06T18:56:50-08:00</updated>
  <id>http://www.jackkinsella.ie/</id>
  <author>
    <name>Jack Kinsella</name>
@@ -101,7 +101,7 @@
 *	Could I have built simpler architecture? Could I have figured this out earlier?&lt;br /&gt;
 *	Can I create a checklist to ease development of that kind of feature in future?&lt;/p&gt;
 &lt;p&gt;Some of these questions will be difficult to answer because you have to run through alternatives in your head, thinking about the benefits and tradeoffs of each. This effort is worthwhile since sensible architectural decisions prevent wasted effort. Without active reflection you will be less likely to notice these project level patterns, and so your wisdom will grow more slowly than it otherwise would.&lt;/p&gt;
-&lt;h2&gt;Problem 7: Our Knowledge Representations Grow Messy&lt;/h2&gt;
+&lt;h2&gt;Problem 7: We Let Our Knowledge Representations Grow Messy&lt;/h2&gt;
 &lt;p&gt;Like a front lawn left idle, your Anki decks can grow ugly. Perhaps one of the programming languages you previously learned has changed dramatically in version 2.0 and now a percentage of your cards are invalid. Perhaps some of your cards are no longer worthy of keeping in periodic review– their usefulness doesn’t justify the cumulative revision time needed.&lt;/p&gt;
 &lt;p&gt;As you learn, you will discover simpler ways to understand concepts; without updating your cards to reflect these improved paradigms you risk losing these insights forever. Often a group of cards can be replaced with a single card on a higher order concept.&lt;/p&gt;
 &lt;p&gt;Sometimes you will see links between cards in your deck. If you note the connection between these cards you create multiple neural paths to the same item of knowledge. If one path were to fail, you could still arrive at and trigger that knowledge from another route. Mind maps&amp;#8217; ability to help you remember works using a similar idea. By looking for and noting these connections in your decks this you add a layer of redundancy to your knowledge representation that further insures against future forgetting,&lt;/p&gt;

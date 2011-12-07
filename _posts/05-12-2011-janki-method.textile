@@ -159,7 +159,7 @@ After a large project, such as completion of a new app, take some time to reflec
 
 Some of these questions will be difficult to answer because you have to run through alternatives in your head, thinking about the benefits and tradeoffs of each. This effort is worthwhile since sensible architectural decisions prevent wasted effort. Without active reflection you will be less likely to notice these project level patterns, and so your wisdom will grow more slowly than it otherwise would.
 
-h2. Problem 7: Our Knowledge Representations Grow Messy
+h2. Problem 7: We Let Our Knowledge Representations Grow Messy
 
 Like a front lawn left idle, your Anki decks can grow ugly. Perhaps one of the programming languages you previously learned has changed dramatically in version 2.0 and now a percentage of your cards are invalid. Perhaps some of your cards are no longer worthy of keeping in periodic review– their usefulness doesn’t justify the cumulative revision time needed. 
 
