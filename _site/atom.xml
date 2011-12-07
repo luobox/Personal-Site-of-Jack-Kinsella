@@ -4,7 +4,7 @@
  <title>Jack Kinsella</title>
  <link href="http://www.jackinsella.ie/atom.xml" rel="self"/>
  <link href="http://www.jackkinsella.ie/"/>
- <updated>2011-12-06T18:56:50-08:00</updated>
+ <updated>2011-12-06T18:57:21-08:00</updated>
  <id>http://www.jackkinsella.ie/</id>
  <author>
    <name>Jack Kinsella</name>
@@ -128,7 +128,7 @@
 &lt;p&gt;Let’s take an example. Say your program uses 100 functions and 70 of these are built into the language. That means that there were 30 custom defined functions. If you know with confidence the inputs and outputs of the 70 built-in functions, then debugging is simplified, since you will only need to figure out how the remaining 30 custom functions work.  Considering that custom functions are themselves defined in terms of built-ins, this task should not take too long either. Total certainty about the syntax, inputs, outputs, and uses of the built-in functions lets you quickly isolate unknowns and bring the bug to surface.&lt;/p&gt;
 &lt;p&gt;Brainstorming ability is improved through &lt;strong&gt;Janki Method.&lt;/strong&gt; Deep knowledge in mind means you can try out alternatives on paper rapidly and so increase your chances of coming across a cheeky non-obvious solution to your problem.&lt;/p&gt;
 &lt;p&gt;You might argue that you will get the same speed boost with knowledge earned through experience. That’s true, but this argument misses the point. Janki enables you to gain that same knowledge faster, and retain it for longer. If you’ve ever forgotten how to do something after leaving it aside for a few months, then Anki is for you.&lt;/p&gt;
-&lt;h2&gt;Advantage 2: Chunking.&lt;/h2&gt;
+&lt;h2&gt;Advantage 2: Chunking&lt;/h2&gt;
 &lt;p&gt;Skill in a technical field is the product of your intelligence and your knowledge.  Weakness in one can be overshadowed by strength in another. Bright yet inexperienced can perform on par with dull yet experienced.&lt;/p&gt;
 &lt;p&gt;This point is best illustrated by example. Let’s multiply 130 by 30 using two approaches.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Approach 1&lt;/strong&gt;: You know that multiplication is repeated addition, and so the problem becomes 130  + 130 + 130&amp;#8230; and so on. Applying the rules of addition you arrive at 3900 &amp;#8211; eventually. Let’s call intelligence your ability to carry out these individual calculations quickly.&lt;/p&gt;

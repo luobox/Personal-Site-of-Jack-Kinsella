@@ -209,7 +209,7 @@ Brainstorming ability is improved through *Janki Method.* Deep knowledge in mind
 
 You might argue that you will get the same speed boost with knowledge earned through experience. That’s true, but this argument misses the point. Janki enables you to gain that same knowledge faster, and retain it for longer. If you’ve ever forgotten how to do something after leaving it aside for a few months, then Anki is for you.
 
-h2. Advantage 2: Chunking. 
+h2. Advantage 2: Chunking
 
 Skill in a technical field is the product of your intelligence and your knowledge.  Weakness in one can be overshadowed by strength in another. Bright yet inexperienced can perform on par with dull yet experienced. 
 
