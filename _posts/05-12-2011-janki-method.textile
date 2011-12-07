@@ -217,9 +217,9 @@ This point is best illustrated by example. Let’s multiply 130 by 30 using two 
 
 *Approach 1*: You know that multiplication is repeated addition, and so the problem becomes 130  + 130 + 130... and so on. Applying the rules of addition you arrive at 3900 - eventually. Let’s call intelligence your ability to carry out these individual calculations quickly. 
 
-*Approach 2*: Perhaps you remember from your multiplication tables in school that 13 X 3 is 39. You might also remember that the commutative and associative properties of multiplication let you simplify 130 X 30 to 10 X 13 X 3 X 10 and finally to 39 X 100, which can be calculated trivially as 3900. Your intelligence, or speed of addition here, is irrelevant since domain knowledge let your simplify the problem dramatically. 
+*Approach 2*: Perhaps you remember from your multiplication tables in school that 13 X 3 is 39. You might also remember that the commutative and associative properties of multiplication let you simplify 130 X 30 to 10 X 13 X 3 X 10 and finally to 39 X 100, which can be calculated trivially as 3900. Your intelligence, or speed of addition here, is irrelevant since domain knowledge let you simplify the problem dramatically. 
 
-In approach 1, the problem was labour intensive because you did not use knowledge to ease your calculation. This wasn’t the case in approach 2, where you reasoned using higher order chunks of knowledge, so solving an otherwise lengthy problem with ease. I call this application of remembered chunks of knowledge to problems *chunking*.
+In approach 1, the problem was labour intensive because you did not use knowledge to ease your calculation. This wasn’t the case in approach 2, where you reasoned using higher order chunks of knowledge, so solving an otherwise lengthy problem with ease. The application of remembered chunks of knowledge to problems at hand is called *chunking*.
 
 _If you remember the answer to a question, you have no need to deduce it in the moment, and so your mind is free to deduce more abstract concepts. This is the value of chunking._
 
@@ -274,7 +274,7 @@ a) The fact contains general wisdom about computer science (refactoring, regular
 
 b) The fact relates to a major technology that has been around for a long time and is probably here to stay (Linux, Ruby, Javascript, VIM, git, HTML, CSS, SQL)
 
-c) The fact, whilst part of a library that is likely to change, is something I use everyday and something I foresee using for some time. Bonus points if the technology is in high demand, since this equates to higher consulting rates. (Rails, jQuery). 
+c) The fact, while part of a library that is likely to change, is something I use everyday and something I foresee using for some time. Bonus points if the technology is in high demand, since this equates to higher consulting rates. (Rails, jQuery). 
 
 h2. What are the main keyboard shortcuts I need to know?
 
