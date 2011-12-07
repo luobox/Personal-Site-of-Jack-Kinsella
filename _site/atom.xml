@@ -4,7 +4,7 @@
  <title>Jack Kinsella</title>
  <link href="http://www.jackinsella.ie/atom.xml" rel="self"/>
  <link href="http://www.jackkinsella.ie/"/>
- <updated>2011-12-06T15:12:17-08:00</updated>
+ <updated>2011-12-06T17:17:13-08:00</updated>
  <id>http://www.jackkinsella.ie/</id>
  <author>
    <name>Jack Kinsella</name>
@@ -81,7 +81,7 @@
 &lt;p&gt;Mistake repetition is the number of times you need to commit a particular mistake over a lifetime before learning a permanent lesson. Because mistakes are costly, embarrassing and potentially career threatening, it is sensible to minimize their occurrence. Bosses, customers and co-workers understand a first time mistake, and all but the most unreasonable will forgive you. They will not, however, feel so forgiving the second or third time you get the same thing wrong.&lt;/p&gt;
 &lt;div class=&quot;janki-rule&quot;&gt;
 &lt;p&gt;&lt;em&gt;The fifth rule of &lt;strong&gt;Janki&lt;/strong&gt; method minimizes mistake repetition.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;“Every time you make a mistake carry out a post-mortem and try to figure out the lessons in the experience. Think about you would need to know to prevent that mistake from occurring again, and turn this insight into new flashcards.”&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;“Every time you make a mistake carry out a post-mortem and try to figure out the lessons in the experience. Think about what you would need to know to prevent that mistake from occurring again, and turn this insight into new flashcards.”&lt;/strong&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;By applying this rule you will substitute real world mistakes with Janki reviews, and you will consequently learn from your mistakes more quickly and with less embarrassment and real world error.&lt;/p&gt;
 &lt;p&gt;Ankifying your past failures doesn’t just prevent their repetition.  It also helps you understand your domain, since the act of performing a post-mortem analysis and examining the underlying causes of your error encourages deep thought.  Instead of just creating the cards you need to prevent that particular error, you might immunize yourself against that entire class of error.&lt;/p&gt;
@@ -197,19 +197,7 @@
 &lt;p&gt;The consultancy screwed up: Amongst other things, they pushed the client to use a process that wasn&amp;#8217;t appropriate. &lt;strong&gt;In particular, they gave the client Cucumber feature files to read and approve, even though the client didn&amp;#8217;t give a damn.&lt;/strong&gt; In the client’s words “all we wanted was a website”. (It was actually a web app but most non-technical people don’t draw a distinction). The client just wanted it “to work”.&lt;/p&gt;
 &lt;h2&gt;Imagine You Are The Client&lt;/h2&gt;
 &lt;p&gt;Step out of your programmer skin for a moment and pretend you are a busy business owner while you read the following:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;gherkin&quot;&gt;&lt;span class=&quot;k&quot;&gt;Feature:&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; In order to let customers organise their information across themes on various pages. &lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;         As an administrator of a micro-site&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;         I want to be able to add subpages&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;Scenario:&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; Adding a subpage&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;  Given &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;I am logged in&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;  Given[sic] a micro-site with a home page&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;When &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;I press &amp;quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Add subpage&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;And &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;I fill in &amp;quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Title&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;&amp;quot; with &amp;quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Gallery&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;And &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;I press &amp;quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Ok&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;Then &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;I should see a document called &amp;quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Gallery&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;&amp;quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;p&gt;Liquid error: &lt;span class=&quot;caps&quot;&gt;POSIX&lt;/span&gt;::Spawn::TimeoutExceeded&lt;/p&gt;
 &lt;p&gt;Scenario, but not feature description taken from &lt;a href=&quot;http://elabs.se/blog/15-you-re-cuking-it-wrong&quot;&gt;You&amp;#8217;re Cuking It Wrong&lt;/a&gt;. (Note that Jonas doesn&amp;#8217;t give his clients Cukes to read.)&lt;/p&gt;
 &lt;p&gt;According to Jonas Nicklas at E-labs, the above is an example of acceptable Cucumber style, written in the language of stake-holders. As a past consumer of development services, I have to disagree with him. The appropriate level of detail here is this:&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;gherkin&quot;&gt;&lt;span class=&quot;nf&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;I &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;can add subpages to my micro-site.&lt;/span&gt;

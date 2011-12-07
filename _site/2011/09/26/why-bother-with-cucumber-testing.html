@@ -104,19 +104,7 @@ jQuery(document).ready(function() {
 <p>The consultancy screwed up: Amongst other things, they pushed the client to use a process that wasn&#8217;t appropriate. <strong>In particular, they gave the client Cucumber feature files to read and approve, even though the client didn&#8217;t give a damn.</strong> In the client’s words “all we wanted was a website”. (It was actually a web app but most non-technical people don’t draw a distinction). The client just wanted it “to work”.</p>
 <h2>Imagine You Are The Client</h2>
 <p>Step out of your programmer skin for a moment and pretend you are a busy business owner while you read the following:</p>
-<div class="highlight"><pre><code class="gherkin"><span class="k">Feature:</span><span class="nf"> In order to let customers organise their information across themes on various pages. </span>
-<span class="nf">         As an administrator of a micro-site</span>
-<span class="nf">         I want to be able to add subpages</span>
-
-<span class="k">Scenario:</span><span class="nf"> Adding a subpage</span>
-<span class="k">  Given </span><span class="nf">I am logged in</span>
-<span class="nf">  Given[sic] a micro-site with a home page</span>
-<span class="nf">  </span><span class="k">When </span><span class="nf">I press &quot;</span><span class="s">Add subpage</span><span class="nf">&quot;</span>
-<span class="nf">  </span><span class="k">And </span><span class="nf">I fill in &quot;</span><span class="s">Title</span><span class="nf">&quot; with &quot;</span><span class="s">Gallery</span><span class="nf">&quot;</span>
-<span class="nf">  </span><span class="k">And </span><span class="nf">I press &quot;</span><span class="s">Ok</span><span class="nf">&quot;</span>
-<span class="nf">  </span><span class="k">Then </span><span class="nf">I should see a document called &quot;</span><span class="s">Gallery</span><span class="nf">&quot;</span>
-</code></pre>
-</div>
+<p>Liquid error: <span class="caps">POSIX</span>::Spawn::TimeoutExceeded</p>
 <p>Scenario, but not feature description taken from <a href="http://elabs.se/blog/15-you-re-cuking-it-wrong">You&#8217;re Cuking It Wrong</a>. (Note that Jonas doesn&#8217;t give his clients Cukes to read.)</p>
 <p>According to Jonas Nicklas at E-labs, the above is an example of acceptable Cucumber style, written in the language of stake-holders. As a past consumer of development services, I have to disagree with him. The appropriate level of detail here is this:</p>
 <div class="highlight"><pre><code class="gherkin"><span class="nf">  </span><span class="k">I </span><span class="nf">can add subpages to my micro-site.</span>

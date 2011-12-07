@@ -126,7 +126,7 @@ Mistake repetition is the number of times you need to commit a particular mistak
 <div class="janki-rule">
 _The fifth rule of *Janki* method minimizes mistake repetition._
 
-*“Every time you make a mistake carry out a post-mortem and try to figure out the lessons in the experience. Think about you would need to know to prevent that mistake from occurring again, and turn this insight into new flashcards.”*
+*“Every time you make a mistake carry out a post-mortem and try to figure out the lessons in the experience. Think about what you would need to know to prevent that mistake from occurring again, and turn this insight into new flashcards.”*
 </div>
 
 By applying this rule you will substitute real world mistakes with Janki reviews, and you will consequently learn from your mistakes more quickly and with less embarrassment and real world error. 
