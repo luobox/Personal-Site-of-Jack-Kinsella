@@ -20,7 +20,7 @@ You’ve read that learning by doing is better than passive reading; that expres
 
 *Janki Method* is built on the assumption that Malcolm’s 10k to mastery can be hastened if you take a focused approach to learning. The core of Janki Method is the use of a spaced repetition flashcard system, "Anki":http://ankisrs.net/, programmed by the brilliant Damien Elmes.
 
-By following my approach, I believe that any intelligent and disciplined reader can achieve proficiency* in a given field of programming area (e.g. web applications, iPhone applications) in less than 12 months. 
+By following my approach, I believe that any intelligent and disciplined reader can achieve proficiency* in a given field of programming (e.g. web applications, iPhone applications) in less than 12 months. 
 
 I call this the *Janki Challenge*, and I invite you to take part.
 
