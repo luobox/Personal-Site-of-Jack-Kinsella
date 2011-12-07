@@ -14,7 +14,7 @@ This is a guide to becoming a productive programmer quickly. In his book _Outlie
 
 !>/images/janki/anki.jpg!
 
-Well-intentioned learners sometimes flop around in the dark, despite abundant smarts and enthusiasm. The main determinant of their eventual ability is volume of time expended. Maybe Malcolm was right. 
+Well-intentioned learners don't always learn quickly, despite their smarts and enthusiasm. For most, eventual ability is determined by the volume of time expended. Malcolm's 10k sounds right. 
 
 You’ve read that learning by doing is better than passive reading; that expressing ideas in writing forces understanding; that knowledge needs constant revision to stay fresh; that creativity comes from linking disparate ideas; and that your past mistakes are your best teachers. How many of these ideas do you apply to your learning efforts?
 
