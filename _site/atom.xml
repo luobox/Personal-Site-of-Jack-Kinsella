@@ -4,7 +4,7 @@
  <title>Jack Kinsella</title>
  <link href="http://www.jackinsella.ie/atom.xml" rel="self"/>
  <link href="http://www.jackkinsella.ie/"/>
- <updated>2011-12-06T17:17:13-08:00</updated>
+ <updated>2011-12-06T18:45:42-08:00</updated>
  <id>http://www.jackkinsella.ie/</id>
  <author>
    <name>Jack Kinsella</name>
@@ -134,6 +134,7 @@
 &lt;p&gt;&lt;strong&gt;Approach 1&lt;/strong&gt;: You know that multiplication is repeated addition, and so the problem becomes 130  + 130 + 130&amp;#8230; and so on. Applying the rules of addition you arrive at 3900 &amp;#8211; eventually. Let’s call intelligence your ability to carry out these individual calculations quickly.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Approach 2&lt;/strong&gt;: Perhaps you remember from your multiplication tables in school that 13 X 3 is 39. You might also remember that the commutative and associative properties of multiplication let you simplify 130 X 30 to 10 X 13 X 3 X 10 and finally to 39 X 100, which can be calculated trivially as 3900. Your intelligence, or speed of addition here, is irrelevant since domain knowledge let your simplify the problem dramatically.&lt;/p&gt;
 &lt;p&gt;In approach 1, the problem was labour intensive because you did not use knowledge to ease your calculation. This wasn’t the case in approach 2, where you reasoned using higher order chunks of knowledge, so solving an otherwise lengthy problem with ease. I call this application of remembered chunks of knowledge to problems &lt;strong&gt;chunking&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;If you remember the answer to a question, you have no need to deduce it in the moment, and so your mind is free to work on harder and more abstract concepts. This is the value of chunking.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Janki Method&lt;/strong&gt; encourages chunking. This was an unexpected benefit, yet ultimately the most useful to me. After six months of daily application you will reason about programming concepts using mental shortcuts equivalent to those used to simplify the multiplication problem in approach 2. Maximize chunking by adding increasingly abstract rules and concepts to your decks, and making an effort to draw on these ideas when solving problems.&lt;/p&gt;
 &lt;h2&gt;Advantage 3:  Searchable Archive of All Your Programming Knowledge&lt;/h2&gt;
 &lt;p&gt;Has your computer ever spat out an error message and, although you remember seeing it before, you don&amp;#8217;t remember how to fix it? Before I started &lt;strong&gt;Janki Method&lt;/strong&gt; this would happened to me lots.&lt;/p&gt;
@@ -197,7 +198,19 @@
 &lt;p&gt;The consultancy screwed up: Amongst other things, they pushed the client to use a process that wasn&amp;#8217;t appropriate. &lt;strong&gt;In particular, they gave the client Cucumber feature files to read and approve, even though the client didn&amp;#8217;t give a damn.&lt;/strong&gt; In the client’s words “all we wanted was a website”. (It was actually a web app but most non-technical people don’t draw a distinction). The client just wanted it “to work”.&lt;/p&gt;
 &lt;h2&gt;Imagine You Are The Client&lt;/h2&gt;
 &lt;p&gt;Step out of your programmer skin for a moment and pretend you are a busy business owner while you read the following:&lt;/p&gt;
-&lt;p&gt;Liquid error: &lt;span class=&quot;caps&quot;&gt;POSIX&lt;/span&gt;::Spawn::TimeoutExceeded&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;gherkin&quot;&gt;&lt;span class=&quot;k&quot;&gt;Feature:&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; In order to let customers organise their information across themes on various pages. &lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;         As an administrator of a micro-site&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;         I want to be able to add subpages&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;Scenario:&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; Adding a subpage&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;  Given &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;I am logged in&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;  Given[sic] a micro-site with a home page&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;When &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;I press &amp;quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Add subpage&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;And &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;I fill in &amp;quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Title&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;&amp;quot; with &amp;quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Gallery&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;And &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;I press &amp;quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Ok&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;Then &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;I should see a document called &amp;quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Gallery&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 &lt;p&gt;Scenario, but not feature description taken from &lt;a href=&quot;http://elabs.se/blog/15-you-re-cuking-it-wrong&quot;&gt;You&amp;#8217;re Cuking It Wrong&lt;/a&gt;. (Note that Jonas doesn&amp;#8217;t give his clients Cukes to read.)&lt;/p&gt;
 &lt;p&gt;According to Jonas Nicklas at E-labs, the above is an example of acceptable Cucumber style, written in the language of stake-holders. As a past consumer of development services, I have to disagree with him. The appropriate level of detail here is this:&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;gherkin&quot;&gt;&lt;span class=&quot;nf&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;I &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;can add subpages to my micro-site.&lt;/span&gt;
