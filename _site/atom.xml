@@ -4,7 +4,7 @@
  <title>Jack Kinsella</title>
  <link href="http://www.jackinsella.ie/atom.xml" rel="self"/>
  <link href="http://www.jackkinsella.ie/"/>
- <updated>2011-12-06T19:00:18-08:00</updated>
+ <updated>2011-12-06T19:03:53-08:00</updated>
  <id>http://www.jackkinsella.ie/</id>
  <author>
    <name>Jack Kinsella</name>
@@ -26,13 +26,13 @@
 &lt;h2 class=&quot;section-title&quot;&gt;Problems With Learning&lt;/h2&gt;
 &lt;h2&gt;Problem 1: We Forget Too Quickly&lt;/h2&gt;
 &lt;p&gt;Have you ever spent a week studying for an exam, only to forget 90% of what you learned within 2 months and everything else within a year?&lt;/p&gt;
-&lt;p&gt;Forgetting impedes learning knowledge-intensive skills such as programming. You need to remember various languages, solutions, libraries and gotchas if you want to build large applications. Because technical material can be so abstract and dry, you’ll tend to forget quickly.&lt;/p&gt;
+&lt;p&gt;Forgetting impedes learning knowledge-intensive skills such as programming. You need to remember various languages, solutions, libraries and gotchas if you want to build large applications. Because technical material can be so abstract and dry, you forget particularly quickly.&lt;/p&gt;
 &lt;div class=&quot;janki-rule&quot;&gt;
 &lt;p&gt;&lt;em&gt;The first rule of &lt;strong&gt;Janki&lt;/strong&gt; boosts your memory:&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;“Every time you learn something new create a question and answer flashcard and add this card to Anki.”&lt;/strong&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Anki is a Spaced Repetition System. Most algorithms make computers efficient; Anki makes you efficient.  Using the minimal number of repetitions necessary for permanent retention, Anki drills flashcards into your long-term memory.&lt;/p&gt;
-&lt;p&gt;Begin by creating a deck of flashcards called, say, computer science. A deck contains many cards, and each card consists of a question and an answer. You tag these cards with the categories that best describe their contents. For example, one card might be tagged with &amp;#8216;Rails&amp;#8217;, and another with ‘SQL&amp;#8217;. Each card can have numerous tags, something very useful given how technologies overlap.&lt;/p&gt;
+&lt;p&gt;Begin by creating a deck of flashcards called, say, computer science. A deck contains many cards, and each card consists of a question and an answer. You tag these cards with the categories that best describe their contents. For example, one card might be tagged with &amp;#8216;Rails&amp;#8217;, and another with ‘SQL&amp;#8217;. Each card can have numerous tags, something useful given how technologies frequently overlap.&lt;/p&gt;
 &lt;p&gt;Over time you will build up a repository of knowledge on programming, cleanly categorized, easily searchable and regularly backed up in the cloud. Keeping a repository like is useful, but it doesn’t’ do anything to help you keep the knowledge inside your head. The key to this is doing your Ankis.&lt;/p&gt;
 &lt;p&gt;Every morning Anki calculates which cards you risk forgetting, and then prompts you to review these cards. Doing your Ankis only takes a few minutes per day, since you only need to review a fraction of your deck on any given day.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/images/janki/daily-reviews.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;

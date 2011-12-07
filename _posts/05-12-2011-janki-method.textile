@@ -30,7 +30,7 @@ h2. Problem 1: We Forget Too Quickly
 
 Have you ever spent a week studying for an exam, only to forget 90% of what you learned within 2 months and everything else within a year?
 
-Forgetting impedes learning knowledge-intensive skills such as programming. You need to remember various languages, solutions, libraries and gotchas if you want to build large applications. Because technical material can be so abstract and dry, you’ll tend to forget quickly.
+Forgetting impedes learning knowledge-intensive skills such as programming. You need to remember various languages, solutions, libraries and gotchas if you want to build large applications. Because technical material can be so abstract and dry, you forget particularly quickly.
 
 <div class="janki-rule">
 _The first rule of *Janki* boosts your memory:_ 
@@ -40,7 +40,7 @@ _The first rule of *Janki* boosts your memory:_
 
 Anki is a Spaced Repetition System. Most algorithms make computers efficient; Anki makes you efficient.  Using the minimal number of repetitions necessary for permanent retention, Anki drills flashcards into your long-term memory.
 
-Begin by creating a deck of flashcards called, say, computer science. A deck contains many cards, and each card consists of a question and an answer. You tag these cards with the categories that best describe their contents. For example, one card might be tagged with 'Rails', and another with ‘SQL'. Each card can have numerous tags, something very useful given how technologies overlap.
+Begin by creating a deck of flashcards called, say, computer science. A deck contains many cards, and each card consists of a question and an answer. You tag these cards with the categories that best describe their contents. For example, one card might be tagged with 'Rails', and another with ‘SQL'. Each card can have numerous tags, something useful given how technologies frequently overlap.
 
 Over time you will build up a repository of knowledge on programming, cleanly categorized, easily searchable and regularly backed up in the cloud. Keeping a repository like is useful, but it doesn’t’ do anything to help you keep the knowledge inside your head. The key to this is doing your Ankis.
 
