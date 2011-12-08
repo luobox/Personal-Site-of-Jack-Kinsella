@@ -48,7 +48,7 @@ Every morning Anki calculates which cards you risk forgetting, and then prompts 
 
 !/images/janki/daily-reviews.png!
 
-For every card you review, Anki shows you the question side with the answer side initially blocked out. Your job is to answer the question in your head, and then reveal the answer and check whether you got it right. After you answer, four buttons ppear at the bottom of the screen: “again”, “good”, “easy” and “very easy”.  Assess how easily you could recall that card and then press the appropriate button. Based on which button you press, Anki determines when next to show you that card, so answering honestly is crucial if you want the algorithm to work.
+For every card you review, Anki shows you the question side with the answer side initially blocked out. Your job is to answer the question in your head, and then reveal the answer and check whether you got it right. After you answer, four buttons appear at the bottom of the screen: “again”, “good”, “easy” and “very easy”.  Assess how easily you could recall that card and then press the appropriate button. Based on which button you press, Anki determines when next to show you that card, so answering honestly is crucial if you want the algorithm to work.
 
 !/images/janki/question1.png!
 
@@ -101,9 +101,9 @@ bq. “I learned about sex the hard way – from a book.”
 
 Like sex, programming is better and more enjoyably mastered through practice. Learning without practice insulates you from reality.
 
-When you read about programming without trying out the code, you form an internal represention that is incomplete, poorly understood, and difficult to apply practically.
+When you read about programming without trying out the code, you form an internal representation that is incomplete, poorly understood, and difficult to apply practically.
 
-You will fail to notice critical details. Many things may seem trivial when you first read about them in a textbook. Maybe it's the placing of quotations around a parameter to a function, or rules about where whitespace is allowed. These overlooked points can often be critical in practice, and anything less than complete understanding will criple hour productivity. It is only by trying code out that you will notice the nuances of these rules, and really understanding the language, techniques, and commands in question. 
+You will fail to notice critical details. Many things may seem trivial when you first read about them in a textbook. Maybe it's the placing of quotations around a parameter to a function, or rules about where whitespace is allowed. These overlooked points can often be critical in practice, and anything less than complete understanding will cripple hour productivity. It is only by trying code out that you will notice the nuances of these rules, and really understanding the language, techniques, and commands in question. 
 
 <div class="janki-rule">
 _The fourth rule of *Janki* grounds knowledge in reality:_
@@ -115,7 +115,7 @@ Say you are working on an application powered by an SQL database. To build it yo
 
 h2. Problem 5: We Make More Mistakes Than We Need To
 
-Our past mistakes serve as excellent memory aids.  This is a major reason why we learn by doing. That said, not all past mistakes are equally effective at teaching us lessons; there is a correlation between the emotional impact of an error and the lenght of time that lesson will remain in memory. 
+/* Our past mistakes serve as excellent memory aids.  This is a major reason why we learn by doing. That said, not all past mistakes are equally effective at teaching us lessons; there is a correlation between the emotional impact of an error and the length of time that lesson will remain in memory. */
 
 Say you make a big mistake. You accidentally push incomplete code to a live server, taking your app down for 12 hours. You panic to fix it, and as the customer complaints flood in, you feel stupid and embarrassed. This emotional punishment serves as a strong reminder of your error, and you will be more careful when pushing code to a server in future.
 
@@ -141,7 +141,7 @@ h2. Problem 6: We Do Not Reflect On The Big Picture
 
 By following the initial five rules of *Janki Method* you will quickly become proficient with the low level details of programming: then name and use cases of functions and commands, their expected inputs and expected outputs, solutions to common bugs, and techniques for keeping your code organised.
 
-As your experience grows you will be faced with bigger questions, such as structual decisions about your application, techniques to minimize complexity, workflows for managing simultaneous versions of your code, and the tradeoff between between code performance and elegance. Answering these questions requires deep knowledge and sizable experience, and for this reason you must never miss an opportunity to grow your knowledge in these overarching issues.
+As your experience grows you will be faced with bigger questions, such as structural decisions about your application, techniques to minimize complexity, workflows for managing simultaneous versions of your code, and the tradeoff between code performance and elegance. Answering these questions requires deep knowledge and sizable experience, and for this reason you must never miss an opportunity to grow your knowledge in these overarching issues.
 
 <div class="janki-rule">
 _The sixth rule of *Janki* method encourages regular critical reflection:_
@@ -182,7 +182,7 @@ h2. Problem 8: We Do Not Reference Primary Sources
 
 Graphic designers, artists, architects and other creatives keep scrapbooks of designs they like. Later, when working on a project, they draw inspiration from these same scrapbooks. 
 
-As a programmer your primary source of inspiration will be other people’s code. Download open source projects (e.g. on "Github":http:www.github.com) and read through the code. Look up parts you don’t understand, and create new cards as necessary. Get a pen and paper, and sketch out the paths through the program. What are the inputs, and what are the expected outputs? What happens to the data as it moves throught the program? Why was it designed in this way? What techniques were used?
+As a programmer your primary source of inspiration will be other people’s code. Download open source projects (e.g. on "Github":http:www.github.com) and read through the code. Look up parts you don’t understand, and create new cards as necessary. Get a pen and paper, and sketch out the paths through the program. What are the inputs, and what are the expected outputs? What happens to the data as it moves through the program? Why was it designed in this way? What techniques were used?
 
 By reading code you will be exposed to various styles and of programming and solutions to programming problems. You will see things you like, and lots of things you don’t like. With time you will find your own style. 
 
@@ -243,7 +243,7 @@ h2. Advantage 4:  Not Reinventing The Wheel
 
 Modern programming languages have many algorithms built in, or easily included as parts of a readily available core library. This is especially true of high-level languages such as Ruby, and Python. You want to sort an array? Array#sort does the trick. 
 
-If you didn’t know the sort algorithm was built into the language, then you might write your own in its place. When you do so you risk making mistakes and missing out on low level optimizations. Futhermore you alienating future users of your code, who might think there was a reason other than ignorance for why you wrote a custom sort algorithm instead of using the one built into the language. 
+If you didn’t know the sort algorithm was built into the language, then you might write your own in its place. When you do so you risk making mistakes and missing out on low level optimizations. Furthermore you alienating future users of your code, who might think there was a reason other than ignorance for why you wrote a custom sort algorithm instead of using the one built into the language. 
 
 By filling your deck with built-ins from your chosen languages you will be less likely to accidentally implement existing features in a confusing, half-assed, and bug-prone way.
 
