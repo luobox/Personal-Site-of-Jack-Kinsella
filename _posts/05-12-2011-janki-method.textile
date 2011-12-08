@@ -42,7 +42,7 @@ Anki is a Spaced Repetition System. Most algorithms make computers efficient; An
 
 Begin by creating a deck of flashcards called, say, computer science. A deck contains many cards, and each card consists of a question and an answer. You tag these cards with the categories that best describe their contents. For example, one card might be tagged with 'Rails', and another with ‘SQL'. Each card can have numerous tags, something useful given how technologies frequently overlap.
 
-Over time you will build up a repository of knowledge on programming, cleanly categorized, easily searchable and regularly backed up in the cloud. Keeping a repository like is useful, but it doesn’t’ do anything to help you keep the knowledge inside your head. The key to this is doing your Ankis.
+Over time you will build up a repository of knowledge on programming, cleanly categorized, easily searchable and regularly backed up in the cloud. Keeping a repository like is useful, but it doesn’t do anything to help you keep the knowledge inside your head. The key to this is doing your Ankis.
 
 Every morning Anki calculates which cards you risk forgetting, and then prompts you to review these cards. Doing your Ankis only takes a few minutes per day, since you only need to review a fraction of your deck on any given day.
 
@@ -165,7 +165,7 @@ Like a front lawn left idle, your Anki decks can grow ugly. Perhaps one of the p
 
 As you learn, you will discover simpler ways to understand concepts; without updating your cards to reflect these improved paradigms you risk losing these insights forever. Often a group of cards can be replaced with a single card on a higher order concept. 
 
-Sometimes you will see links between cards in your deck. If you note the connection between these cards you create multiple neural paths to the same item of knowledge. If one path were to fail, you could still arrive at and trigger that knowledge from another route. Mind maps' ability to help you remember works using a similar idea. By looking for and noting these connections in your decks this you add a layer of redundancy to your knowledge representation that further insures against future forgetting, 
+Sometimes you will see links between cards in your deck. If you note the connection between these cards you create multiple neural paths to the same item of knowledge. If one path were to fail, you could still arrive at and trigger that knowledge from another route. The ability of mind maps to help you remember works using a similar idea. By looking for and noting these connections in your decks this you add a layer of redundancy to your knowledge representation that further insures against future forgetting, 
 
 <div class="janki-rule">
 _The seventh rule of *Janki* keeps your decks in shape._
@@ -207,7 +207,7 @@ Let’s take an example. Say your program uses 100 functions and 70 of these are
 
 Brainstorming ability is improved through *Janki Method.* Deep knowledge in mind means you can try out alternatives on paper rapidly and so increase your chances of coming across a cheeky non-obvious solution to your problem. 
 
-You might argue that you will get the same speed boost with knowledge earned through experience. That’s true, but this argument misses the point. Janki enables you to gain that same knowledge faster, and retain it for longer. If you’ve ever forgotten how to do something after leaving it aside for a few months, then Anki is for you.
+You might argue that you will get the same speed boost with knowledge earned through experience. That is true, but this argument misses the point. Janki enables you to gain that same knowledge faster, and retain it for longer. If you’ve ever forgotten how to do something after leaving it aside for a few months, then Anki is for you.
 
 h2. Advantage 2: Chunking
 
