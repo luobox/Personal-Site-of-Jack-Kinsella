@@ -4,6 +4,8 @@ title: Automating Popularity
 subtitle: Can handing your Facebook profile to a computer program make you more popular in real life?
 published: true
 author: Jack Kinsella
+fb_description: An experiment in automating princniples from social psychology 
+fb_title: Automating Popularity - Can a computer program make you more popular? 
 
 ---
 
