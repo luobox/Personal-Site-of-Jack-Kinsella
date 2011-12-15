@@ -5,6 +5,13 @@ h3. Why Use This Version
 * Heroku Ready
 * Standard portfolio website format with homepage, blog, and search-engine optimised about page.
 
+h3. How to market a new post
+
+* Post on Facebook as a link (since that allows tracked sharing). Custom descriptions automatically transform a link into a wall post, so don't do this
+* Post on Twitter
+* Post on a relevant sub-reddit
+* Post on Hackernews
+
 h3. Copyright
 
 You are free to use all the code within, with the exception of the
