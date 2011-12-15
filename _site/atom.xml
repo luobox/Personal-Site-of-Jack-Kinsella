@@ -4,7 +4,7 @@
  <title>Jack Kinsella</title>
  <link href="http://www.jackinsella.ie/atom.xml" rel="self"/>
  <link href="http://www.jackkinsella.ie/"/>
- <updated>2011-12-14T17:30:16-08:00</updated>
+ <updated>2011-12-15T11:03:05-08:00</updated>
  <id>http://www.jackkinsella.ie/</id>
  <author>
    <name>Jack Kinsella</name>
@@ -17,7 +17,7 @@
    <id>http://tom.preston-werner.com/2011/12/14/automating-popularity</id>
    <content type="html">&lt;p&gt;Two years ago I wrote a program that logged into my Facebook account and pretended to be me. I wanted to test the hypothesis that &lt;strong&gt;automatic tools could make someone more popular&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;If I could build a script that caused more friends to get in touch with me, then my hypothesis would be proven true. If, instead, the script had no effect on my popularity or was detected as a fraud by the people in my network, then my hypothesis would be proven false.&lt;/p&gt;
-&lt;p&gt;Before I carried out the experiment I studied some social psychology. According to the texts, a new acquaintance turns into a friendship when they appear frequently in our lives; when they share our interests, beliefs, and background; and when we know that they return our affinity for them by liking us back.&lt;/p&gt;
+&lt;p&gt;Before I carried out the experiment I studied some social psychology. According to the texts, a new acquaintance becomes a friend when they appear frequently in our lives; when they share our interests, beliefs, and background; and when we know that they return our affinity for them by liking us back.&lt;/p&gt;
 &lt;p&gt;Newly informed, I modeled these concepts by creating a script that logged into my Facebook account and automatically liked the status updates, photos and comments of my friends, covering up the evidence as it went.&lt;/p&gt;
 &lt;p&gt;Five days later the results came in. Listen to my talk, recorded at &lt;a href=&quot;http://www.ignitethewest.com/&quot;&gt;Ignite the West&lt;/a&gt;, in Galway, Ireland for the full story:&lt;/p&gt;
 &lt;p&gt;&lt;iframe style=&quot;text-align:center;&quot; width=&quot;630&quot; height=&quot;472.5&quot; src=&quot;http://www.youtube.com/embed/PbVlUVMRGTI&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
