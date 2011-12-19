@@ -5,12 +5,21 @@ h3. Why Use This Version
 * Heroku Ready
 * Standard portfolio website format with homepage, blog, and search-engine optimised about page.
 
+h3. How to blog effectively
+
+* Write long well thought out posts. 
+* Try and create language, new ideas, or come up with Schema
+* A reference page will get many links
+
 h3. How to market a new post
 
+* Don't post at tea time Silicon Valley (possibly.. when I posted automating popularity at this time it got drowned out)
 * Post on Facebook as a link (since that allows tracked sharing). Custom descriptions automatically transform a link into a wall post, so don't do this
 * Post on Twitter
 * Post on a relevant sub-reddit
 * Post on Hackernews
+* Do some searches and find relevant stack overflow posts and blog posts on the topic. Either engage the author or write a comment.
+* By having a relationship with someone else in the area you can ask them to Tweet it. Proactively reach out to community leaders and people you just straight up like.
 
 h3. Copyright
 
