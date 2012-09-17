@@ -20,7 +20,7 @@ You’ve read that learning by doing is better than passive reading; that expres
 
 *Janki Method* is built on the assumption that Malcolm’s 10k to mastery can be hastened if you take a focused approach to learning. The core of Janki Method is the use of a spaced repetition flashcard system, "Anki":http://ankisrs.net/, programmed by the brilliant Damien Elmes.
 
-By following my approach, I believe that any intelligent and disciplined reader can achieve proficiency* in a given field of programming (e.g. web applications, iPhone applications) in less than 12 months. 
+By following my approach, I believe that any intelligent and disciplined reader can achieve proficiency* in a given field of programming (e.g. web applications, iPhone applications) in less than 12 months.
 
 I call this the *Janki Challenge*, and I invite you to take part.
 
@@ -259,7 +259,7 @@ Ideally you should build your own decks from scratch, drawing from your programm
 
 If you are going to use other people's decks make sure you understand every card you learn. Be sure to try the code out when you first see it; this takes more discipline that you might have. Make sure you trust the author of the deck - you don't want to learn incorrect or dated knowledge, and sadly most of the decks freely available are abysmal.
 
-*I have a deck with close to 6000 cards which focuses on the Ruby on Rails technology stack*, including cards on Ruby and Rails 3.1, the HTTP protocol, the Unix command line, Git, CSS, JavaScript, VIM, Rspec, Capybara, TDD, Coffeescript, jQuery, coffeescript, sass, deployment, design patterns, regular expressions, SQL, refactoring, and algorithms. The knowledge is cleanly tagged, nicely formatted and up to date. It's everything I've needed to build, manage and deploy a variety of web apps. I'm considering cleaning it up for public consumption and releasing it. Since this would be a lot of work on my behalf I'd want to be assured of public demand first. *If you are interested in downloading my deck then tell me by sending the message "i-want-your-decks" to ("@jackkinsella":http://www.twitter.com/jackkinsella) on Twitter.* If I get enough interest I'll release them and tell you when they are available.
+*I have a deck with close to 6000 cards which focuses on the Ruby on Rails technology stack*, including cards on Ruby and Rails 3.1, the HTTP protocol, the Unix command line, Git, CSS, JavaScript, VIM, Rspec, Capybara, TDD, Coffeescript, jQuery, coffeescript, sass, deployment, design patterns, regular expressions, SQL, refactoring, and algorithms. The knowledge is cleanly tagged, nicely formatted and up to date. It's everything I've needed to build, manage and deploy a variety of web apps. "Download my web development flashcards":http://www.oxbridgenotes.co.uk/other/web_development_flashcards
 
 
 h2. What Knowledge Belongs in my Decks and What Doesn’t?
@@ -295,6 +295,7 @@ _Why public commitment? Public commitment creates social pressure that pushes yo
 I believe that if you follow the system exactly as described above, you will learn to program significantly more quickly than you would using any other approach other than one-to-one tutoring.
 
 h2(section-title). Further Reading 
+* "5500 web development flashcards, made by me":http://www.oxbridgenotes.co.uk/other/web_development_flashcards
 * "Anki - Available for Free Download":http://ankisrs.net/
 * "20 Rules for Formulating Knowledge in Learning":http://www.supermemo.com/articles/20rules.htm
 * "Want to Remember Everything You'll Ever Learn? Surrender to This Algorithm":http://www.wired.com/medtech/health/magazine/16-05/ff_wozniak?currentPage=all
@@ -304,11 +305,6 @@ h2(section-title). Further Reading
 <img src='/images/janki/jack-kinsella.jpg'>
 <p>My Jankiest Face</p>
 </div>
-
-h2(section-title). In San Francisco? Let’s hang out.
-
-I'm visiting San Francisco during December 2011, so get in touch if you’d like to meet for lunch/coffee/beer. I’m looking to take on new consulting projects, or just to have a friendly chat with local techies about programming, entrepreneurship, making money online, and all the usual suspects. Get in touch; I want to meet you.
-
 
 
 

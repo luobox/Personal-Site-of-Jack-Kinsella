@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Rails developer London
+title: Rails Developer Berlin
 subtitle: Experienced and professional. Specialising in E-Commerce, conversion optimisation, and automated SEO.
 ---
 * "Professional Services Offered":#services
