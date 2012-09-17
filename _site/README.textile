@@ -1,5 +1,11 @@
 h1. Personal Blog of Jack Kinsella, a "rails developer in London":http://www.jackkinsella.ie/rails-developer-london.html
 
+h3. How to change posts
+
+rvm use ruby-1.8.7-head
+gem install jekyll RedCloth
+jekyll --auto --server
+
 h3. Why Use This Version
 
 * Heroku Ready
