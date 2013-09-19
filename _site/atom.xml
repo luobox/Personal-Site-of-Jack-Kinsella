@@ -4,7 +4,7 @@
  <title>Jack Kinsella</title>
  <link href="http://www.jackinsella.ie/atom.xml" rel="self"/>
  <link href="http://www.jackkinsella.ie/"/>
- <updated>2012-09-17T12:09:18+02:00</updated>
+ <updated>2013-09-19T16:59:36+02:00</updated>
  <id>http://www.jackkinsella.ie/</id>
  <author>
    <name>Jack Kinsella</name>
@@ -162,6 +162,8 @@
 &lt;p&gt;Modern programming languages have many algorithms built in, or easily included as parts of a readily available core library. This is especially true of high-level languages such as Ruby, and Python. You want to sort an array? Array#sort does the trick.&lt;/p&gt;
 &lt;p&gt;If you didn’t know the sort algorithm was built into the language, then you might write your own in its place. When you do so you risk making mistakes and missing out on low level optimizations. Furthermore you alienating future users of your code, who might think there was a reason other than ignorance for why you wrote a custom sort algorithm instead of using the one built into the language.&lt;/p&gt;
 &lt;p&gt;By filling your deck with built-ins from your chosen languages you will be less likely to accidentally implement existing features in a confusing, half-assed, and bug-prone way.&lt;/p&gt;
+&lt;h2 class=&quot;section-title&quot;&gt;&lt;span class=&quot;caps&quot;&gt;REQUIRED&lt;/span&gt; &lt;span class=&quot;caps&quot;&gt;READING&lt;/span&gt;: Major Update To &lt;span class=&quot;caps&quot;&gt;JANKI&lt;/span&gt; Method&lt;/h2&gt;
+&lt;p&gt;For nearly two years after I wrote this post I continued to use flashcards for learning programming and made a number of large refinements. I wrote about &lt;a href=&quot;http://www.oxbridgenotes.co.uk/articles/janki_method_refined&quot;&gt;Janki Method Refined&lt;/a&gt; on my company blog.&lt;/p&gt;
 &lt;h2 class=&quot;section-title&quot;&gt;Appendix&lt;/h2&gt;
 &lt;h2&gt;Should I Download Other People&amp;#8217;s Decks?&lt;/h2&gt;
 &lt;p&gt;Anki has an online searchable database of other people&amp;#8217;s shared decks. Although there are not many decks for computer science, you might be able to find some and piece these together as the basis for your deck.&lt;/p&gt;
@@ -223,14 +225,10 @@
 &lt;span class=&quot;nf&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;And &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;I fill in &amp;quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Title&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;&amp;quot; with &amp;quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Gallery&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;&amp;quot;&lt;/span&gt;
 &lt;span class=&quot;nf&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;And &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;I press &amp;quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Ok&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;&amp;quot;&lt;/span&gt;
 &lt;span class=&quot;nf&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;Then &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;I should see a document called &amp;quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Gallery&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;&amp;quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;Scenario, but not feature description taken from &lt;a href=&quot;http://elabs.se/blog/15-you-re-cuking-it-wrong&quot;&gt;You&amp;#8217;re Cuking It Wrong&lt;/a&gt;. (Note that Jonas doesn&amp;#8217;t give his clients Cukes to read.)&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Scenario, but not feature description taken from &lt;a href=&quot;http://elabs.se/blog/15-you-re-cuking-it-wrong&quot;&gt;You&amp;#8217;re Cuking It Wrong&lt;/a&gt;. (Note that Jonas doesn&amp;#8217;t give his clients Cukes to read.)&lt;/p&gt;
 &lt;p&gt;According to Jonas Nicklas at E-labs, the above is an example of acceptable Cucumber style, written in the language of stake-holders. As a past consumer of development services, I have to disagree with him. The appropriate level of detail here is this:&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;gherkin&quot;&gt;&lt;span class=&quot;nf&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;I &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;can add subpages to my micro-site.&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;Any more is superfluous. If it takes you ten lines to communicate the idea of adding subpages, then you&amp;#8217;ve wasted my time. I’m not alone in thinking this. &lt;span class=&quot;caps&quot;&gt;BDD&lt;/span&gt; expert &lt;a href=&quot;http://sirenian.livejournal.com/71439.html&quot;&gt;Elizabeth Keogh&lt;/a&gt; tells us:&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Any more is superfluous. If it takes you ten lines to communicate the idea of adding subpages, then you&amp;#8217;ve wasted my time. I’m not alone in thinking this. &lt;span class=&quot;caps&quot;&gt;BDD&lt;/span&gt; expert &lt;a href=&quot;http://sirenian.livejournal.com/71439.html&quot;&gt;Elizabeth Keogh&lt;/a&gt; tells us:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&amp;#8220;If your scenario starts with &amp;#8216;When the user enters ‘Smurf’ into ‘Search’ text box…&amp;#8217; then that’s far too low-level. However, even “When the user adds ‘Smurf’ to his basket, then goes to the checkout, then pays for the goods” is also too low-level. You’re looking for something like, &amp;#8216;When the user buys a Smurf.&amp;#8217;&amp;#8221;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -251,11 +249,9 @@
 &lt;p&gt;Cognitive strain refers to the total weight of facts and rules we must hold in our minds to be productive using a technology. Rails imposes a high cognitive strain. When I began using it I faced a period of difficulty as I untangled the labyrinthine naming patterns of routes, the pluralisation conventions, and the subtle distinctions between various ActiveRecord::Base persistence methods. I’m not saying that cognitive strain is a bad thing; it is often a necessity in powerful tools. I am saying that cognitive strain must be justified.&lt;/p&gt;
 &lt;p&gt;In Cucumber steps, the mention of a specific web page, for example &amp;#8220;the login page&amp;#8221;, requires us to map this stake-holder description to a url helper method our app understands.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;c1&quot;&gt;#features/support/paths.rb&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;when&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt; /the login page/&lt;/span&gt;  
+    &lt;span class=&quot;k&quot;&gt;when&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/the login page/&lt;/span&gt;  
        &lt;span class=&quot;n&quot;&gt;login_path&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;The Rails routing system is complex: in &lt;em&gt;The Rails Way&lt;/em&gt; Obie Fernandez suggested that you could squeeze everyone who understands it into one taxi. Cucumber adds an abstraction layer over this already complex system, and this leads to slower development and increased error on larger projects.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The Rails routing system is complex: in &lt;em&gt;The Rails Way&lt;/em&gt; Obie Fernandez suggested that you could squeeze everyone who understands it into one taxi. Cucumber adds an abstraction layer over this already complex system, and this leads to slower development and increased error on larger projects.&lt;/p&gt;
 &lt;p&gt;A problem I faced when adding new features was that I would unintentionally describe paths using differing natural language descriptions. Perhaps I&amp;#8217;d call &amp;#8220;the login page&amp;#8221; the &amp;#8220;the sign in page&amp;#8221; one day, and &amp;#8220;the log in page&amp;#8221; another. When I did this Cucumber complained that it could not find the permuted path name, and so I had to look inside the paths.rb file to remind myself of my previous phrasing. That&amp;#8217;s a lot of remembering, and a lot of room for error and slowdown.&lt;/p&gt;
 &lt;p&gt;I&amp;#8217;ve experimented with removing the paths.rb file and writing logic that automatically determines the route based on humanized url helpers. This leads to unacceptable step definitions such as &amp;#8220;And then I am on the new user session page&amp;#8221;. This is far too close to implementation language to be understandable to the average stakeholder, and so this option must be avoided if we&amp;#8217;d like to use Cucumber in the way it was intended.&lt;/p&gt;
 &lt;h3&gt;4. Cucumber&amp;#8217;s Organisation Defaults Are Impractical&lt;/h3&gt;
@@ -267,12 +263,8 @@
 &lt;p&gt;Do you consider one of Ruby’s advantages its brevity compared to other languages such as Java? Do you prefer Sass, Coffeescript and Slim to &lt;span class=&quot;caps&quot;&gt;CSS&lt;/span&gt;, Javascript and &lt;span class=&quot;caps&quot;&gt;ERB&lt;/span&gt; for the same reason? Then why do you persist in using Cucumber?&lt;/p&gt;
 &lt;p&gt;Method names in Cucumber need twice as many characters as their plainer Capybara equivalents. Compare:&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;gherkin&quot;&gt;&lt;span class=&quot;k&quot;&gt;Given &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;I am on the home page &lt;/span&gt;&lt;span class=&quot;c&quot;&gt;#27 characters&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;visit&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;root_url&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#14 characters&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;Increased wordiness reduces expressiveness and power, and introduces error since more characters means more places a typo can appear.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;visit&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;root_url&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#14 characters&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Increased wordiness reduces expressiveness and power, and introduces error since more characters means more places a typo can appear.&lt;/p&gt;
 &lt;h4&gt;6. Cucumber Syntactically Discourages Code Reuse&lt;/h4&gt;
 &lt;p&gt;Cucumber users tend to write their step definition in terms of other step definitions.  The library creators have implicitly encouraged this by creating simple means for doing so. Here’s an example:&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;gherkin&quot;&gt;&lt;span class=&quot;k&quot;&gt;When &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;/^I toggle the full sample on the “(^”.*)” product/ do |product_name|&lt;/span&gt;
@@ -283,20 +275,16 @@
 &lt;span class=&quot;nf&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;When &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;I refresh the page&lt;/span&gt;
 &lt;span class=&quot;nf&quot;&gt;  }&lt;/span&gt;
 &lt;span class=&quot;nf&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;This is an abomination, albeit one that is understandable. A developer wants his code to remain &lt;span class=&quot;caps&quot;&gt;DRY&lt;/span&gt; but he doesn&amp;#8217;t want the added hassle of encapsulating the step definitions in Ruby methods. So, he reuses his step definitions.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This is an abomination, albeit one that is understandable. A developer wants his code to remain &lt;span class=&quot;caps&quot;&gt;DRY&lt;/span&gt; but he doesn&amp;#8217;t want the added hassle of encapsulating the step definitions in Ruby methods. So, he reuses his step definitions.&lt;/p&gt;
 &lt;p&gt;But consider this: When you are inside a step definition you are exclusively in the domain of the programmer. The stake-holder never reads this. With this in mind, wouldn’t it be advantageous to use the brevity, precision, composability, editor support and abstraction tools of the full Ruby programming language? Using Ruby, you will be able to do things like this:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;When&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt; /^I toggle the full sample on the “(^”.*)” product/&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;product_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;When&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/^I toggle the full sample on the “(^”.*)” product/&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;product_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
    &lt;span class=&quot;n&quot;&gt;admin&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; 
         &lt;span class=&quot;n&quot;&gt;feature_latest_upload&lt;/span&gt; 
         &lt;span class=&quot;n&quot;&gt;refresh_page&lt;/span&gt;
         &lt;span class=&quot;n&quot;&gt;should_see&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sample_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;features&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;The reuse of step definitions within other step definitions, and the composition of higher level steps using the web steps included with Cucumber, are, in my opinion, the main reasons why so many companies attempt integration tests only to abandon the effort within a few months.  The tests become too difficult to maintain and get of sync. The solution to this pain point isn’t simple, but the most sensible course involves use of more powerful tools of abstraction – such as the full Ruby programming language over awkward step definitions.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The reuse of step definitions within other step definitions, and the composition of higher level steps using the web steps included with Cucumber, are, in my opinion, the main reasons why so many companies attempt integration tests only to abandon the effort within a few months.  The tests become too difficult to maintain and get of sync. The solution to this pain point isn’t simple, but the most sensible course involves use of more powerful tools of abstraction – such as the full Ruby programming language over awkward step definitions.&lt;/p&gt;
 &lt;h2&gt;Conclusions&lt;/h2&gt;
 &lt;p&gt;Cucumber has its uses, principally as a high level analysis tool on large, polyglot projects. That said, few programmers work in this kind of position, and acceptance tests beyond a list of the method names of regular integration tests seems wasteful. Cucumber, as used by the majority of Rails programmers, is no more than a clumsy wrapper over basic integration tests. The differences are not just cosmetic: Cucumber&amp;#8217;s syntax is costly, both to the programmer and to the client, whose time and money are wasted. Furthermore, the use of Cucumber in open source software intended for technical users and its use in solopreneur efforts is downright ridiculous. Nevertheless, programmers continue to use Cucumber inappropriately.&lt;/p&gt;
 &lt;p&gt;Why not admit to yourself that you don&amp;#8217;t do acceptance testing and that you do not need it in your projects? Swap Cucumber for pure integration tests using Capybara, and you&amp;#8217;ll be surprised by how much more productive you can be.&lt;/p&gt;</content>

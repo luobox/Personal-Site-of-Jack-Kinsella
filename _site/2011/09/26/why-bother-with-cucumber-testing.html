@@ -115,14 +115,10 @@ jQuery(document).ready(function() {
 <span class="nf">  </span><span class="k">And </span><span class="nf">I fill in &quot;</span><span class="s">Title</span><span class="nf">&quot; with &quot;</span><span class="s">Gallery</span><span class="nf">&quot;</span>
 <span class="nf">  </span><span class="k">And </span><span class="nf">I press &quot;</span><span class="s">Ok</span><span class="nf">&quot;</span>
 <span class="nf">  </span><span class="k">Then </span><span class="nf">I should see a document called &quot;</span><span class="s">Gallery</span><span class="nf">&quot;</span>
-</code></pre>
-</div>
-<p>Scenario, but not feature description taken from <a href="http://elabs.se/blog/15-you-re-cuking-it-wrong">You&#8217;re Cuking It Wrong</a>. (Note that Jonas doesn&#8217;t give his clients Cukes to read.)</p>
+</code></pre></div><p>Scenario, but not feature description taken from <a href="http://elabs.se/blog/15-you-re-cuking-it-wrong">You&#8217;re Cuking It Wrong</a>. (Note that Jonas doesn&#8217;t give his clients Cukes to read.)</p>
 <p>According to Jonas Nicklas at E-labs, the above is an example of acceptable Cucumber style, written in the language of stake-holders. As a past consumer of development services, I have to disagree with him. The appropriate level of detail here is this:</p>
 <div class="highlight"><pre><code class="gherkin"><span class="nf">  </span><span class="k">I </span><span class="nf">can add subpages to my micro-site.</span>
-</code></pre>
-</div>
-<p>Any more is superfluous. If it takes you ten lines to communicate the idea of adding subpages, then you&#8217;ve wasted my time. I’m not alone in thinking this. <span class="caps">BDD</span> expert <a href="http://sirenian.livejournal.com/71439.html">Elizabeth Keogh</a> tells us:</p>
+</code></pre></div><p>Any more is superfluous. If it takes you ten lines to communicate the idea of adding subpages, then you&#8217;ve wasted my time. I’m not alone in thinking this. <span class="caps">BDD</span> expert <a href="http://sirenian.livejournal.com/71439.html">Elizabeth Keogh</a> tells us:</p>
 <blockquote>
 <p>&#8220;If your scenario starts with &#8216;When the user enters ‘Smurf’ into ‘Search’ text box…&#8217; then that’s far too low-level. However, even “When the user adds ‘Smurf’ to his basket, then goes to the checkout, then pays for the goods” is also too low-level. You’re looking for something like, &#8216;When the user buys a Smurf.&#8217;&#8221;</p>
 </blockquote>
@@ -143,11 +139,9 @@ jQuery(document).ready(function() {
 <p>Cognitive strain refers to the total weight of facts and rules we must hold in our minds to be productive using a technology. Rails imposes a high cognitive strain. When I began using it I faced a period of difficulty as I untangled the labyrinthine naming patterns of routes, the pluralisation conventions, and the subtle distinctions between various ActiveRecord::Base persistence methods. I’m not saying that cognitive strain is a bad thing; it is often a necessity in powerful tools. I am saying that cognitive strain must be justified.</p>
 <p>In Cucumber steps, the mention of a specific web page, for example &#8220;the login page&#8221;, requires us to map this stake-holder description to a url helper method our app understands.</p>
 <div class="highlight"><pre><code class="ruby"><span class="c1">#features/support/paths.rb</span>
-    <span class="k">when</span><span class="sr"> /the login page/</span>  
+    <span class="k">when</span> <span class="sr">/the login page/</span>  
        <span class="n">login_path</span>
-</code></pre>
-</div>
-<p>The Rails routing system is complex: in <em>The Rails Way</em> Obie Fernandez suggested that you could squeeze everyone who understands it into one taxi. Cucumber adds an abstraction layer over this already complex system, and this leads to slower development and increased error on larger projects.</p>
+</code></pre></div><p>The Rails routing system is complex: in <em>The Rails Way</em> Obie Fernandez suggested that you could squeeze everyone who understands it into one taxi. Cucumber adds an abstraction layer over this already complex system, and this leads to slower development and increased error on larger projects.</p>
 <p>A problem I faced when adding new features was that I would unintentionally describe paths using differing natural language descriptions. Perhaps I&#8217;d call &#8220;the login page&#8221; the &#8220;the sign in page&#8221; one day, and &#8220;the log in page&#8221; another. When I did this Cucumber complained that it could not find the permuted path name, and so I had to look inside the paths.rb file to remind myself of my previous phrasing. That&#8217;s a lot of remembering, and a lot of room for error and slowdown.</p>
 <p>I&#8217;ve experimented with removing the paths.rb file and writing logic that automatically determines the route based on humanized url helpers. This leads to unacceptable step definitions such as &#8220;And then I am on the new user session page&#8221;. This is far too close to implementation language to be understandable to the average stakeholder, and so this option must be avoided if we&#8217;d like to use Cucumber in the way it was intended.</p>
 <h3>4. Cucumber&#8217;s Organisation Defaults Are Impractical</h3>
@@ -159,12 +153,8 @@ jQuery(document).ready(function() {
 <p>Do you consider one of Ruby’s advantages its brevity compared to other languages such as Java? Do you prefer Sass, Coffeescript and Slim to <span class="caps">CSS</span>, Javascript and <span class="caps">ERB</span> for the same reason? Then why do you persist in using Cucumber?</p>
 <p>Method names in Cucumber need twice as many characters as their plainer Capybara equivalents. Compare:</p>
 <div class="highlight"><pre><code class="gherkin"><span class="k">Given </span><span class="nf">I am on the home page </span><span class="c">#27 characters</span><span class="nf"></span>
-</code></pre>
-</div>
-<div class="highlight"><pre><code class="ruby"><span class="n">visit</span> <span class="n">root_url</span> <span class="c1">#14 characters</span>
-</code></pre>
-</div>
-<p>Increased wordiness reduces expressiveness and power, and introduces error since more characters means more places a typo can appear.</p>
+</code></pre></div><div class="highlight"><pre><code class="ruby"><span class="n">visit</span> <span class="n">root_url</span> <span class="c1">#14 characters</span>
+</code></pre></div><p>Increased wordiness reduces expressiveness and power, and introduces error since more characters means more places a typo can appear.</p>
 <h4>6. Cucumber Syntactically Discourages Code Reuse</h4>
 <p>Cucumber users tend to write their step definition in terms of other step definitions.  The library creators have implicitly encouraged this by creating simple means for doing so. Here’s an example:</p>
 <div class="highlight"><pre><code class="gherkin"><span class="k">When </span><span class="nf">/^I toggle the full sample on the “(^”.*)” product/ do |product_name|</span>
@@ -175,20 +165,16 @@ jQuery(document).ready(function() {
 <span class="nf">    </span><span class="k">When </span><span class="nf">I refresh the page</span>
 <span class="nf">  }</span>
 <span class="nf">end</span>
-</code></pre>
-</div>
-<p>This is an abomination, albeit one that is understandable. A developer wants his code to remain <span class="caps">DRY</span> but he doesn&#8217;t want the added hassle of encapsulating the step definitions in Ruby methods. So, he reuses his step definitions.</p>
+</code></pre></div><p>This is an abomination, albeit one that is understandable. A developer wants his code to remain <span class="caps">DRY</span> but he doesn&#8217;t want the added hassle of encapsulating the step definitions in Ruby methods. So, he reuses his step definitions.</p>
 <p>But consider this: When you are inside a step definition you are exclusively in the domain of the programmer. The stake-holder never reads this. With this in mind, wouldn’t it be advantageous to use the brevity, precision, composability, editor support and abstraction tools of the full Ruby programming language? Using Ruby, you will be able to do things like this:</p>
-<div class="highlight"><pre><code class="ruby"><span class="no">When</span><span class="sr"> /^I toggle the full sample on the “(^”.*)” product/</span> <span class="k">do</span> <span class="o">|</span><span class="n">product_name</span><span class="o">|</span>
+<div class="highlight"><pre><code class="ruby"><span class="no">When</span> <span class="sr">/^I toggle the full sample on the “(^”.*)” product/</span> <span class="k">do</span> <span class="o">|</span><span class="n">product_name</span><span class="o">|</span>
    <span class="n">admin</span> <span class="k">do</span> 
         <span class="n">feature_latest_upload</span> 
         <span class="n">refresh_page</span>
         <span class="n">should_see</span><span class="p">(</span><span class="n">sample_path</span><span class="p">,</span> <span class="s2">&quot;features&quot;</span><span class="p">)</span>
     <span class="k">end</span>
 <span class="k">end</span>
-</code></pre>
-</div>
-<p>The reuse of step definitions within other step definitions, and the composition of higher level steps using the web steps included with Cucumber, are, in my opinion, the main reasons why so many companies attempt integration tests only to abandon the effort within a few months.  The tests become too difficult to maintain and get of sync. The solution to this pain point isn’t simple, but the most sensible course involves use of more powerful tools of abstraction – such as the full Ruby programming language over awkward step definitions.</p>
+</code></pre></div><p>The reuse of step definitions within other step definitions, and the composition of higher level steps using the web steps included with Cucumber, are, in my opinion, the main reasons why so many companies attempt integration tests only to abandon the effort within a few months.  The tests become too difficult to maintain and get of sync. The solution to this pain point isn’t simple, but the most sensible course involves use of more powerful tools of abstraction – such as the full Ruby programming language over awkward step definitions.</p>
 <h2>Conclusions</h2>
 <p>Cucumber has its uses, principally as a high level analysis tool on large, polyglot projects. That said, few programmers work in this kind of position, and acceptance tests beyond a list of the method names of regular integration tests seems wasteful. Cucumber, as used by the majority of Rails programmers, is no more than a clumsy wrapper over basic integration tests. The differences are not just cosmetic: Cucumber&#8217;s syntax is costly, both to the programmer and to the client, whose time and money are wasted. Furthermore, the use of Cucumber in open source software intended for technical users and its use in solopreneur efforts is downright ridiculous. Nevertheless, programmers continue to use Cucumber inappropriately.</p>
 <p>Why not admit to yourself that you don&#8217;t do acceptance testing and that you do not need it in your projects? Swap Cucumber for pure integration tests using Capybara, and you&#8217;ll be surprised by how much more productive you can be.</p>
