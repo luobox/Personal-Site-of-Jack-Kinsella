@@ -2,9 +2,10 @@ h1. Personal Blog of Jack Kinsella, a "rails developer in London":http://www.jac
 
 h3. How to change posts
 
-rvm use ruby-1.8.7-head
+rvm use ruby-2.0.0-p247 # must be Ruby 2 or greater to avoid YAML difficulty
 gem install jekyll RedCloth
-jekyll --auto --server
+gem install psych -- --enable-bundled-libyaml
+jekyll auto server
 git commit
 git push heroku
 

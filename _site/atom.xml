@@ -4,7 +4,7 @@
  <title>Jack Kinsella</title>
  <link href="http://www.jackinsella.ie/atom.xml" rel="self"/>
  <link href="http://www.jackkinsella.ie/"/>
- <updated>2013-09-19T17:41:14+02:00</updated>
+ <updated>2014-04-17T15:31:02+02:00</updated>
  <id>http://www.jackkinsella.ie/</id>
  <author>
    <name>Jack Kinsella</name>
@@ -198,7 +198,7 @@
 	&lt;li&gt;&lt;a href=&quot;http://www.supermemo.com/articles/genius.htm&quot;&gt;Genius and Creativity&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&quot;captioned-image&quot;&gt;
-&lt;p&gt;&lt;img src='/images/janki/jack-kinsella.jpg'&gt;&lt;br /&gt;
+&lt;p&gt;&lt;img src=&#39;/images/janki/jack-kinsella.jpg&#39;&gt;&lt;br /&gt;
 &lt;p&gt;My Jankiest Face&lt;/p&gt;&lt;/p&gt;
 &lt;/div&gt;</content>
  </entry>
@@ -260,7 +260,7 @@
 &lt;p&gt;My favorite feature of Rails is one of its simplest: everything has a place. Mailers go in one folder, models go in another and configurations go somewhere else. Presuming that a project sticks to convention, you can find the source code for any function effortlessly. This brings enormous productivity advantages, especially on projects you inherit from other programmers.&lt;/p&gt;
 &lt;p&gt;Cucumber asks you to create step definitions for any custom steps you use. The convention is to keep these steps in a file {feature_name}_steps.rb. This convention makes sense on tiny projects, and step definitions are easily found. Problems start once you need to reuse step definitions across many features and you want to keep code &lt;span class=&quot;caps&quot;&gt;DRY&lt;/span&gt;. Two things typically happen:&lt;/p&gt;
 &lt;p&gt;1)	If you’ve got a good memory you find the old step definition and use that method again in your new feature. This can be a terrible move. The shared helper’s presence in promote_post_feature_steps.rb file suggests exclusive connection with that feature. If you later remove the promote_posts feature file you will probably remove its step definition file too, having forgotten that it contained global step definitions. Ideally you should have extracted these shared step definitions to a global step definition file, but realistically this doesn’t always happen. We&amp;#8217;ve all got deadlines.&lt;/p&gt;
-&lt;p&gt;2)	If you don’t have a good memory, or it has been a long time since you last visited the project, you might have forgotten that you previously wrote a step definition for promoting a post. Alternatively you might never have created a step definition but another programmer had done so without you knowing. You write a fresh step definition in taxon_steps.rb, but now your code is no longer &lt;span class=&quot;caps&quot;&gt;DRY&lt;/span&gt;. At a later date you might be refactoring the promotion logic and make the changes in promote_post_feature_steps.rb, and then assume you had finished refactoring. The taxon_steps.rb now contains an out of date version of the logic for this step, and this will lead to confusing test failures, since you have no good reason to suspect an issue with the recently refactored promotion logic. Cucumber’s default way of organising features sets you up for these difficulties, and it takes of discipine to avoid them.&lt;/p&gt;
+&lt;p&gt;2)	If you don’t have a good memory, or it has been a long time since you last visited the project, you might have forgotten that you previously wrote a step definition for promoting a post. Alternatively you might never have created a step definition but another programmer had done so without you knowing. You write a fresh step definition in taxon_steps.rb, but now your code is no longer &lt;span class=&quot;caps&quot;&gt;DRY&lt;/span&gt;. At a later date you might be refactoring the promotion logic and make the changes in promote_post_feature_steps.rb, and then assume you had finished refactoring. The taxon_steps.rb now contains an out of date version of the logic for this step, and this will lead to confusing test failures, since you have no good reason to suspect an issue with the recently refactored promotion logic. Cucumber’s default way of organising features sets you up for these difficulties, and it takes lots of discipine to avoid them.&lt;/p&gt;
 &lt;h3&gt;5. Increased Wordiness&lt;/h3&gt;
 &lt;p&gt;Do you consider one of Ruby’s advantages its brevity compared to other languages such as Java? Do you prefer Sass, Coffeescript and Slim to &lt;span class=&quot;caps&quot;&gt;CSS&lt;/span&gt;, Javascript and &lt;span class=&quot;caps&quot;&gt;ERB&lt;/span&gt; for the same reason? Then why do you persist in using Cucumber?&lt;/p&gt;
 &lt;p&gt;Method names in Cucumber need twice as many characters as their plainer Capybara equivalents. Compare:&lt;/p&gt;
