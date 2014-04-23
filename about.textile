@@ -1,0 +1,26 @@
+---
+layout: default
+title: Analyst
+subtitle: Social observation, marketing, computer programming, music composition
+---
+
+I'm in the middle of reinventing myself for the nth time so this is sparse.
+
+h2. For Hire?
+
+Since I live off my own income streams I'm not interested in full time or freelance work, but I'm open to writing engagements and profit share marketing tasks where I'm fully incentivised to work as hard as if it's my own project.
+
+h2(#testimonials). What Other People Have Said About Me
+
+bq. "Jack is an innovative and dedicated professional with strong drive and energy. He has a keen eye for commercial opportunities and is honing his skills by developing new business models that exploit emerging technologies and services. Jack is worth meeting, and he will add value to a business idea."
+??Sheila Doyle, Chief Information Officer, "British Petroleum":http://www.bp.com??
+
+bq. "Jack Kinsella is a x10 engineer: in less than 2 months, he single-handedly built, deployed and maintained 6 unique web applications for our company. Jack gets things done, communicates clearly, manages his own time, and makes intelligent business decisions. He writes some of the most beautiful and maintainable code I've ever seen. You will not regret hiring Jack."
+??Adeyemi Ajao, Founder and CEO, "Identified":http://www.identified.com??
+
+bq. "Insanely committed to learning and developing his skills; helped to architect a social networking site driven by his passion for understanding people and the way they think. Not to mention his dizzying energy and work ethic. Work for him, work with him, get him to work for you -really can't go wrong, one in 6 billion."
+??Amaru Villanueva Rance, Innovation Analyst, "giffgaff":http://giffgaff.com/??
+
+h2(#education). Education
+
+Maximum possible score in Irish national-level school examinations. I studied medicine for one year at UCD, attaining the highest result in year in physics. Unhappy with my education at UCD, I switched to law at "Oxford":http://www.ox.ac.uk/ and graduated in 2009. I have since taught myself programming, online marketing, and am beginning music theory and composition. I hope my education will continue for many years to come.

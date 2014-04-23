@@ -11,8 +11,11 @@ plugins:     ./_plugins
 future:      true
 lsi:         false
 pygments:    true 
-markdown:    textile
+markdown:    kramdown
 permalink:   date
+markdown_ext:  markdown,mkdown,mkdn,mkd,md
+textile_ext:   textile
+  
 
 maruku:
   use_tex:    false

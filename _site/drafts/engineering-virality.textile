@@ -1,0 +1,93 @@
+Analyse: Klout, Gmail, Facebook, Groupon, LinkedIn, Quora
+Analyse: Real viruses
+
+In 2011 I was hired as a consultant given an improbable breif: "Please make me a viral Facebook app - Boss.". Over the following eight weeks we released six applications; one of these went viral although only using shady tactics and for this reason it was soon shut down by Facebook.
+
+I spent the best part of two months thinking about viral growth and came up with a framework for reasoning about it. I hope that it gives you a valuable basis for improving the virality in your own products.
+
+TOLD BEN: Contacted Pixable, Giff Gaff
+
+GiffGaff
+
+Browser noti
+
+h2. Why Virality Counts
+
+chart
+
+h2. The Three Key Variables
+
+h4. K: Viral Coefficient
+
+h4. T: Average Time For a Cycle To Repeat
+
+h2. The Viral Cycle
+
+h4. Stage 1: Viral Transmission
+
+Transmission happens when an existing user sends out viral marketing messages (VMMs) to people not currently part of your system. An example you've likely seen before is when a website asks if it may connect with your email provider to send email invitations to the addresses found within. If you say yes, a viral marketing message is transmitted to every one of your friends, and transmission is said to happen.
+
+# add example found online elsewher
+
+You can optimise transmission using the following strategies:
+* *Crowding:* Maximizing the number of users to whom VMMs are sent. All things equal it is significantly better to send VMMs to 100 users than 5 users. Note that you are not maximizing the number of VMMs sent, but rather the number of unique users to whom they are sent. There is no point in sending the same message to one user ten times, indeed it will probably get you marked as spam. (That said different messages, sent at spaced time intervals, might justify sending multiple VMMs to many of the same users).
+* *Gating:* Requiring a user to transmit VMMs to gain access to certain features. Have you ever seen Facebook pages where you must "like to reveal". A blurred picture on screen will only be revealed once you click the like button.
+* *Inherent Transmission:* Making the use of your product impossible without another user. An example is a multiplayer game of chess. Without inviting another user you won't be able to play.
+* *Automatic Transmission:* In some situations you can automatically transmit VMMs without the user taking any action. For example on the Facebook platform marking your app as a Game allows you to send achievements and high scores as your user plays, which will appear on your user's walls. This strategy can be taken too far; I've had Facebook apps banned for automatically posting infographics to user's walls.
+* *Choosy Transmission:* If there is a limit on the number of messages you may send, you should choose the persons most likely to get converted. In a large scale effort you could use demographic data from previous users to choose the most likely to bite. A simpler algorithm is to choose the current person's closest friends: this might be the people they email most, the people with most mutual friends in Facebook, and so on.
+* *Repeat Transmission:*
+
+Measurement:
+* Percentage of users who send out VMMs
+* Number of VMMs send out by each user  
+
+h4. Stage 2: Viral Baiting 
+
+Viral baiting occurs when someone sees one of the VMMs you sent out and follow the lead. If your app sends out email invitations to a user's friends, then baiting occurs when the see the email and decide to click the link
+
+You can optimise baiting with:
+* *Incentives:* 
+* *New Territory*: Email marketing is saturated, and you will have a difficult time getting a stranger's attention. Clever, but perhaps shady tactics are to hijack the original viral transmittor's email address and send as them.. social engineers have known
+* *Fear:*
+* *Anti-Spam:* 
+* *Split testing various messages*:
+
+Measurement:
+* Percentage of users who see a message that follow a link. Mail Chimp gives you click through rate on emails, Facebook gives you engagement with stories sent out by your app, provided you pass a reference parameter
+
+h4. Stage 3: Viral Infection 
+
+Infection occurs when a baited user, now on your website, signs up to your app. At this point you've gained a new user. If you'd like this user to complete the viral cycle he must now transmit a viral message.
+
+Optimise viral infection by:
+* Improving your splash page 
+* Trying out different messages
+* Having a more compelling product
+
+
+h2. Applying the Scientific Method To Viral Optimisation
+
+Engineering virality requires speed, rigour and discipline. You are searching for optimisations at many layers, and poorly desinged experiements, slight technical failures, and poor statistical analysis techniques will cripple any efforts. Based on my experiences I recommend the following practices:
+
+Methodology is design a first stage app with tracking, deploy, advertise to a seed group of users, wait until the viral cycle finishes, analyse, form conclusions and hypotheses, redesign with these ideas in mind. 
+
+Technical
+* Use integration tests for your entire app to protect against technical fault which would invalidate or crowd an otherwise good experiement. Pay particular attention to tracking, and ensuring the viral messages have working links.
+* Fail loudly. If something goes wrong at some point in your viral app, bubble up an exception and use exception notification to inform you.
+* Create a pre-deploy checklist before deploy each experimetn. You'd be surprised how many technical mistakes and oversights this can prevent.
+* Use manual testing too. Have the manual tester follow a checklist of possible paths, making especially sure to try out the viral links off site 
+* If server deployment of variations is difficult isolate the difficult part and create a separate server for this, communication via an API. That way you can have easily deployed (e.g. Heroku) servers for rapid split testing, whilst the heavy machinery is left stable and untouched.
+* If rapidly iterating separate out the unchaning parts of your app from those that change. Bundle the unchanging parts into a library and include this in the various apps.
+* Replicate experimental conditions by running multiple servers simultaneously
+
+Analysis
+* Form hypotheses for each experiemnt up front. Changing the text on this VMM should lead to a 5% increase in conversions. Try out 
+* Double check your tracking data against Google Analytics, Facebook Insights and so on. Discrepancies indicate a failure in your technique.
+* Automate analysis. Build an admin backend to your app which measures virality by channel.
+* Use statistical significance tests to check that the changes you made weren't just a statistical anomoly.
+* Use Toyota's root cause analyse to diagnose problems in the viral cycle. This entail asking why five times. Why did be get banned from Facebook? Spam filters indicated they didn't like our activity. Why did the spam filters indicate they didn't like our activity? Too many hides. Why did we get too many hides? A proportion of our users didn't want our content on their walls. Why didn't users want our content on their walls? It either made them look bad or wasn't cool enough. Why? It gave them Ds in their social repot card and might have been targetting the wrong audience.
+
+Big Picutre
+* Know when to optimise or pivot*
+* Remember it's ultimately about costs of user acquisition. Price of gaining initial users to be taken into account
+
