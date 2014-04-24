@@ -9,6 +9,10 @@ jekyll auto server
 git commit
 git push heroku
 
+h3. Create a new post
+copy over header area from another post
+ensure layout is correct
+
 h3. Why Use This Version
 
 * Heroku Ready
@@ -16,7 +20,7 @@ h3. Why Use This Version
 
 h3. How to blog effectively
 
-* Write long well thought out posts. 
+* Write long well thought out posts.
 * Try and create language, new ideas, or come up with Schema
 * A reference page will get many links
 

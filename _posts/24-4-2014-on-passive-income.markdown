@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: On Passive Income
 subtitle: How I created a passive income stream and my advice to those starting off
 ---
