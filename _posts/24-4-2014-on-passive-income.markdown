@@ -210,7 +210,7 @@ so I decided to limit my search to website ideas.
 
 I started by building an example of the crappiest of all website categories: a directory. The
 beauty of a directory is that it's simple enough for an extremely newbie
-programmer, and the business model is every bit as suited to a newbie
+programmer, and the straightforward business model is every bit as suited to a newbie
 businessman.  My pitch went like this: You're a lawyer in Ireland, you
 have no website, you pay me 100 euros a year for your place on
 "findsolicitors.ie". The Yellow Pages telephone directory in my parent's
