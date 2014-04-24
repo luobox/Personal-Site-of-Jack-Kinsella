@@ -427,7 +427,7 @@ documents, I can pick up where my thoughts previously left off.
 
 ### The Killer Skill
 If you could learn any one skill in helping you achieve a passive income
-what do you think that would be? Your probably thinking programming.
+what do you think that would be? You're probably thinking programming.
 Wrong.
 
 The killer skill for passive incomes is online marketing.  I didn't make
