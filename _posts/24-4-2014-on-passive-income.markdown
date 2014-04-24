@@ -270,7 +270,7 @@ And when I did it was magic; I had switched on a garden hose of sales.
 My notes being a new product that no-one yet owned, and it being exam
 season, I sold a couple of thousand euros worth of the stuff in the first
 month, so much that I flew to Japan for a month and Bolivia for three,
-enjoying myself and operated the website from coffee shops and hostels. Sure, I paid
+enjoying myself and operating the website from coffee shops and hostels. Sure, I paid
 Google a chunky proportion of my income, but I wouldn't have gotten
 any sales without advertising, so I was delighted with the partnership.
 
@@ -323,7 +323,7 @@ techniques.
 
 Productivity has the stereotypical image of a hyper-caffeinated
 life-hacker with 120 tabs opened in their web-browser, working
-while jogging on a desk threadmill and flossing at the same time. The kind of
+while jogging on a desk treadmill and flossing at the same time. The kind of
 productivity you should be concerned with is not that; it's no more and
 no less than finishing and shipping a finished product in as little time
 as possible.
@@ -335,7 +335,7 @@ speed in all the processes along that trail. Most importantly you need
 to cull analysis paralysis by cultivating the ability to quickly make
 and thereafter stomach decisions where both options are less than ideal.
 
-I recommend that set yourself the goal of getting your first sale
+I recommend that you set yourself the goal of getting your first sale
 within 120 hours. Yes, that limits the scope of what you can produce to
 to something simple, but on the plus side you are forced to tackle all
 aspects of the business, and practice productivity in the sense I
