@@ -322,7 +322,7 @@ a job in 30% of the time with discipline and sensible productivity
 techniques.
 
 Productivity has the stereotypical image of a hyper-caffeinated
-life-hacker with 120 tabs opened in their web-browser, working
+life-hacker with 90 tabs opened in their web-browser, working
 while jogging on a desk treadmill and flossing at the same time. The kind of
 productivity you should be concerned with is not that; it's no more and
 no less than finishing and shipping a finished product in as little time
