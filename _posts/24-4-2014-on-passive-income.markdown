@@ -1,7 +1,10 @@
 ---
 layout: post
+author: Jack Kinsella
 title: On Passive Income
 subtitle: How I created a passive income stream and my advice to those starting off
+fb_description: How I created a passive income stream and my advice to those starting off
+fb_title: On Passive Income
 ---
 
 On 23 April, 2014 I gave this speech to the Berlin chapter of the [4
