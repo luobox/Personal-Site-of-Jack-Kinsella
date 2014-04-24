@@ -1,11 +1,5 @@
-/*  Jack Kinsella
- *  Ruby on Rails freelancer, London
-    http://www.jackkinsella.com
-    ---------------------   */
 /*
-
     Resets
-
 */
 html,
 body,
@@ -275,8 +269,7 @@ body {
   color: #CD0021;
 
 }
-#content h1,
-{
+#content h1 {
   color: #CD0021;
 }
 #content header p{
