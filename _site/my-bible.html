@@ -3,6 +3,10 @@
     <head>
       <meta charset="utf-8"/>
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- no caching because it cause problems when refreshing page. Need to redesign blog properly to avoid in future -->
+      <meta http-equiv="cache-control" content="max-age=0" />
+      <meta http-equiv="cache-control" content="no-cache" />
+      <meta http-equiv="expires" content="0" />
       <title>My Bible | Jack Kinsella - Analyst Berlin</title>
       <meta name="viewport" content="width=device-width, initial-scale=1"/>
       <!-- Typekit script -->
@@ -109,9 +113,10 @@
             </a>
           </li>
         </ul>
+      </section>
         <section id="copyright">
         <p>
-          Coded and created by Jack Kinsella. </a>
+          Coded and created by Jack Kinsella.
       </p>
       </section>
     </div>
