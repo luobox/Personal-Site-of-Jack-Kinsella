@@ -73,9 +73,9 @@ if they are willing to experiment with remote working, or find another one
 who is. Increasingly, such companies exist.
 
 For example, my freelancers at Oxbridge Notes are location free, which
-suits me fine since I don't have an office, and which the freelancer
-enjoys. I'm glad that I can provide nice working conditions.
-
+suits me fine since I don't have an office. The freelancers enjoy the
+working conditions, and that makes Oxbridge Notes a more attractive
+place to work. I'm glad that I can provide nice working conditions.
 
 ## 2 Freedom of time (low number of hours)
 Spending less time doing unpleasant tasks, or "work" to meet your
