@@ -156,7 +156,7 @@ crafting a passive income stream.
    "reaching" more helpful in imagining the actual actions you will be
    required to take in order to make sales.
 
-To put the above perspective I'll acquaint you with the story of how I
+To put the above into perspective I'll acquaint you with the story of how I
 thought up Oxbridge Notes.
 
 I graduated college with a law degree; went to work in a London law firm
