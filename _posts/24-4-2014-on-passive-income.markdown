@@ -435,7 +435,7 @@ Wrong.
 
 The killer skill for passive incomes is online marketing.  I didn't make
 money until I started using SEO and Google Adwords. With
-another business I used to run, Bolivian Express, a journalism school in
+another business I used to help run, [Bolivian Express](http://www.bolivianexpress.org), a journalism school in
 Bolivia, we didn't make a single sale until we emailed 20
 university mailing lists.
 
