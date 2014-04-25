@@ -332,11 +332,11 @@ weakest link in the chain between idea and finished product in your
 customer's hands, meaning that you'll need to focus on improving your
 speed in all the processes along that trail. Most importantly you need
 to cull analysis paralysis by cultivating the ability to quickly make
-and thereafter stomach decisions where both options are less than ideal.
+and thereafter stomach decisions where all options are less than ideal.
 
 I recommend that you set yourself the goal of getting your first sale
 within 120 hours of beginning to produce your passive income stream.
-Yes, that limits the scope of what you can produce to to something
+Yes, that limits the scope of what you can produce to something
 simple, but on the plus side you are forced to tackle all aspects of the
 business, and practice productivity in the sense I belaboured above.
 
