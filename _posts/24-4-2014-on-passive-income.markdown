@@ -321,11 +321,11 @@ a job in 30% of the time with discipline and sensible productivity
 techniques.
 
 Productivity has the stereotypical image of a hyper-caffeinated
-life-hacker with 90 tabs opened in their web-browser, working
-while jogging on a desk treadmill and flossing at the same time. The kind of
+life-hacker with 90 tabs opened in their web-browser, working while
+jogging on a desk treadmill and flossing at the same time. The kind of
 productivity you should be concerned with is not that; it's no more and
-no less than finishing and shipping a finished product in as little time
-as possible.
+no less than finishing, advertising and shipping a product in as little
+time as possible.
 
 This kind of productivity means you are only as productive as the
 weakest link in the chain between idea and finished product in your
@@ -342,7 +342,7 @@ business, and practice productivity in the sense I belaboured above.
 
 There'll be plenty of time for your bigger ambitions once you have a
 passive income and a ton of free time. The most important thing for you
-now, is to practice the full stack of basic business.
+now is to practice the full stack of basic business.
 
 Some perils of particular danger to the new passive income earner are going to
 "business coffees" with like-minded people, saying "yes"  to oddball
