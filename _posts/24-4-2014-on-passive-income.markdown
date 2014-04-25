@@ -441,14 +441,14 @@ Bolivia, we didn't make a single sale until we emailed 20 university
 mailing lists.
 
 No matter what your passive income source is, you need to  reach and
-convince customers to buy. Sure, programming is a tremendous help in enabling
-you deliver your product automatically, but there are a hundred times as
-many reliable freelance programmers in the world as reliable freelance
-marketers.
+convince customers to buy. Sure, programming is a tremendous help in
+enabling you deliver your product automatically, but there are a hundred
+times as many reliable freelance programmers in the world as there are
+reliable freelance marketers.
 
 Copy-writing, SEO, Adwords, Facebook advertising, email marketing and
 social media marketing all come into the scope of online marketing.  A
-business not using these at least a few of these disciplines is like a
+business not using at least a few of these disciplines is like a
 physical brick-store, say an IKEA, setting up on an island in the middle of the
 ocean, telling no-that one they opened, yet expecting customers to throng to
 their doors.
