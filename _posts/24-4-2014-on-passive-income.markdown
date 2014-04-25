@@ -163,7 +163,7 @@ I graduated college with a law degree; went to work in a London law firm
 as an intern and during my time there I shrunk at the thought of how
 repetitious and boring it would be to sit in the same office for 35
 years.  No salary, no matter how handsome, could convince me to
-sacrifice my youthful lust for adventure and variety, and I realised
+sacrifice my thirst for adventure and variety, and I realised
 that despite the effort I had put into my legal studies, I did not
 want to be a corporate lawyer. To use the language of economics, it was
 a sunk cost.
