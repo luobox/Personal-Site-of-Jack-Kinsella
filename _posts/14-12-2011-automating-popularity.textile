@@ -1,26 +1,26 @@
 ---
 layout: post
-title: Automating Popularity 
+title: Automating Popularity
 subtitle: Can handing your Facebook profile to a computer program make you more popular in real life?
 published: true
 author: Jack Kinsella
-fb_description: An experiment in automating princniples from social psychology 
-fb_title: Automating Popularity - Can a computer program make you more popular? 
+fb_description: An experiment in automating principles from social psychology
+fb_title: Automating Popularity - Can a computer program make you more popular?
 
 ---
 
 Two years ago I wrote a program that logged into my Facebook account and pretended to be me. I wanted to test the hypothesis that *automatic tools could make someone more popular*.
 
-If I could build a script that caused more friends to get in touch with me, then my hypothesis would be proven true. If, instead, the script had no effect on my popularity or was detected as a fraud by the people in my network, then my hypothesis would be proven false. 
+If I could build a script that caused more friends to get in touch with me, then my hypothesis would be proven true. If, instead, the script had no effect on my popularity or was detected as a fraud by the people in my network, then my hypothesis would be proven false.
 
 Before I carried out the experiment I studied some social psychology. According to the texts, a new acquaintance becomes a friend when they appear frequently in our lives; when they share our interests, beliefs, and background; and when we know that they return our affinity for them by liking us back.
 
-Newly informed, I modeled these concepts by creating a script that logged into my Facebook account and automatically liked the status updates, photos and comments of my friends, covering up the evidence as it went. 
+Newly informed, I modeled these concepts by creating a script that logged into my Facebook account and automatically liked the status updates, photos and comments of my friends, covering up the evidence as it went.
 
 Five days later the results came in. Listen to my talk, recorded at "Ignite the West":http://www.ignitethewest.com/, in Galway, Ireland for the full story:
 
 <iframe style="text-align:center;" width="630" height="472.5" src="http://www.youtube.com/embed/PbVlUVMRGTI" frameborder="0" allowfullscreen></iframe>
 
-Thanks to "Ellen Dudley":https://twitter.com/#!/meetforeal and "Adrian Avendano":https://twitter.com/#!/amonter5, two awesome people changing the world for the better, for organising Ignite the West. 
+Thanks to "Ellen Dudley":https://twitter.com/#!/meetforeal and "Adrian Avendano":https://twitter.com/#!/amonter5, two awesome people changing the world for the better, for organising Ignite the West.
 
 PS If you have a research project or app idea in this area, "I can make it happen":/rails-developer-london.html

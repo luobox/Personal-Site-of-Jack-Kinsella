@@ -19,7 +19,7 @@ h2. Imagine You Are The Client
 Step out of your programmer skin for a moment and pretend you are a busy business owner while you read the following:
 
 {% highlight gherkin %}
-Feature: In order to let customers organise their information across themes on various pages. 
+Feature: In order to let customers organise their information across themes on various pages.
          As an administrator of a micro-site
          I want to be able to add subpages
 
@@ -44,7 +44,7 @@ Any more is superfluous. If it takes you ten lines to communicate the idea of ad
 
 bq. "If your scenario starts with 'When the user enters ‘Smurf’ into ‘Search’ text box…' then that’s far too low-level. However, even “When the user adds ‘Smurf’ to his basket, then goes to the checkout, then pays for the goods” is also too low-level. You’re looking for something like, 'When the user buys a Smurf.'"
 
-If you take this view, then the overwhelming majority of the Rails community have been using Cucumber incorrectly. Despite believing otherwise, most programmers never wrote a single acceptance test; instead they wrote integration tests using the Cucumber syntax. 
+If you take this view, then the overwhelming majority of the Rails community have been using Cucumber incorrectly. Despite believing otherwise, most programmers never wrote a single acceptance test; instead they wrote integration tests using the Cucumber syntax.
 
 This is a damning claim and so I offer evidence. In my experiences both as a Ruby contractor and as an employer of programmers, most feature files I’ve seen are composed of the web steps included with Cucumber by default. These web steps are integration tests in disguise. Cucumber steps such as "When I fill in 'search' with 'Smurf'" are rampant in the Rails community, despite their position at the most fault-worthy level in Elizabeth Keogh’s schema.
 
@@ -66,27 +66,27 @@ Cucumber's steps are method names written using the Gherkin syntax, and this uni
 
 h3. 2. Cucumber Requires Maintenance of a Second Testing Environment
 
-Anyone thinking of using Cucumber for acceptance tests most likely already unit tests using something like Test::Unit or Rspec. When a project’s complexity grows, we organise test suites by placing shared test code into helper methods and eventually into modules shared across many test files. We also categorise tests using tagging systems, use tools like Spork to speed up test startup time, and use watchr or autotest to run tests automatically. We add gems to the test environment to make use of advanced helper methods that freeze time, open up emails, or fake web requests. 
+Anyone thinking of using Cucumber for acceptance tests most likely already unit tests using something like Test::Unit or Rspec. When a project’s complexity grows, we organise test suites by placing shared test code into helper methods and eventually into modules shared across many test files. We also categorise tests using tagging systems, use tools like Spork to speed up test startup time, and use watchr or autotest to run tests automatically. We add gems to the test environment to make use of advanced helper methods that freeze time, open up emails, or fake web requests.
 
 Cucumber doesn't like to share. It does not pick up existing test configurations or helper methods. Our taxonomy of tags carries no weight and so we must mirror our existing setup in our new Cucumber world. If we are undisciplined about refactoring we might duplicate code, denormalizing our code base. Even if we are disciplined, we will, at the very least, increase the complexity of our project and thus the scope for error. The parallel worlds of Cucumber and our unit tests then need to be maintained, and the creators of testing gems must now care for two masters. Cucumber takes another toll on the community’s productivity.
 
-h3. 3. Cucumber's Routing Causes Cognitive Strain 
+h3. 3. Cucumber's Routing Causes Cognitive Strain
 
 Cognitive strain refers to the total weight of facts and rules we must hold in our minds to be productive using a technology. Rails imposes a high cognitive strain. When I began using it I faced a period of difficulty as I untangled the labyrinthine naming patterns of routes, the pluralisation conventions, and the subtle distinctions between various ActiveRecord::Base persistence methods. I’m not saying that cognitive strain is a bad thing; it is often a necessity in powerful tools. I am saying that cognitive strain must be justified.
 
-In Cucumber steps, the mention of a specific web page, for example "the login page", requires us to map this stake-holder description to a url helper method our app understands. 
+In Cucumber steps, the mention of a specific web page, for example "the login page", requires us to map this stake-holder description to a url helper method our app understands.
 
 {% highlight ruby %}
 #features/support/paths.rb
-    when /the login page/  
+    when /the login page/
        login_path
 {% endhighlight %}
 
-The Rails routing system is complex: in _The Rails Way_ Obie Fernandez suggested that you could squeeze everyone who understands it into one taxi. Cucumber adds an abstraction layer over this already complex system, and this leads to slower development and increased error on larger projects.  
+The Rails routing system is complex: in _The Rails Way_ Obie Fernandez suggested that you could squeeze everyone who understands it into one taxi. Cucumber adds an abstraction layer over this already complex system, and this leads to slower development and increased error on larger projects.
 
 A problem I faced when adding new features was that I would unintentionally describe paths using differing natural language descriptions. Perhaps I'd call "the login page" the "the sign in page" one day, and "the log in page" another. When I did this Cucumber complained that it could not find the permuted path name, and so I had to look inside the paths.rb file to remind myself of my previous phrasing. That's a lot of remembering, and a lot of room for error and slowdown.
 
-I've experimented with removing the paths.rb file and writing logic that automatically determines the route based on humanized url helpers. This leads to unacceptable step definitions such as "And then I am on the new user session page". This is far too close to implementation language to be understandable to the average stakeholder, and so this option must be avoided if we'd like to use Cucumber in the way it was intended. 
+I've experimented with removing the paths.rb file and writing logic that automatically determines the route based on humanized url helpers. This leads to unacceptable step definitions such as "And then I am on the new user session page". This is far too close to implementation language to be understandable to the average stakeholder, and so this option must be avoided if we'd like to use Cucumber in the way it was intended.
 
 h3. 4. Cucumber's Organisation Defaults Are Impractical
 
@@ -96,7 +96,7 @@ Cucumber asks you to create step definitions for any custom steps you use. The c
 
 1)	If you’ve got a good memory you find the old step definition and use that method again in your new feature. This can be a terrible move. The shared helper’s presence in promote_post_feature_steps.rb file suggests exclusive connection with that feature. If you later remove the promote_posts feature file you will probably remove its step definition file too, having forgotten that it contained global step definitions. Ideally you should have extracted these shared step definitions to a global step definition file, but realistically this doesn’t always happen. We've all got deadlines.
 
-2)	If you don’t have a good memory, or it has been a long time since you last visited the project, you might have forgotten that you previously wrote a step definition for promoting a post. Alternatively you might never have created a step definition but another programmer had done so without you knowing. You write a fresh step definition in taxon_steps.rb, but now your code is no longer DRY. At a later date you might be refactoring the promotion logic and make the changes in promote_post_feature_steps.rb, and then assume you had finished refactoring. The taxon_steps.rb now contains an out of date version of the logic for this step, and this will lead to confusing test failures, since you have no good reason to suspect an issue with the recently refactored promotion logic. Cucumber’s default way of organising features sets you up for these difficulties, and it takes lots of discipine to avoid them.
+2)	If you don’t have a good memory, or it has been a long time since you last visited the project, you might have forgotten that you previously wrote a step definition for promoting a post. Alternatively you might never have created a step definition but another programmer had done so without you knowing. You write a fresh step definition in taxon_steps.rb, but now your code is no longer DRY. At a later date you might be refactoring the promotion logic and make the changes in promote_post_feature_steps.rb, and then assume you had finished refactoring. The taxon_steps.rb now contains an out of date version of the logic for this step, and this will lead to confusing test failures, since you have no good reason to suspect an issue with the recently refactored promotion logic. Cucumber’s default way of organising features sets you up for these difficulties, and it takes lots of discipline to avoid them.
 
 h3. 5. Increased Wordiness
 
@@ -111,7 +111,7 @@ Given I am on the home page #27 characters
 visit root_url #14 characters
 {% endhighlight %}
 
-Increased wordiness reduces expressiveness and power, and introduces error since more characters means more places a typo can appear. 
+Increased wordiness reduces expressiveness and power, and introduces error since more characters means more places a typo can appear.
 
 h4. 6. Cucumber Syntactically Discourages Code Reuse
 
@@ -133,17 +133,17 @@ But consider this: When you are inside a step definition you are exclusively in 
 
 {% highlight ruby %}
 When /^I toggle the full sample on the “(^”.*)” product/ do |product_name|
-   admin do 
-        feature_latest_upload 
-        refresh_page
-        should_see(sample_path, "features")
-    end
+  admin do
+    feature_latest_upload
+    refresh_page
+    should_see(sample_path, "features")
+  end
 end
 {% endhighlight %}
-The reuse of step definitions within other step definitions, and the composition of higher level steps using the web steps included with Cucumber, are, in my opinion, the main reasons why so many companies attempt integration tests only to abandon the effort within a few months.  The tests become too difficult to maintain and get of sync. The solution to this pain point isn’t simple, but the most sensible course involves use of more powerful tools of abstraction – such as the full Ruby programming language over awkward step definitions.                       
+The reuse of step definitions within other step definitions, and the composition of higher level steps using the web steps included with Cucumber, are, in my opinion, the main reasons why so many companies attempt integration tests only to abandon the effort within a few months.  The tests become too difficult to maintain and get of sync. The solution to this pain point isn’t simple, but the most sensible course involves use of more powerful tools of abstraction – such as the full Ruby programming language over awkward step definitions.
 
 h2. Conclusions
 
-Cucumber has its uses, principally as a high level analysis tool on large, polyglot projects. That said, few programmers work in this kind of position, and acceptance tests beyond a list of the method names of regular integration tests seems wasteful. Cucumber, as used by the majority of Rails programmers, is no more than a clumsy wrapper over basic integration tests. The differences are not just cosmetic: Cucumber's syntax is costly, both to the programmer and to the client, whose time and money are wasted. Furthermore, the use of Cucumber in open source software intended for technical users and its use in solopreneur efforts is downright ridiculous. Nevertheless, programmers continue to use Cucumber inappropriately. 
+Cucumber has its uses, principally as a high level analysis tool on large, polyglot projects. That said, few programmers work in this kind of position, and acceptance tests beyond a list of the method names of regular integration tests seems wasteful. Cucumber, as used by the majority of Rails programmers, is no more than a clumsy wrapper over basic integration tests. The differences are not just cosmetic: Cucumber's syntax is costly, both to the programmer and to the client, whose time and money are wasted. Furthermore, the use of Cucumber in open source software intended for technical users and its use in solopreneur efforts is downright ridiculous. Nevertheless, programmers continue to use Cucumber inappropriately.
 
 Why not admit to yourself that you don't do acceptance testing and that you do not need it in your projects? Swap Cucumber for pure integration tests using Capybara, and you'll be surprised by how much more productive you can be.
