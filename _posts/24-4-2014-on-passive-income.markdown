@@ -455,15 +455,15 @@ their doors.
 
 A realistic way of viewing online marketing is that "you will get
 exactly the number of customers you direct to your website and convince
-to buy"". If you can convert a decent 1.5% of visitors to paying
+to buy". If you can convert a decent 1.5% of visitors to paying
 customers, and each customer earn you 10 euro profit pre-marketing
 costs, then you need about 6666 new visitors for every 1000 euro you
 make. And you need to subtract the cost in time and effort in finding
 those 6666 visitors from that 1000 you made. If you plan on making
-30,000 euro per-marketing costs per year, and your conversion rates and
-profitability are as above, then you'll need about 200,000 visitors per
-year. Since everyone else on the internet is fighting for traffic, you'd
-better have a plan on how you're going to grab their attention.
+30,000 euro, and your conversion rates and profitability are as above,
+then you'll need about 200,000 visitors per year. Since everyone else on
+the internet is fighting for traffic, you'd better have a plan on how
+you're going to grab people's attention.
 
 **The number one reason passive income streams fail, I believe, is
 because people don't learn how to online market.**
