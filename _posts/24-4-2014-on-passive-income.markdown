@@ -234,16 +234,15 @@ feature to find a teacher in your Irish town that will teach Johnny
 after he comes home from school. Teachers get their profile for 40 euro/year.
 
 I read up on SEO and optimised the website for Google with a few tricks
-before launching. (Short discursive example: I added three random
-parental-friendly jokes onto more than a thousand blank pages for
-various Irish cities in the hope that it would be enough content for
-Google to bother indexing the page and awarding me a search result. To my amazement
-it was.) A few weeks later I got my first sale, and it felt
-positively wonderful! For the first time in my life I had earned money
-directly from the market, without a middleman, and all of my own design
-and doing. I felt such pleasure and self-worth at the achievement,
-feelings that I still experience every time I think about sales in my
-current business.
+before launching. (e.g. I added three random parental-friendly jokes
+onto more than a thousand blank pages for various Irish cities in the
+hope that it would be enough content for Google to bother indexing the
+page and awarding me a search result. To my amazement it was.) A few
+weeks later I got my first sale, and it felt positively wonderful! For
+the first time in my life I had earned money directly from the market,
+without a middleman, and all of my own design and doing. I felt such
+pleasure and self-worth at the achievement, feelings that I still
+experience every time I think about sales in my current business.
 
 I had a few more sales from the private tutors website, but it only ever
 made a few hundred euros. Seeing that it wasn't taking off, I
@@ -256,11 +255,11 @@ classmates for permission to use the areas they covered but I missed
 out. I coded a basic HTML website with a simple CSS template, and it took me
 nine days to design the website, write the copy, get a shopping cart
 plugin working, create free samples and eventually launch. Post launch I
-sat back and waited but, unlike with my tutors website no sales
+sat back and waited but, unlike with my tutors website, no sales
 happened through my SEO efforts.
 
 At the time I was watching the TV show "The Wire" and one of the
-characters, Proposition Joe, said something that really resonated with
+characters, _Proposition Joe_, said something that really resonated with
 me. Business is simple, you gotta "buy for a dollar, sell for two".
 Although I took the meaning a little out of its intended context, the message for me
 was that "you need to spend money to make (more) money". So, with great
@@ -274,17 +273,17 @@ enjoying myself and operating the website from coffee shops and hostels. Sure, I
 Google a chunky proportion of my income, but I wouldn't have gotten
 any sales without advertising, so I was delighted with the partnership.
 
-I knew that my notes would fall out of date the following year, so
-I resolved to turn the website into a platform where other students
-would provide the content and I share the profits. I bought a stack of
-books on programming, [learned to program
-](http://www.jackkinsella.ie/2011/12/05/janki-method.html), which was
-initially time consuming, but an investment I'm glad of having made. My
-efforts to future proof Oxbridge Notes worked and my income stream
-survived. In exchange for my risk-taking, I've been rewarded a dream
-20s, one in which I've indulged my interests beyond the farthest reaches
-of normality, travelled extensively, and had no boss other than my
-customers.
+I knew that my notes would fall out of date the following year, so I
+resolved to turn the website into a platform where other students would
+provide the content and I share the profits. I bought a stack of books
+on programming, and [studied them in detail
+](http://www.jackkinsella.ie/2011/12/05/janki-method.html), a task which
+was initially difficult and time consuming, but an investment I'm glad
+of having made. My efforts to future-proof Oxbridge Notes worked and my
+income stream survived. In exchange for my risk-taking, I've been
+rewarded a dream 20s, one in which I've indulged my interests beyond the
+farthest reaches of normality, travelled extensively, and had no boss
+other than my customers.
 
 That's my story to date. Let's look at some details that I wish I knew
 when I starting off.
@@ -336,20 +335,21 @@ to cull analysis paralysis by cultivating the ability to quickly make
 and thereafter stomach decisions where both options are less than ideal.
 
 I recommend that you set yourself the goal of getting your first sale
-within 120 hours. Yes, that limits the scope of what you can produce to
-to something simple, but on the plus side you are forced to tackle all
-aspects of the business, and practice productivity in the sense I
-belaboured above.
+within 120 hours of beginning to produce your passive income stream.
+Yes, that limits the scope of what you can produce to to something
+simple, but on the plus side you are forced to tackle all aspects of the
+business, and practice productivity in the sense I belaboured above.
 
-There'll be plenty of time for your biggest ambitions once you have a
-passive income and a ton of free time.
+There'll be plenty of time for your bigger ambitions once you have a
+passive income and a ton of free time. The most important thing for you
+now, is to practice the full stack of basic business.
 
 Some perils of particular danger to the new passive income earner are going to
 "business coffees" with like-minded people, saying "yes"  to oddball
 customer requests (i.e. providing a service you don't normally do, when
 it's inefficient for you to do so, instead of telling the customer
 "sorry we don't do that, but try this great other thing we offer"), and consuming productivity porn, such as
-reading blogs on productivity instead of, well *being* productive.
+reading blogs on productivity instead of, well, *being* productive.
 
 ### Systematise Everything
 
