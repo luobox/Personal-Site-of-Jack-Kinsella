@@ -168,26 +168,26 @@ that despite the effort I had put into my legal studies, I did not
 want to be a corporate lawyer. To use the language of economics, it was
 a sunk cost.
 
-Around this time I saw 4HWW in a bookshop, flipped through it, and fell
-in love with the idea. I never bought or read the book: all I needed was
-to know that it was possible to earn money in a location-free,
-low-time-commitment manner. Just *knowing* that something can be done
-empowers a person to achieve what they previously thought impossible. I
-believe it's for this reason that as soon as an athletic world record is
-broken, such as the four minute mile, many other athletes soon reach and
-surpass that same benchmark.
+Around this time I saw 4HWW(The Four Hour Work Week) in a bookshop,
+flipped through it, and fell in love with the idea. I never bought or
+read the book: all I needed was to know that it was possible to earn
+money in a location-free, low-time-commitment manner. Just *knowing*
+that something can be done empowers a person to achieve what they
+previously thought impossible. I believe it's for this reason that as
+soon as an athletic world record is broken, such as the four minute
+mile, many other athletes soon reach and surpass that same benchmark.
 
 For a week I brainstormed on what value I could provide. I looked at my
 skills (passable writer, HTML/CSS, undergraduate legal education), my
 interests (music, self-improvement, technology), my assets (the thousand
 pages of notes I had written in college), and the prospective partnerships
 within my social network (I had a friend in Bolivia who wanted to
-import wood and leather into Europe and needed a partner).
+import wood and leather into Europe and needed European assistance).
 
 I examined each of the values I could provide and asked myself how I
 could cheaply deliver that good to customers in a manner that allowed me to be
 location-free and time-free. (At this time I didn't think about the
-freedoms with as much granularity as I do today).
+freedoms with as much granularity as I do today.)
 
 One of the ideas on my list that didn't make the cut was "College
 Admissions Tutor". I believed that local parents would pay top euro for
