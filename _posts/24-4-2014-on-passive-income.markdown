@@ -136,7 +136,7 @@ lifestyle design.
 
 ## Devising Your Passive Income Stream
 
-Profitable business, as I see it, is **producing something that other
+**Profitable business, as I see it, is producing something that other
 people want so badly that they'll part with their hard-earned cash in
 exchange for it, with the necessary added condition that you have
 created this product and found customers at a low cost in your
@@ -434,10 +434,11 @@ what do you think that would be? You're probably thinking programming.
 Wrong.
 
 The killer skill for passive incomes is online marketing.  I didn't make
-money until I started using SEO and Google Adwords. With
-another business I used to help run, [Bolivian Express](http://www.bolivianexpress.org), a journalism school in
-Bolivia, we didn't make a single sale until we emailed 20
-university mailing lists.
+money until I started using SEO and Google Adwords. With another
+business I used to help run, [Bolivian
+Express](http://www.bolivianexpress.org), a journalism school in
+Bolivia, we didn't make a single sale until we emailed 20 university
+mailing lists.
 
 No matter what your passive income source is, you need to  reach and
 convince customers to buy. Sure, programming is a tremendous help in enabling
@@ -458,9 +459,14 @@ to buy"". If you can convert a decent 1.5% of visitors to paying
 customers, and each customer earn you 10 euro profit pre-marketing
 costs, then you need about 6666 new visitors for every 1000 euro you
 make. And you need to subtract the cost in time and effort in finding
-those 6666 visitors from that 1000 you made. **The number one reason
-passive income streams fail, I believe, is because people don't learn
-how to online market.**
+those 6666 visitors from that 1000 you made. If you plan on making
+30,000 euro per-marketing costs per year, and your conversion rates and
+profitability are as above, then you'll need about 200,000 visitors per
+year. Since everyone else on the internet is fighting for traffic, you'd
+better have a plan on how you're going to grab their attention.
+
+**The number one reason passive income streams fail, I believe, is
+because people don't learn how to online market.**
 
 ### Switch Hats Regularly.
 One problem you want to avoid with your passive income source is
