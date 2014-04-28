@@ -246,7 +246,7 @@ experience every time I think about sales in my current business.
 
 I had a few more sales from the private tutors website, but it only ever
 made a few hundred euros. Seeing that it wasn't taking off, I
-returned to the drawing board, and decided to construct something else.
+returned to the drawing board and decided to construct something else.
 
 In college everyone in my year said I made excellent notes, so I
 resolved to sell my old university law notes online. I edited my Word
