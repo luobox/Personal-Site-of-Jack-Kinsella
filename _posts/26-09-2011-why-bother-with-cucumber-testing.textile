@@ -127,7 +127,7 @@ When /^I toggle the full sample on the “(^”.*)” product/ do |product_name|
   }
 end
 {% endhighlight %}
-This is an abomination, albeit one that is understandable. A developer wants his code to remain DRY but he doesn't want the added hassle of encapsulating the step definitions in Ruby methods. So, he reuses his step definitions.
+This is an abomination, albeit one that is understandable. A developer wants their code to remain DRY but they don't want the added hassle of encapsulating the step definitions in Ruby methods. So, they reuse their step definitions.
 
 But consider this: When you are inside a step definition you are exclusively in the domain of the programmer. The stake-holder never reads this. With this in mind, wouldn’t it be advantageous to use the brevity, precision, composability, editor support and abstraction tools of the full Ruby programming language? Using Ruby, you will be able to do things like this:
 
@@ -140,7 +140,7 @@ When /^I toggle the full sample on the “(^”.*)” product/ do |product_name|
   end
 end
 {% endhighlight %}
-The reuse of step definitions within other step definitions, and the composition of higher level steps using the web steps included with Cucumber, are, in my opinion, the main reasons why so many companies attempt integration tests only to abandon the effort within a few months.  The tests become too difficult to maintain and get of sync. The solution to this pain point isn’t simple, but the most sensible course involves use of more powerful tools of abstraction – such as the full Ruby programming language over awkward step definitions.
+The reuse of step definitions within other step definitions, and the composition of higher level steps using the web steps included with Cucumber, are, in my opinion, the main reasons why so many companies attempt integration tests only to abandon the effort within a few months.  The tests become too difficult to maintain and get out of sync. The solution to this pain point isn’t simple, but the most sensible course involves use of more powerful tools of abstraction – such as the full Ruby programming language over awkward step definitions.
 
 h2. Conclusions
 

@@ -4,7 +4,7 @@
  <title>Jack Kinsella</title>
  <link href="http://www.jackinsella.ie/atom.xml" rel="self"/>
  <link href="http://www.jackkinsella.ie/"/>
- <updated>2014-04-29T01:54:58+02:00</updated>
+ <updated>2014-04-29T18:55:02+02:00</updated>
  <id>http://www.jackkinsella.ie/</id>
  <author>
    <name>Jack Kinsella</name>
@@ -778,7 +778,7 @@ McKenzie&lt;/a&gt;.&lt;/p&gt;
 &lt;span class=&quot;nf&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;When &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;I refresh the page&lt;/span&gt;
 &lt;span class=&quot;nf&quot;&gt;  }&lt;/span&gt;
 &lt;span class=&quot;nf&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This is an abomination, albeit one that is understandable. A developer wants his code to remain &lt;span class=&quot;caps&quot;&gt;DRY&lt;/span&gt; but he doesn&amp;#8217;t want the added hassle of encapsulating the step definitions in Ruby methods. So, he reuses his step definitions.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This is an abomination, albeit one that is understandable. A developer wants their code to remain &lt;span class=&quot;caps&quot;&gt;DRY&lt;/span&gt; but they don&amp;#8217;t want the added hassle of encapsulating the step definitions in Ruby methods. So, they reuse their step definitions.&lt;/p&gt;
 &lt;p&gt;But consider this: When you are inside a step definition you are exclusively in the domain of the programmer. The stake-holder never reads this. With this in mind, wouldn’t it be advantageous to use the brevity, precision, composability, editor support and abstraction tools of the full Ruby programming language? Using Ruby, you will be able to do things like this:&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;When&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/^I toggle the full sample on the “(^”.*)” product/&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;product_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
   &lt;span class=&quot;n&quot;&gt;admin&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
@@ -787,7 +787,7 @@ McKenzie&lt;/a&gt;.&lt;/p&gt;
     &lt;span class=&quot;n&quot;&gt;should_see&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sample_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;features&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The reuse of step definitions within other step definitions, and the composition of higher level steps using the web steps included with Cucumber, are, in my opinion, the main reasons why so many companies attempt integration tests only to abandon the effort within a few months.  The tests become too difficult to maintain and get of sync. The solution to this pain point isn’t simple, but the most sensible course involves use of more powerful tools of abstraction – such as the full Ruby programming language over awkward step definitions.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The reuse of step definitions within other step definitions, and the composition of higher level steps using the web steps included with Cucumber, are, in my opinion, the main reasons why so many companies attempt integration tests only to abandon the effort within a few months.  The tests become too difficult to maintain and get out of sync. The solution to this pain point isn’t simple, but the most sensible course involves use of more powerful tools of abstraction – such as the full Ruby programming language over awkward step definitions.&lt;/p&gt;
 &lt;h2&gt;Conclusions&lt;/h2&gt;
 &lt;p&gt;Cucumber has its uses, principally as a high level analysis tool on large, polyglot projects. That said, few programmers work in this kind of position, and acceptance tests beyond a list of the method names of regular integration tests seems wasteful. Cucumber, as used by the majority of Rails programmers, is no more than a clumsy wrapper over basic integration tests. The differences are not just cosmetic: Cucumber&amp;#8217;s syntax is costly, both to the programmer and to the client, whose time and money are wasted. Furthermore, the use of Cucumber in open source software intended for technical users and its use in solopreneur efforts is downright ridiculous. Nevertheless, programmers continue to use Cucumber inappropriately.&lt;/p&gt;
 &lt;p&gt;Why not admit to yourself that you don&amp;#8217;t do acceptance testing and that you do not need it in your projects? Swap Cucumber for pure integration tests using Capybara, and you&amp;#8217;ll be surprised by how much more productive you can be.&lt;/p&gt;</content>
