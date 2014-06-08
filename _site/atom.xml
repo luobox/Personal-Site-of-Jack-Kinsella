@@ -4,7 +4,7 @@
  <title>Jack Kinsella</title>
  <link href="http://www.jackinsella.ie/atom.xml" rel="self"/>
  <link href="http://www.jackkinsella.ie/"/>
- <updated>2014-06-08T14:06:21+02:00</updated>
+ <updated>2014-06-08T14:14:07+02:00</updated>
  <id>http://www.jackkinsella.ie/</id>
  <author>
    <name>Jack Kinsella</name>
@@ -525,6 +525,12 @@ Rendered /Users/jkinsella/.rvm/gems/ruby-1.9.3-p545@oxnotes/bundler/gems/spree-e
   &lt;li&gt;&lt;a href=&quot;http://localhost:4000/2014/06/06/debugging-rails-with-custom-instrumentation.html&quot;&gt; Custom Instrumentation&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://localhost:4000/2014/06/06/debugging-rails-with-chrome-devtools.html&quot;&gt; Chrome DevTools Mirrors &lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;I’d like to credit Ed Tee at &lt;a href=&quot;http://gigsounder.com&quot;&gt;GigSounder&lt;/a&gt; and
+&lt;a href=&quot;http://richardconroy.blogspot.com&quot;&gt;Richard Conway&lt;/a&gt; for help with
+proof-reading and feedback, and to thank &lt;a href=&quot;http://hackerretreat.com/&quot;&gt;Hacker Retreat
+Berlin&lt;/a&gt; for providing me with brilliant
+programming mentors and teachers.&lt;/p&gt;
 </content>
  </entry>
  
