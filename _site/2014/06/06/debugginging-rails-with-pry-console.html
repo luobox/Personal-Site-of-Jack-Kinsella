@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8"/>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>Debugging Rails with Pry Console | Jack Kinsella - Analyst Berlin</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <!-- Typekit script -->
+      <script type="text/javascript" src="http://use.typekit.com/xnr7evu.js"></script>
+      <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <meta name="author" content="Jack Kinsella" />
+      <!-- Can never be removed if we want continued webmaster tools-->
+      <meta name="google-site-verification" content="937-6YOj2Gnp0ZDEH9UNd3MhKNUwA2JzyVsnhqKG-nU" />
+      <link rel="stylesheet"  type="text/css" href="/css/main.css" />
+      <link rel="stylesheet"  type="text/css" href="/css/code_highlights.css" />
+      <link rel="stylesheet"  type="text/css" href="/css/widescreen.css" />
+      <script>var typosServerDomain = "http://obscure-taiga-5849.herokuapp.com";</script>
+      <script src="http://obscure-taiga-5849.herokuapp.com/js/typos.js"></script>
+      <link rel="apple-touch-icon" sizes="114x114" href="/images/avatar.jpg"/>
+
+      <meta name="description" content="Jack Kinsella's blog: Analyst interested in social observation, marketing, computer programming, and music composition"/>
+      <body lang="en" id="main-layout"   class="vcard ">
+        <header id="masthead">
+        <div class="wrapper">
+          <a id="logo" href="/" rel="author">
+            <div>
+              <figure class="jk-logo frame">
+              <img src="/images/rails-developer-berlin.jpg" alt=Analyst"/>
+              </figure>
+              <h1 class="fn">Jack Kinsella</h1>
+              <p class="title">Analyst, Berlin</p>
+            </div>
+          </a>
+          <nav>
+          <ul>
+            <li class="index">
+              <a href="/blog.html">
+                <span>Articles</span>
+              </a>
+            </li>
+            <li class="projects">
+              <a href="/portfolio.html">
+                <span>Portfolio</span>
+              </a>
+            </li>
+            <li class="about">
+              <a href="/about.html">
+                <span>About</span>
+              </a>
+            </li>
+          </ul>
+          </nav>
+        </div>
+        </header>
+
+        <article id="content" class="hentry">
+
+        <header>
+        <div>
+          <h1 class="entry-title">Debugging Rails with Pry Console</h1>
+          <p></p>
+        </div>
+        </header>
+
+        <div class="wrapper">
+          <div class="entry-content">
+            <!-- Social Bookmarking Widget.Asynchonous. -->
+<div id="social_bookmarks">
+<div id="custom-social-bookmarks-twitter" class="bookmark_icon"></div>
+<div id="custom-social-bookmarks-plusone" class="bookmark_icon"></div>
+</div>
+<script type="text/javascript">
+jQuery(document).ready(function() {
+    
+  jQuery('#custom-social-bookmarks-twitter').append(decodeURIComponent('%3Ca%20href%3D%22http%3A%2F%2Ftwitter.com%2Fshare%22%20class%3D%22twitter-share-button%22%20data-count%3D%22vertical%22%20data-via%3D%22jackkinsella%22%3ETweet%3C%2Fa%3E%3Cscript%20type%3D%22text%2Fjavascript%22%20src%3D%22http%3A%2F%2Fplatform.twitter.com%2Fwidgets.js%22%3E%3C%2Fscript%3E'));
+
+
+  jQuery('#custom-social-bookmarks-plusone').append(decodeURIComponent('%3Cscript%20type%3D%22text%2Fjavascript%22%20src%3D%22https%3A%2F%2Fapis.google.com%2Fjs%2Fplusone.js%22%3E%3C%2Fscript%3E%3Cg%3Aplusone%20size%3D%22tall%22%3E%3C%2Fg%3Aplusone%3E'));
+
+  jQuery('#custom-social-bookmarks').parent().css('padding', '0px');
+
+});
+</script>
+<p>Part 3 in the series <a href="/2014/06/06/a-comprehensive-guide-to-debugging-rails.html">A Comprehensive Guide To Debugging Rails</a></p>
+
+<h2 id="pry-console">Pry Console</h2>
+
+<p>Step one in programming with Rails: replace the typical Rails console (based on IRB) with the superior console provided by the pry gem.</p>
+
+<p>Amongst other things Pry is fantastic for browsing the contents of your codebase. Youre probably thinking you can also browse your available functions and classes through other means such as <strong>ack</strong> and <strong>Ctags</strong>, but both suffer some limitations and therefore offer only an imperfect view of your codebase. <strong>Ack</strong> typically operates at a folder level and therefore you exclude from your search code within your gems. <strong>Ctags</strong>, configured correctly, can easily include the code from your gems, but still shows an incomplete picture owing to its inability to tag functions that were created dynamically by your Ruby code, such as with define_method. Your Pry console, however, offers a more complete reflection and registers all classes and methods already required or dynamically defined.</p>
+
+<ul>
+  <li>
+    <p>The <strong>ls command</strong> is essentially a unified wrapper to a number of Ruby’s introspection mechanisms, including (but not limited to) the following: #methods, #instance_variables, #constants, #local_variables, #instance_methods, #class_variables, and all the various permutations thereof. Run in the context of the current object with <code>ls</code> alone, or in the context of another Ruby object by providing it as its first argument <code>ls product</code>. </p>
+  </li>
+  <li>
+    <p><strong>Filter results of ls to only see methods containing the string ‘map’:</strong> <code>ls -G map</code> or methods within the module Repo that start with the letter ‘b’ : <code>ls -M Repo --grep ^b</code></p>
+  </li>
+  <li>
+    <p><strong>cd command</strong>, change “self”, i.e. the object within which you sit and observe your application, to another Ruby object. Example: <code>cd product</code>, or, since classes are also objects within Ruby, you can also run <code>cd Spree::Product</code>. The cd command allows you to move into an object, thereby introspecting local variables easily and calling private methods without the awkwardness of accessing them from outside an object with code such as: <code>obj.send :method_name</code> . To leave an object and return back to where you came from type <code>cd -</code>.</p>
+  </li>
+  <li>
+    <p>List <strong>global variables:</strong> <code>ls -g</code></p>
+  </li>
+  <li>
+    <p>List <strong>constants:</strong> <code>ls -c</code></p>
+  </li>
+  <li>
+    <p>See all <strong>methods within a namespace whose <em>names</em> contains</strong> the word currency: <code>find-method currency Spree</code>. This is slower albeit more thorough than typical acking, for the reasons mentioned above.</p>
+  </li>
+  <li>
+    <p><strong>Find all methods whose contents or <em>comments</em> contain the word currency:</strong> Similar to the previous point, except with an added flag you can use this function to peer <em>inside</em> method definitions: <code>find-method -c bug Spree</code></p>
+  </li>
+  <li>
+    <p><strong>View latest exception:</strong> The latest exception is contained within a special variable <code>_ex_</code>. See its backtrace with <code>wtf</code>? and the code that raised the exception with <code>cat --ex</code></p>
+  </li>
+  <li>
+    <p><strong>View source code of</strong></p>
+    <ul>
+      <li><strong>any method in your application or its gems:</strong> <code>show-source Spree::Product#bought_since</code></li>
+      <li><strong>of a class, separating each monkey patch out:</strong> <code>show-source -a Spree::Product</code>. Great for when the source code doesnt reveal why a class/method is acting the way it is, and you suspect a monkey patch quietly overriding some functionality.</li>
+      <li><strong>of a Proc/lambda:</strong> <code>show-source my_proc</code> Typically in Ruby you cannot inspect the contents of a Proc, so this is damn nifty debugging feature.</li>
+    </ul>
+  </li>
+</ul>
+
+<script>(function() {
+var hn_link = "http://news.ycombinator.com/submitlink?u=";
+if (window.hn_url) { 
+	hn_link += encodeURIComponent(hn_url); 
+}
+else { 
+	hn_link += encodeURIComponent(document.location);
+}
+if (window.hn_title) { 
+	hn_link += "&t=" + encodeURIComponent(hn_title); 
+}
+else { 
+	hn_link += "&t=" + encodeURIComponent(document.title);
+}
+
+var write_string = "<div id='hacker-news'><img src='http://ycombinator.com/images/y18.gif' alt='Hacker News' width=18 height=18 style='border:1px #ffffff solid; margin-left:0;'/><a href="+hn_link+" alink='#000000'; vlink='#828282' style='text-decoration:none' target='_blank'>Discuss this post on Hacker News</a></div>";
+document.write(write_string);
+})()
+
+</script>
+<h2 class="section-title"> One Last Thing </h2>
+<p>
+  I spend hours researching and writing these posts. If you'd
+  like to return the good will and say thanks please <a
+    href="#masthead">Tweet this page</a> or, better again, mention it on your blog.
+</p> 
+<p>
+  <small>Written by Jack Kinsella, 06 Jun 2014</small>
+</p>
+<h2 class="section-title"> Related Posts </h2>
+<ul class="posts">
+    
+    <li><a href="/2014/06/06/debugging-rails-with-pry-debugger.html">Debugging Rails with Pry Debugger</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-operating-system-tools.html">Debugging Rails with Operating System Tools</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-online-or-third-party-tools.html">Debugging Rails with Online or Third Party Tools</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-memcached.html">Debugging Rails with Memcached</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-logs.html">Debugging Rails with Logs</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-git.html">Debugging Rails with Git</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-custom-instrumentation.html">Debugging Rails with Custom Instrumentation</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-chrome-devtools.html">Debugging Rails With Chrome DevTools</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-built-in-tools.html">Debugging Rails With Built-in Tools</a></li>
+    
+    <li><a href="/2014/06/06/a-comprehensive-guide-to-debugging-rails.html">A Comprehensive Guide To Debugging Rails</a></li>
+    
+  </ul>
+
+          </div>
+        </div>
+
+        </article>
+
+        <footer id="colophon">
+        <div class="wrapper">
+          <p><i> Jack Kinsella calls himself an analyst because it's suitably nondescript and affords him the possibility of being inconsistent in interests. He owns <a href="http://www.oxbridgenotes.co.uk">Oxbridge Notes</a>, co-founded <a href="http://www.bolivianexpress.org">Bolivian Express</a>, and co-organises the elite private marketing group, Growth Hacker Berlin. Follow me if you enjoyed my writing.</i></p>
+
+          <section class="links about_and_follow">
+          <ul>
+            <li>
+              <a href="http://twitter.com/jackkinsella">
+                Twitter @jackkinsella
+              </a>
+            </li>
+            <li id="followBlog">
+              <a href="http://feeds.feedburner.com/jackkinsella">
+                RSS Feed
+              </a>
+            </li>
+            <li id="email">
+              <script type="text/javascript" language="javascript">
+                <!--
+                ML="sonS0.:>rei hC2\"cgf@u?abljkt/%m=<";
+                MI="PF;<89BO?NF:HK16IF@J5J:209HHFCANF:H5@1NE0DGI9@KO=120DHK:2AM>43:K9?7IF@J5J:209HHFCANF:H5@1NPLF7";
+                OT="";
+                for(j=0;j<MI.length;j++){
+                  OT+=ML.charAt(MI.charCodeAt(j)-48);
+                }document.write(OT);
+// --></script>
+            </a>
+          </li>
+        </ul>
+      </section>
+        <section id="copyright">
+        <p>
+          Coded and created by Jack Kinsella.
+      </p>
+      </section>
+    </div>
+    </footer>
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-11447599-9']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+       })();
+
+</script>
+
+       </body>
+     </html>

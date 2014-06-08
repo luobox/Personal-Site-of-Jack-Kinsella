@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8"/>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>Debugging Rails with Online or Third Party Tools | Jack Kinsella - Analyst Berlin</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <!-- Typekit script -->
+      <script type="text/javascript" src="http://use.typekit.com/xnr7evu.js"></script>
+      <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <meta name="author" content="Jack Kinsella" />
+      <!-- Can never be removed if we want continued webmaster tools-->
+      <meta name="google-site-verification" content="937-6YOj2Gnp0ZDEH9UNd3MhKNUwA2JzyVsnhqKG-nU" />
+      <link rel="stylesheet"  type="text/css" href="/css/main.css" />
+      <link rel="stylesheet"  type="text/css" href="/css/code_highlights.css" />
+      <link rel="stylesheet"  type="text/css" href="/css/widescreen.css" />
+      <script>var typosServerDomain = "http://obscure-taiga-5849.herokuapp.com";</script>
+      <script src="http://obscure-taiga-5849.herokuapp.com/js/typos.js"></script>
+      <link rel="apple-touch-icon" sizes="114x114" href="/images/avatar.jpg"/>
+
+      <meta name="description" content="Jack Kinsella's blog: Analyst interested in social observation, marketing, computer programming, and music composition"/>
+      <body lang="en" id="main-layout"   class="vcard ">
+        <header id="masthead">
+        <div class="wrapper">
+          <a id="logo" href="/" rel="author">
+            <div>
+              <figure class="jk-logo frame">
+              <img src="/images/rails-developer-berlin.jpg" alt=Analyst"/>
+              </figure>
+              <h1 class="fn">Jack Kinsella</h1>
+              <p class="title">Analyst, Berlin</p>
+            </div>
+          </a>
+          <nav>
+          <ul>
+            <li class="index">
+              <a href="/blog.html">
+                <span>Articles</span>
+              </a>
+            </li>
+            <li class="projects">
+              <a href="/portfolio.html">
+                <span>Portfolio</span>
+              </a>
+            </li>
+            <li class="about">
+              <a href="/about.html">
+                <span>About</span>
+              </a>
+            </li>
+          </ul>
+          </nav>
+        </div>
+        </header>
+
+        <article id="content" class="hentry">
+
+        <header>
+        <div>
+          <h1 class="entry-title">Debugging Rails with Online or Third Party Tools</h1>
+          <p></p>
+        </div>
+        </header>
+
+        <div class="wrapper">
+          <div class="entry-content">
+            <!-- Social Bookmarking Widget.Asynchonous. -->
+<div id="social_bookmarks">
+<div id="custom-social-bookmarks-twitter" class="bookmark_icon"></div>
+<div id="custom-social-bookmarks-plusone" class="bookmark_icon"></div>
+</div>
+<script type="text/javascript">
+jQuery(document).ready(function() {
+    
+  jQuery('#custom-social-bookmarks-twitter').append(decodeURIComponent('%3Ca%20href%3D%22http%3A%2F%2Ftwitter.com%2Fshare%22%20class%3D%22twitter-share-button%22%20data-count%3D%22vertical%22%20data-via%3D%22jackkinsella%22%3ETweet%3C%2Fa%3E%3Cscript%20type%3D%22text%2Fjavascript%22%20src%3D%22http%3A%2F%2Fplatform.twitter.com%2Fwidgets.js%22%3E%3C%2Fscript%3E'));
+
+
+  jQuery('#custom-social-bookmarks-plusone').append(decodeURIComponent('%3Cscript%20type%3D%22text%2Fjavascript%22%20src%3D%22https%3A%2F%2Fapis.google.com%2Fjs%2Fplusone.js%22%3E%3C%2Fscript%3E%3Cg%3Aplusone%20size%3D%22tall%22%3E%3C%2Fg%3Aplusone%3E'));
+
+  jQuery('#custom-social-bookmarks').parent().css('padding', '0px');
+
+});
+</script>
+<p>Part 7 in the series <a href="/2014/06/06/a-comprehensive-guide-to-debugging-rails.html">A Comprehensive Guide To Debugging Rails</a></p>
+
+<h2 id="online-and-third-party-mirrors">Online and Third Party Mirrors</h2>
+
+<ul>
+  <li>
+    <p><strong>Google Webmaster Tools:</strong> Google Webmaster Tools helps you evaluate your websites health in Google search engine results by providing reports about how many URLs were indexed by Google, what search engine queries your website ranks for, and how many URLs were contained in your sitemap. Webmaster tools also lists web-crawler errors, thereby indicating pages that 404 or have incorrect permissions. Webmaster Tools helps you avoid issues catastrophic to your SEO operation, therefore you don’t want to miss a single issue they raise. Keep in the loop by configuring their alerts setting to email you “All issues”.</p>
+  </li>
+  <li>
+    <p><strong>Google Search Results</strong> We all Google our bugs and errors, but how does one increase the number of relevant results? Start by stripping platform specific information from your search string. For example take an error raising stack trace that contains the following:
+<code>
+/Users/jkinsella/.rvm/gems/ruby-1.9.3-p392/gems/activesupport-4.1.1/lib/active_support/dependencies.rb:247:in `require'
+</code></p>
+  </li>
+</ul>
+
+<p>If you Google that full string you will get no results that help explain your exception Google will search Stack Overflow, mailing list archives and other websites for an error containing the user string “jkinsella”, the ruby version “ruby-1-9-3.p392” and active support version “4.2.1”an exceedingly unlikely combination. A better Google query would be “active_support dependencies.rb:247:in `require’”, since that will return results for backtraces by people with any username, any Ruby version, and (nearly) any version of ActiveSupporta much broader search thats more likely to deliver results.</p>
+
+<ul>
+  <li>
+    <p><strong>Email delivery reports:</strong> Sometimes your Rails application sends off emails in production, yet, without raising any exception, your email silently fails to reach the intended recipient. You might only become aware of this weeks later when you notice low customer activation rates. Whenever you suspect email delivery issues, log in to our email delivery provider Sendgrid through the Heroku dashboard and check the  “Email Reports” tab for bounces (especially soft bounces), blocks, and spam reports. Better again, enable all of Sendgrid’s delivery report alerts so as to stay automatically informed.</p>
+  </li>
+  <li>
+    <p><strong>New Relic:</strong> Information about Ruby exceptions raised, application uptime, and application speed, whether that be the speed of web-requests, database calls,, external web service calls (e.g. to API providers like Amazon s3 or Searchify), or browser rendering times. New Relic rocks for debugging performance issues. It differs dramatically in production and development mode so it’s best to think of them as separate tools: the production tool focused on post-facto reporting and the development tool on in-depth debugging. Typically you might use New Relic production (accessed via the Heroku dashboard) to identify problem <em>areas</em>, then having picked a problem to debug, you’d load up the development tool to debug <em>a known problem</em>. The reason for this division is motivated by the realisation that you can, at great cost in time/money, optimise the performance of almost any component within a piece of software, but only a select few of these changes will make any noticeable difference to the user experience. To use the development New Relic tool, load up the application locally using our special development “caching_on” environment (Why not the normal development environment? Because development usually reloads Ruby classes on every request, making it unrealistically slow and skewing New Relic results. Read more about <a href="http://guides.rubyonrails.org/configuring.html">configuring environments here</a>.) Visit /newrelic, perform a slow action in another tab and refresh. By default New Relic displays a breakdown of the SQL statements and the Ruby methods that generated these statements. If you’d like in depth information about how long each Ruby method took to run, then you need to click “Start Profiling” within “/newrelic”, and run the slow command again.</p>
+  </li>
+</ul>
+
+<script>(function() {
+var hn_link = "http://news.ycombinator.com/submitlink?u=";
+if (window.hn_url) { 
+	hn_link += encodeURIComponent(hn_url); 
+}
+else { 
+	hn_link += encodeURIComponent(document.location);
+}
+if (window.hn_title) { 
+	hn_link += "&t=" + encodeURIComponent(hn_title); 
+}
+else { 
+	hn_link += "&t=" + encodeURIComponent(document.title);
+}
+
+var write_string = "<div id='hacker-news'><img src='http://ycombinator.com/images/y18.gif' alt='Hacker News' width=18 height=18 style='border:1px #ffffff solid; margin-left:0;'/><a href="+hn_link+" alink='#000000'; vlink='#828282' style='text-decoration:none' target='_blank'>Discuss this post on Hacker News</a></div>";
+document.write(write_string);
+})()
+
+</script>
+<h2 class="section-title"> One Last Thing </h2>
+<p>
+  I spend hours researching and writing these posts. If you'd
+  like to return the good will and say thanks please <a
+    href="#masthead">Tweet this page</a> or, better again, mention it on your blog.
+</p> 
+<p>
+  <small>Written by Jack Kinsella, 06 Jun 2014</small>
+</p>
+<h2 class="section-title"> Related Posts </h2>
+<ul class="posts">
+    
+    <li><a href="/2014/06/06/debugginging-rails-with-pry-console.html">Debugging Rails with Pry Console</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-pry-debugger.html">Debugging Rails with Pry Debugger</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-operating-system-tools.html">Debugging Rails with Operating System Tools</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-memcached.html">Debugging Rails with Memcached</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-logs.html">Debugging Rails with Logs</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-git.html">Debugging Rails with Git</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-custom-instrumentation.html">Debugging Rails with Custom Instrumentation</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-chrome-devtools.html">Debugging Rails With Chrome DevTools</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-built-in-tools.html">Debugging Rails With Built-in Tools</a></li>
+    
+    <li><a href="/2014/06/06/a-comprehensive-guide-to-debugging-rails.html">A Comprehensive Guide To Debugging Rails</a></li>
+    
+  </ul>
+
+          </div>
+        </div>
+
+        </article>
+
+        <footer id="colophon">
+        <div class="wrapper">
+          <p><i> Jack Kinsella calls himself an analyst because it's suitably nondescript and affords him the possibility of being inconsistent in interests. He owns <a href="http://www.oxbridgenotes.co.uk">Oxbridge Notes</a>, co-founded <a href="http://www.bolivianexpress.org">Bolivian Express</a>, and co-organises the elite private marketing group, Growth Hacker Berlin. Follow me if you enjoyed my writing.</i></p>
+
+          <section class="links about_and_follow">
+          <ul>
+            <li>
+              <a href="http://twitter.com/jackkinsella">
+                Twitter @jackkinsella
+              </a>
+            </li>
+            <li id="followBlog">
+              <a href="http://feeds.feedburner.com/jackkinsella">
+                RSS Feed
+              </a>
+            </li>
+            <li id="email">
+              <script type="text/javascript" language="javascript">
+                <!--
+                ML="sonS0.:>rei hC2\"cgf@u?abljkt/%m=<";
+                MI="PF;<89BO?NF:HK16IF@J5J:209HHFCANF:H5@1NE0DGI9@KO=120DHK:2AM>43:K9?7IF@J5J:209HHFCANF:H5@1NPLF7";
+                OT="";
+                for(j=0;j<MI.length;j++){
+                  OT+=ML.charAt(MI.charCodeAt(j)-48);
+                }document.write(OT);
+// --></script>
+            </a>
+          </li>
+        </ul>
+      </section>
+        <section id="copyright">
+        <p>
+          Coded and created by Jack Kinsella.
+      </p>
+      </section>
+    </div>
+    </footer>
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-11447599-9']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+       })();
+
+</script>
+
+       </body>
+     </html>

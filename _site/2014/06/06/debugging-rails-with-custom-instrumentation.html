@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8"/>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>Debugging Rails with Custom Instrumentation | Jack Kinsella - Analyst Berlin</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <!-- Typekit script -->
+      <script type="text/javascript" src="http://use.typekit.com/xnr7evu.js"></script>
+      <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <meta name="author" content="Jack Kinsella" />
+      <!-- Can never be removed if we want continued webmaster tools-->
+      <meta name="google-site-verification" content="937-6YOj2Gnp0ZDEH9UNd3MhKNUwA2JzyVsnhqKG-nU" />
+      <link rel="stylesheet"  type="text/css" href="/css/main.css" />
+      <link rel="stylesheet"  type="text/css" href="/css/code_highlights.css" />
+      <link rel="stylesheet"  type="text/css" href="/css/widescreen.css" />
+      <script>var typosServerDomain = "http://obscure-taiga-5849.herokuapp.com";</script>
+      <script src="http://obscure-taiga-5849.herokuapp.com/js/typos.js"></script>
+      <link rel="apple-touch-icon" sizes="114x114" href="/images/avatar.jpg"/>
+
+      <meta name="description" content="Jack Kinsella's blog: Analyst interested in social observation, marketing, computer programming, and music composition"/>
+      <body lang="en" id="main-layout"   class="vcard ">
+        <header id="masthead">
+        <div class="wrapper">
+          <a id="logo" href="/" rel="author">
+            <div>
+              <figure class="jk-logo frame">
+              <img src="/images/rails-developer-berlin.jpg" alt=Analyst"/>
+              </figure>
+              <h1 class="fn">Jack Kinsella</h1>
+              <p class="title">Analyst, Berlin</p>
+            </div>
+          </a>
+          <nav>
+          <ul>
+            <li class="index">
+              <a href="/blog.html">
+                <span>Articles</span>
+              </a>
+            </li>
+            <li class="projects">
+              <a href="/portfolio.html">
+                <span>Portfolio</span>
+              </a>
+            </li>
+            <li class="about">
+              <a href="/about.html">
+                <span>About</span>
+              </a>
+            </li>
+          </ul>
+          </nav>
+        </div>
+        </header>
+
+        <article id="content" class="hentry">
+
+        <header>
+        <div>
+          <h1 class="entry-title">Debugging Rails with Custom Instrumentation</h1>
+          <p></p>
+        </div>
+        </header>
+
+        <div class="wrapper">
+          <div class="entry-content">
+            <!-- Social Bookmarking Widget.Asynchonous. -->
+<div id="social_bookmarks">
+<div id="custom-social-bookmarks-twitter" class="bookmark_icon"></div>
+<div id="custom-social-bookmarks-plusone" class="bookmark_icon"></div>
+</div>
+<script type="text/javascript">
+jQuery(document).ready(function() {
+    
+  jQuery('#custom-social-bookmarks-twitter').append(decodeURIComponent('%3Ca%20href%3D%22http%3A%2F%2Ftwitter.com%2Fshare%22%20class%3D%22twitter-share-button%22%20data-count%3D%22vertical%22%20data-via%3D%22jackkinsella%22%3ETweet%3C%2Fa%3E%3Cscript%20type%3D%22text%2Fjavascript%22%20src%3D%22http%3A%2F%2Fplatform.twitter.com%2Fwidgets.js%22%3E%3C%2Fscript%3E'));
+
+
+  jQuery('#custom-social-bookmarks-plusone').append(decodeURIComponent('%3Cscript%20type%3D%22text%2Fjavascript%22%20src%3D%22https%3A%2F%2Fapis.google.com%2Fjs%2Fplusone.js%22%3E%3C%2Fscript%3E%3Cg%3Aplusone%20size%3D%22tall%22%3E%3C%2Fg%3Aplusone%3E'));
+
+  jQuery('#custom-social-bookmarks').parent().css('padding', '0px');
+
+});
+</script>
+<p>Part 10 in the series <a href="/2014/06/06/a-comprehensive-guide-to-debugging-rails.html">A Comprehensive Guide To Debugging Rails</a></p>
+
+<h2 id="our-custom-instrumentation">Our Custom Instrumentation</h2>
+
+<ul>
+  <li>
+    <p><strong>debugging_id:</strong> Within the HTML on some web-pages (product page, sample page) we place invisible code indicating the database ID of the object that page is based off, which you can use to quickly find the record within the Rails console during debugging sessions. This beats typing multi-parameter string-based searches. Deaden your doubts about the value of this techniques by comparing the short Product.find(313) with the clunky <code>Product.where(permalink: "medicine", year:2011, institution: "University of Oxford" )</code>. To see these debugging IDs open up a relevant page, enable the web-inspector, search (Command-F) for “debugging” and read the ID within the source code. Within the admin side of the website, where the placement of a visible debugging ID poses no risk of alienating customers, we often include the debugging ID within the page’s viewable HTML, obviating the need for inspect element.</p>
+  </li>
+  <li>
+    <p><strong>Explanatory exception messages:</strong> Improve exception messages by including information helpful for investigation or debugging. For example the pictured exception message returns the IDs you’ll need to refer to in the console.</p>
+  </li>
+  <li>
+    <p><strong>Exception Reports:</strong> Whenever an unrescued exception is raised, the “exception_notifier” gem emails an exception report to the IT team. These contain an exception message, a backtrace and other information about the state of the software when the exception was raised. I often find the default information provided inadequate for debugging, so I insert a “rescue” statement, manually trigger the exception notifier with additional data, then re-raise the exception so that the code flow continues as if we had never interfered. For example:</p>
+  </li>
+  <li>
+    <p><strong>Archived Exception Reports:</strong> Exception reports, having arrived into our Gmail account, are searchable through the Gmail interface. We used Gmail filters to label all incoming exception emails within Gmail as “exceptions”, meaning that we can do searches such as “ProductGenerator label:exceptions after:2014-3-17” to find all exceptions after 17th of March that mention the ProductGenerator class. (This assumes you archive exception emails instead of deleting them outright). I particularly like this approach for data-integrity issues, by which I mean cleaning database records following faulty SQL caused by a bug. Case in point: I received exception reports after running an erroneous Rake command and I wanted to see how many exceptions affected the product with ID 252, so I searched Gmail for “Spree::Product 252 label:exceptions after:2014-3-17”, and Gmail found all the archived exception reports containing both Spree::Product and the number 252. For this approach to work it assumes that you archive instead of delete your messages in Gmail/the desktop/phone applications you use to access Gmail. I mention multiple clients because, as I learned the hard way, each one might need to be configured separately.</p>
+  </li>
+  <li>
+    <p><strong>Previous Debugging Records:</strong> This one is highly specific to the Oxbridge Notes process for debugging, whereby even if no-one else will ever read the report, we record every thought about the bug, every experiment or fix tried, and every ruled out hypothesis into a file within the folder documentation/bugs. Before fixing a new bug search through this folder using the ack utility to find various identifying information pieces (such as the ExceptionName, part of the exception message, or the user_id in question). Often our previous bug reports will provide important clues on how to fix the current bug or on dead alleys down which we previously squandered our time.</p>
+  </li>
+  <li>
+    <p><strong>MailView:</strong> Quickly verify that all our emails compile and proof-read their contents by visiting /mail_view from development mode. This feature relies on the <code>mail_view</code> gem. For every new email our software is supposed to send, you must add a corresponding entry to the app/mailers/mail_preview.rb file for that email to appear in this previewer.</p>
+  </li>
+  <li>
+    <p><strong>Logging in as a particular user:</strong> Sometimes you have to walk a mile in a user’s shoes to understand why your software broke. To do this <a href="https://devcenter.heroku.com/articles/heroku-postgres-import-export">download the production database freshly to your development machine</a> (so as to take into account recent changes that might influence the bug), find the user experiencing bugs in the Rails console <code>user = User.find_by_email "something@hotmail.com"</code>, then reset that user’s password to something generic (we have a custom method to do just that: user.default). This method will print out a new password for that user, and you can use this to log in as that user in development mode. This new password does not affect the user’s production account, which retains the password as the user originally set it. (And yes, logging in as a user is acceptable in our business since this debugging technique is outlined within our website’s privacy policy and the most sensitive information you’d see by doing this is a customers purchase history, information that was already readily available in our standard Admin area.)</p>
+  </li>
+  <li>
+    <p><strong>Undeleted Failed Delayed Jobs:</strong> We use the “delayed_job” gem to queue up background tasks, but by default this does not alert you whenever a background task fails. Thats a lot of important missing information therefore thanks to a custom modification we made to DelayedJob (<a href="https://gist.github.com/jackkinsella/842395841a0fff204e35">gist</a> here), an email is sent every time an exception is raised during a background job with heaps of useful debugging information.</p>
+  </li>
+  <li>
+    <p><strong>Undeleted Failed Delayed Jobs:</strong> The exception notification system for DelayedJobs outline above has been known to fail in the past, and in such cases you want to refer to the DelayedJob database items in production for further debugging. Check for the presence of jobs with errors in production by typing our custom DelayedJob <code>scope Delayed::Job.with_errors</code>. If any results appear then view the error backtrace for an individual failed job with <code>puts failed_job.last_error</code>. Read the calling function that caused the error, alongside its inputs with <code>puts failed_job.handler</code> (we use puts in both cases because it displays the yaml output in a readable manner). Example output (Ill explain below)</p>
+  </li>
+</ul>
+
+<p>Notice that the above output shows the caller’s object type (Email), the method called on it (send_zip_file), the arguments to the method, such as the email address for the emails from field, would have been below, but I removed them from the screengrab to protect the identity of my customers.</p>
+
+<ul>
+  <li>
+    <p><strong>S3 files and folders</strong> Access your s3 account either through AWS web application dashboard or through third party desktop software such as s3Hub. Once in, inspect various folders to insure that the right files were uploaded/deleted in the right directories, and appear with the right filenames and with the correct headers and permissions. If you’re not sure what folder a particular model saves its data to, refer to that model’s source code and look at the first argument to <code>has_attached_file</code>. For example <code>has_attached_file :data</code>, means you want to browse to the /datas folder on s3.</p>
+  </li>
+  <li>
+    <p><strong>Never Swallow an Error:</strong> Some errors and failures are so routine that they can hardly be called exceptional. For example, certain document conversion operations we carry out at Oxbridge Notes have a failure rate. The nicest possible solution would be to fix the root cause once and for all. Absent a year-long study of the .docx file format and the C# programming language, that aint going to happen. The next best thing is to accept the failure within our normal code flow, but save that information within the database for later, in case we want to retry the operation, use an alternative algorithm, or simply control user-flow based on this information. I use the [<a href="https://github.com/pboling/flag_shih_tzu">FlagShihTzu</a> gem for this purpose because it enables me to add an ever-increasing number of true/false attributes with names of my choosing to a single column in my models database table, by default on the column flags. This means that as the list of possible errors increase, I can add the capacity to record these errors without needing to modify the database. When it comes to debugging, I can quickly ascertain that this particular record had experienced issues, say with image_extraction.</p>
+  </li>
+</ul>
+
+<script>(function() {
+var hn_link = "http://news.ycombinator.com/submitlink?u=";
+if (window.hn_url) { 
+	hn_link += encodeURIComponent(hn_url); 
+}
+else { 
+	hn_link += encodeURIComponent(document.location);
+}
+if (window.hn_title) { 
+	hn_link += "&t=" + encodeURIComponent(hn_title); 
+}
+else { 
+	hn_link += "&t=" + encodeURIComponent(document.title);
+}
+
+var write_string = "<div id='hacker-news'><img src='http://ycombinator.com/images/y18.gif' alt='Hacker News' width=18 height=18 style='border:1px #ffffff solid; margin-left:0;'/><a href="+hn_link+" alink='#000000'; vlink='#828282' style='text-decoration:none' target='_blank'>Discuss this post on Hacker News</a></div>";
+document.write(write_string);
+})()
+
+</script>
+<h2 class="section-title"> One Last Thing </h2>
+<p>
+  I spend hours researching and writing these posts. If you'd
+  like to return the good will and say thanks please <a
+    href="#masthead">Tweet this page</a> or, better again, mention it on your blog.
+</p> 
+<p>
+  <small>Written by Jack Kinsella, 06 Jun 2014</small>
+</p>
+<h2 class="section-title"> Related Posts </h2>
+<ul class="posts">
+    
+    <li><a href="/2014/06/06/debugginging-rails-with-pry-console.html">Debugging Rails with Pry Console</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-pry-debugger.html">Debugging Rails with Pry Debugger</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-operating-system-tools.html">Debugging Rails with Operating System Tools</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-online-or-third-party-tools.html">Debugging Rails with Online or Third Party Tools</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-memcached.html">Debugging Rails with Memcached</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-logs.html">Debugging Rails with Logs</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-git.html">Debugging Rails with Git</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-chrome-devtools.html">Debugging Rails With Chrome DevTools</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-built-in-tools.html">Debugging Rails With Built-in Tools</a></li>
+    
+    <li><a href="/2014/06/06/a-comprehensive-guide-to-debugging-rails.html">A Comprehensive Guide To Debugging Rails</a></li>
+    
+  </ul>
+
+          </div>
+        </div>
+
+        </article>
+
+        <footer id="colophon">
+        <div class="wrapper">
+          <p><i> Jack Kinsella calls himself an analyst because it's suitably nondescript and affords him the possibility of being inconsistent in interests. He owns <a href="http://www.oxbridgenotes.co.uk">Oxbridge Notes</a>, co-founded <a href="http://www.bolivianexpress.org">Bolivian Express</a>, and co-organises the elite private marketing group, Growth Hacker Berlin. Follow me if you enjoyed my writing.</i></p>
+
+          <section class="links about_and_follow">
+          <ul>
+            <li>
+              <a href="http://twitter.com/jackkinsella">
+                Twitter @jackkinsella
+              </a>
+            </li>
+            <li id="followBlog">
+              <a href="http://feeds.feedburner.com/jackkinsella">
+                RSS Feed
+              </a>
+            </li>
+            <li id="email">
+              <script type="text/javascript" language="javascript">
+                <!--
+                ML="sonS0.:>rei hC2\"cgf@u?abljkt/%m=<";
+                MI="PF;<89BO?NF:HK16IF@J5J:209HHFCANF:H5@1NE0DGI9@KO=120DHK:2AM>43:K9?7IF@J5J:209HHFCANF:H5@1NPLF7";
+                OT="";
+                for(j=0;j<MI.length;j++){
+                  OT+=ML.charAt(MI.charCodeAt(j)-48);
+                }document.write(OT);
+// --></script>
+            </a>
+          </li>
+        </ul>
+      </section>
+        <section id="copyright">
+        <p>
+          Coded and created by Jack Kinsella.
+      </p>
+      </section>
+    </div>
+    </footer>
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-11447599-9']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+       })();
+
+</script>
+
+       </body>
+     </html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8"/>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>Debugging Rails with Operating System Tools | Jack Kinsella - Analyst Berlin</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <!-- Typekit script -->
+      <script type="text/javascript" src="http://use.typekit.com/xnr7evu.js"></script>
+      <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <meta name="author" content="Jack Kinsella" />
+      <!-- Can never be removed if we want continued webmaster tools-->
+      <meta name="google-site-verification" content="937-6YOj2Gnp0ZDEH9UNd3MhKNUwA2JzyVsnhqKG-nU" />
+      <link rel="stylesheet"  type="text/css" href="/css/main.css" />
+      <link rel="stylesheet"  type="text/css" href="/css/code_highlights.css" />
+      <link rel="stylesheet"  type="text/css" href="/css/widescreen.css" />
+      <script>var typosServerDomain = "http://obscure-taiga-5849.herokuapp.com";</script>
+      <script src="http://obscure-taiga-5849.herokuapp.com/js/typos.js"></script>
+      <link rel="apple-touch-icon" sizes="114x114" href="/images/avatar.jpg"/>
+
+      <meta name="description" content="Jack Kinsella's blog: Analyst interested in social observation, marketing, computer programming, and music composition"/>
+      <body lang="en" id="main-layout"   class="vcard ">
+        <header id="masthead">
+        <div class="wrapper">
+          <a id="logo" href="/" rel="author">
+            <div>
+              <figure class="jk-logo frame">
+              <img src="/images/rails-developer-berlin.jpg" alt=Analyst"/>
+              </figure>
+              <h1 class="fn">Jack Kinsella</h1>
+              <p class="title">Analyst, Berlin</p>
+            </div>
+          </a>
+          <nav>
+          <ul>
+            <li class="index">
+              <a href="/blog.html">
+                <span>Articles</span>
+              </a>
+            </li>
+            <li class="projects">
+              <a href="/portfolio.html">
+                <span>Portfolio</span>
+              </a>
+            </li>
+            <li class="about">
+              <a href="/about.html">
+                <span>About</span>
+              </a>
+            </li>
+          </ul>
+          </nav>
+        </div>
+        </header>
+
+        <article id="content" class="hentry">
+
+        <header>
+        <div>
+          <h1 class="entry-title">Debugging Rails with Operating System Tools</h1>
+          <p></p>
+        </div>
+        </header>
+
+        <div class="wrapper">
+          <div class="entry-content">
+            <!-- Social Bookmarking Widget.Asynchonous. -->
+<div id="social_bookmarks">
+<div id="custom-social-bookmarks-twitter" class="bookmark_icon"></div>
+<div id="custom-social-bookmarks-plusone" class="bookmark_icon"></div>
+</div>
+<script type="text/javascript">
+jQuery(document).ready(function() {
+    
+  jQuery('#custom-social-bookmarks-twitter').append(decodeURIComponent('%3Ca%20href%3D%22http%3A%2F%2Ftwitter.com%2Fshare%22%20class%3D%22twitter-share-button%22%20data-count%3D%22vertical%22%20data-via%3D%22jackkinsella%22%3ETweet%3C%2Fa%3E%3Cscript%20type%3D%22text%2Fjavascript%22%20src%3D%22http%3A%2F%2Fplatform.twitter.com%2Fwidgets.js%22%3E%3C%2Fscript%3E'));
+
+
+  jQuery('#custom-social-bookmarks-plusone').append(decodeURIComponent('%3Cscript%20type%3D%22text%2Fjavascript%22%20src%3D%22https%3A%2F%2Fapis.google.com%2Fjs%2Fplusone.js%22%3E%3C%2Fscript%3E%3Cg%3Aplusone%20size%3D%22tall%22%3E%3C%2Fg%3Aplusone%3E'));
+
+  jQuery('#custom-social-bookmarks').parent().css('padding', '0px');
+
+});
+</script>
+<p>Part 5 in the series <a href="/2014/06/06/a-comprehensive-guide-to-debugging-rails.html">A Comprehensive Guide To Debugging Rails</a></p>
+
+<h2 id="operating-system-level-mirrors">Operating System Level Mirrors</h2>
+
+<ul>
+  <li>
+    <p><strong>Domain name/DNS info:</strong> View and debug DNS/IP issues using nslookup. To see the mail records (MX) for a domain type <code>$ nslookup -type=mx oxbridgenotes.co.uk</code> (note that you need to drop any possible “www” in front of the domain here). Look up the IP addresses associated with a domain using <code>$ nslookup www.oxbridgenotes.co.uk</code>. Find out how long a DNS record will be cached for with <code>$ nslookup -debug www.oxbridgenotes.co.uk</code>. See all possible nameservers with <code>$ nslookup -type=ns www.oxbridgenotes.co.uk</code>. Knowing the possible nameservers from which to query IP address and other information enables you to query the result of one particular nameserver using <code>$ nslookup www.oxbridgenotes.co.uk ns1.redhat.com</code> (where ns1.redhat.com was returned as a possible nameserver using type=ns). Why might you want to do this? To quickly verify that changes you made to your DNS records were carried out successfully without waiting a lifetime for the records to propagate across the internet.</p>
+  </li>
+  <li>
+    <p><strong>List of open files and sockets:</strong> Figure out what files or sockets your Rails server is at that second interacting with by typing <code>$ lsof -p &lt;PID&gt;</code>, where PID is the process id of the Rails application process. Useful in combination with <strong>dtruss</strong> when you’d like to map out the file-descriptor arguments to <strong>syscalls</strong> to the names of the files/sockets in question.</p>
+  </li>
+  <li>
+    <p><strong>curl:</strong> Sometimes you cannot easily test a particular URL from within the browser. In these cases curl comes to the rescue. Request the <code>localhost:3000/product_list</code> URL from the command line with <code>$ curl http://localhost:3000/product_list</code>. By default curl performs a GET request, but can also be set to use other HTTP verbs such as POST/PUT with the “X” flag. For example <code>$ curl -X POST http://localhost:3000/to_txt -F file=@/Users/jkinsella/Code/oxnotes-docservice/fixtures/length.pdf</code> posts a form (“F flag”) that includes a local file (preceded by “@”). Curl is particularly useful for making requests with custom headers, specified using the “H” flag. For example <code>$ curl localhost:3000/product_list -H "Content-Type:image/gif"</code>. Another common use-case is to exclusively return the HTML headers from a request without waiting for the whole body of the request. Use the I option, e.g. curl -I www.google.com</p>
+  </li>
+  <li>
+    <p><strong>Process Listing:</strong> Whenever your Rails application starts (server, console, Rake, whatever) it creates an operating system level process. You can search for this process using <code>$ ps aux | grep rails</code>. The output provides information about the process ID, the state/health of that process, and the memory/CPU resources it consumes. For detailed information on interpreting this output refer to man ps. Watch out for situations when you see more Rails processes output than you expect, as this might indicate processes that are hidden/daemons/still running despite not having a terminal tab open and attached the them. Process listing is your best friend in debugging situations where Rails interacts with another program on your operating system. For example many Rails websites use the separate database program <strong>postgres</strong>, and when things aren’t working with your database, a great first step is to check whether the postgres process is running correctly.</p>
+  </li>
+  <li>
+    <p><strong>C Debugger (gdb):</strong> (This section assumes you are using the standard Ruby install that is compiled in C, as opposed to MacRuby, JRuby etc.) The C debugger is used to debug problems a Ruby debugger will have difficulty reaching, notably infinite loop bugs. (You’ll notice an infinite loop bug because the program seemingly freezes without exiting or spitting out a stack trace.) or in situations where you have a sporadic bug that may disappear on restart and you  would rather find out whats wrong <em>now</em>. In getting the gdb to work, the order in which you enter commands is important. First, start your Rails process (server / console / whatever) as normal. Second, execute the request/console command that causes the infinite looping problem. Wait until the Ruby process is stalled then open up a new terminal tab and activate the gdb. Typically you start it with <code>$ sudo gdb $(which ruby) 67563</code>, where the first argument dynamically figures out the Ruby compiler you are using (a necessary argument to gdb), and the second argument is the process id (pid) of the Ruby process running your Rails application. (Figure out what this pid is by running <code>ps aux | grep ruby</code>). Now that gdb is attached to your Rails process you can force a Ruby backtrace with <code>call (void)rb_backtrace()</code>. This backtrace will not appear in your Rails server process terminal tab like it would when you are interacting your Rails software normally through URL requests; instead the backtrace will be appended to the <code>log/development.log</code> file, which you monitor with <code>$ tail -f log/development.log</code>. The backtrace forced through at the C level provides an otherwise unavailable insight into why and where the program stalled. Gdb also provides the possibility of debugging at C level, but that’s beyond the scope of this article.</p>
+  </li>
+</ul>
+
+<p><em>Installation woes: On Mavericks you’ll need to install <strong>gdb</strong> with Homebrew then <a href="http://wiki.lazarus.freepascal.org/GDB_on_OS_X_Mavericks_and_Xcode_5">codesign it by following this guide</a>.</em></p>
+
+<ul>
+  <li>
+    <p><strong>tcpdump:</strong> The lowest common denominator across unix-like systems for dumping traffic on a network. Say you want to monitor all packet traffic originating from the domain oxbridgenotes.com and interacting with some daemon program or opaque command line script. In this situation you cant simply open up Google Chrome DevTools Network Tab and monitor the request in this way. Instead you must rely on command line tools, and here the command in question is: <code>$ sudo tcpdump -s 0 -A host "www.oxbridgenotes.co.uk"</code>. The <code>s 0</code> option specifies to remove the limits on packet size normally present. The A options says print out ASCII renditions of the packets. Tcpdumps output shows the source IP address and the destination IP address of each packet alongside what was contained within, enabling you to ensure that correct information was sent from the right places at this level. On other occasions, such as when debugging web-sockets, you might want to monitor traffic on a particular port: <strong><code>$ sudo tcpdump port 8000</code></strong></p>
+  </li>
+  <li>
+    <p><strong>Environmental variables:</strong> A number of variables set outside the Rails software, i.e. at the OS level, can influence either our code or the third party libraries we use. You’ll know that these variables are in use whenever the codebase contains a reference to the ENV global variable, for example ENV[“LOG_LEVEL”] is Ruby’s way of accessing the environmental variable LOG_LEVEL. View all the environmental variables on production using <code>$ h config</code>. In development we dump the Heroku environmental variables into the mirrored <code>.env</code> file with <code>$ heroku config &gt; .env</code>, and then these variables become available to our software thanks to the Foreman gem. System level environmental variables may also be set, most typically by user modifications to the <code>~/.bashrc</code> file. You can view the contents of these environmental variables with <strong>echo</strong>. For example view the contents of the LOG_LEVEL environmental variable with <code>$ echo $LOG_LEVEL</code>(notice the dollar sign necessarily appended to the variable name). To list all variables and their values type: <code>$ printenv</code>. Access the same listing within your Rails console by typing ENV.</p>
+  </li>
+  <li>
+    <p><strong>Temporary Files:</strong> Our application uses the tmp/ folder to store temporary files, such the Word documents we temporarily download before zipping into larger packages and uploading to s3 for storage. Inspect the contents of this folder to debug issues such as whether the algorithm is downloading files correctly. It’s useful to employ the <strong>watch</strong> command to periodically run another sub command (here <strong>ls</strong>) on the tmp folder, for example <code>$ watch -n 10 ls tmp/seller-invoices</code> checks the contents of the <code>tmp/seller-invoices</code> folder every ten seconds, updating the screen with the contents, enabling you to see changes as they happen.</p>
+  </li>
+  <li>
+    <p><strong>which:</strong> A godsend for figuring out whether there are multiple installations of command line programs, be that our own or those installed by gems or <code>homebrew</code>, and for ascertaining whether invoking that program via command line uses the version we intended. <code>$ which -a postgres</code> reveals all the locations of postgresql binaries currently on the $PATH, with the binary called whenever you type the unqualified command (e.g. $ postgres) appearing first in this list. Change the order of the commands output by which by modifying the $PATH variable in your ~/.bashrc file.</p>
+  </li>
+  <li>
+    <p><strong>Exuberant Ctags:</strong> Used in conjunction with Vim through the <a href="https://github.com/xolox/vim-easytags">EasyTags</a> plugin, Exuberant Ctags lets you quickly jump to the definition of any function within your codebase. Force a project level tag refresh with :UpdateTags -R ~/Code/oxbridgenotes/.  Enter Vim and jump to the function <code>generate_products</code> by <code>typing :ta generate_products</code>. The <code>:ta</code> command also accepts regular expressions, meaning you can find all functions starting with “generate” using <code>:ta /generate/*</code>. View the entire list of matches with <code>:ts(elect)</code> (bracketed letters are optional in invoking the Vim function) and move forwards one tag with <code>:tn(ext)</code> and backward with <code>:tp(rev)</code>. By default Ctags show all the tags within your Rails project directory, leaving out that of the gems. It’s more helpful to extend tagging to include the codebase of all your gems by using this command <code>$ ctags -e --exclude=.git --exclude='*.log' -R *bundle show --paths</code>. Now you can type in the name of any function within any of the gems listed in your Gemfile` and jump to the source code- an absolutely enormous time-saver.</p>
+  </li>
+  <li>
+    <p><strong>history grepping:</strong> Search previous command line commands. For example I can search all curl commands with <code>$ history | grep curl</code>, and use this to refresh my memory about a particular set of flags I used to solve a problem in the past. I set my history to hold 20000 lines with <code>export HISTSIZE=20000</code> added to my ~/.bashrc, meaning that I effectively keep my history of commands as a reference for years.</p>
+  </li>
+  <li>
+    <p><strong>ack for real world usage examples:</strong> Sometimes legacy functions are nicely documentedbe that in your project documentation, the unit tests validating that function, or the in-code comments above the function. More often though, these functions arent documented at all and it may not be apparent how they should be used. The very fact that a legacy function has already been used elsewhere in your project leads to implicit usage documentation. For example you find the <strong>generate_product(subject, price)</strong> function and what data type price is supposed to be  a string, Integer, Float, or something else? Type <strong>$ ack generate_product</strong> and amongst the results you may find clues of prior usage, such as <strong>generate_product(subject, 12.33)</strong>, indicating that you should use a float. A variation of this technique is to refer to the values historically saved within a database column by printing out all the unique values ever saved and then inferring what format kind of format the column expects. For example <strong>Product.select(pricing_category).uniq</strong> returns all the pricing_categories saved within the database, informing you that its a one letter upper-case string code.</p>
+  </li>
+  <li>
+    <p><strong>dtruss (OS X) / strace (linux):</strong> Monitor a) which operating system level calls (syscalls) your program makes, with what arguments, and how long each call takes to execute; and b) the OS signals a process receives. <strong>Dtruss</strong> spits out a fire a great deal of data, but is nevertheless useful in situations where you cant afford to stop the running program (e.g. in production) or when you have a hunch that the problematic program is bug-free but youre just using it wrong (e.g. your Unicorn server; init processes; anything involving configuration files that should appear in a specific location). Dtruss works programs ultimately rely on the operating system to do work such as opening files, forking new processes or printing output to screen, and these operations provide traceable clues as to the functioningor malfunctioningof your program. When using OS X you only have <strong>dtruss</strong> available to you. Begin with <code>$ sudo dtruss -p PID_OF_YOUR_RUBY_PROCESS -f</code>. The <code>f</code> option specifies that youd also like to follow child processes, usually a sensible decision in understanding the scope of your program. The <code>a</code> option asks <strong>dtruss</strong> to print all information, including elapsed time and the process in question, a welcome counterpart to the <code>f</code> option. As your Ruby process runs you’ll see a stream of operating system calls. Youre probably confused about what each of these functions meansI quote author of the Passionate Programmer, Chad Fowler on <a href="http://chadfowler.com/blog/2014/01/26/the-magic-of-strace/">his experience with learning strace</a> <em>Neither did I at some point. I learned most of this stuff by tracing broken programs and reading man pages</em>. For a full tutorial refer to Chads excellent piece.</p>
+  </li>
+  <li>
+    <p><strong>man search:</strong> You probably know that you can type <code>$ man ANY_COMMAND_LINE_OR_SYSTEM_COMMAND</code> to display its documentation in the terminal. A complimentary time-saver that I only learned about much later was that you quickly search for keywords within man by typing forward slash followed by your keyword, e.g. /directory. Move forwards and backwards through the highlighted matching results with N or n.</p>
+  </li>
+  <li>
+    <p><strong>top:</strong> Displays constantly updated, sorted information about resource usage of each process. For example <code>$ top -o cpu</code>, shows the currently running processes in order of their CPU usage. (the o option stands for order). Top is useful to identify whether a stalled processes is statically stalled (e.g. waiting for a resource to be released/sleeping) since this would have close to 0% CPU usage, or is dynamically stall (e.g. infinite loop) since this often has heavy CPU usage.</p>
+  </li>
+</ul>
+
+<script>(function() {
+var hn_link = "http://news.ycombinator.com/submitlink?u=";
+if (window.hn_url) { 
+	hn_link += encodeURIComponent(hn_url); 
+}
+else { 
+	hn_link += encodeURIComponent(document.location);
+}
+if (window.hn_title) { 
+	hn_link += "&t=" + encodeURIComponent(hn_title); 
+}
+else { 
+	hn_link += "&t=" + encodeURIComponent(document.title);
+}
+
+var write_string = "<div id='hacker-news'><img src='http://ycombinator.com/images/y18.gif' alt='Hacker News' width=18 height=18 style='border:1px #ffffff solid; margin-left:0;'/><a href="+hn_link+" alink='#000000'; vlink='#828282' style='text-decoration:none' target='_blank'>Discuss this post on Hacker News</a></div>";
+document.write(write_string);
+})()
+
+</script>
+<h2 class="section-title"> One Last Thing </h2>
+<p>
+  I spend hours researching and writing these posts. If you'd
+  like to return the good will and say thanks please <a
+    href="#masthead">Tweet this page</a> or, better again, mention it on your blog.
+</p> 
+<p>
+  <small>Written by Jack Kinsella, 06 Jun 2014</small>
+</p>
+<h2 class="section-title"> Related Posts </h2>
+<ul class="posts">
+    
+    <li><a href="/2014/06/06/debugginging-rails-with-pry-console.html">Debugging Rails with Pry Console</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-pry-debugger.html">Debugging Rails with Pry Debugger</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-online-or-third-party-tools.html">Debugging Rails with Online or Third Party Tools</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-memcached.html">Debugging Rails with Memcached</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-logs.html">Debugging Rails with Logs</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-git.html">Debugging Rails with Git</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-custom-instrumentation.html">Debugging Rails with Custom Instrumentation</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-chrome-devtools.html">Debugging Rails With Chrome DevTools</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-built-in-tools.html">Debugging Rails With Built-in Tools</a></li>
+    
+    <li><a href="/2014/06/06/a-comprehensive-guide-to-debugging-rails.html">A Comprehensive Guide To Debugging Rails</a></li>
+    
+  </ul>
+
+          </div>
+        </div>
+
+        </article>
+
+        <footer id="colophon">
+        <div class="wrapper">
+          <p><i> Jack Kinsella calls himself an analyst because it's suitably nondescript and affords him the possibility of being inconsistent in interests. He owns <a href="http://www.oxbridgenotes.co.uk">Oxbridge Notes</a>, co-founded <a href="http://www.bolivianexpress.org">Bolivian Express</a>, and co-organises the elite private marketing group, Growth Hacker Berlin. Follow me if you enjoyed my writing.</i></p>
+
+          <section class="links about_and_follow">
+          <ul>
+            <li>
+              <a href="http://twitter.com/jackkinsella">
+                Twitter @jackkinsella
+              </a>
+            </li>
+            <li id="followBlog">
+              <a href="http://feeds.feedburner.com/jackkinsella">
+                RSS Feed
+              </a>
+            </li>
+            <li id="email">
+              <script type="text/javascript" language="javascript">
+                <!--
+                ML="sonS0.:>rei hC2\"cgf@u?abljkt/%m=<";
+                MI="PF;<89BO?NF:HK16IF@J5J:209HHFCANF:H5@1NE0DGI9@KO=120DHK:2AM>43:K9?7IF@J5J:209HHFCANF:H5@1NPLF7";
+                OT="";
+                for(j=0;j<MI.length;j++){
+                  OT+=ML.charAt(MI.charCodeAt(j)-48);
+                }document.write(OT);
+// --></script>
+            </a>
+          </li>
+        </ul>
+      </section>
+        <section id="copyright">
+        <p>
+          Coded and created by Jack Kinsella.
+      </p>
+      </section>
+    </div>
+    </footer>
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-11447599-9']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+       })();
+
+</script>
+
+       </body>
+     </html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8"/>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>Debugging Rails with Logs | Jack Kinsella - Analyst Berlin</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <!-- Typekit script -->
+      <script type="text/javascript" src="http://use.typekit.com/xnr7evu.js"></script>
+      <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <meta name="author" content="Jack Kinsella" />
+      <!-- Can never be removed if we want continued webmaster tools-->
+      <meta name="google-site-verification" content="937-6YOj2Gnp0ZDEH9UNd3MhKNUwA2JzyVsnhqKG-nU" />
+      <link rel="stylesheet"  type="text/css" href="/css/main.css" />
+      <link rel="stylesheet"  type="text/css" href="/css/code_highlights.css" />
+      <link rel="stylesheet"  type="text/css" href="/css/widescreen.css" />
+      <script>var typosServerDomain = "http://obscure-taiga-5849.herokuapp.com";</script>
+      <script src="http://obscure-taiga-5849.herokuapp.com/js/typos.js"></script>
+      <link rel="apple-touch-icon" sizes="114x114" href="/images/avatar.jpg"/>
+
+      <meta name="description" content="Jack Kinsella's blog: Analyst interested in social observation, marketing, computer programming, and music composition"/>
+      <body lang="en" id="main-layout"   class="vcard ">
+        <header id="masthead">
+        <div class="wrapper">
+          <a id="logo" href="/" rel="author">
+            <div>
+              <figure class="jk-logo frame">
+              <img src="/images/rails-developer-berlin.jpg" alt=Analyst"/>
+              </figure>
+              <h1 class="fn">Jack Kinsella</h1>
+              <p class="title">Analyst, Berlin</p>
+            </div>
+          </a>
+          <nav>
+          <ul>
+            <li class="index">
+              <a href="/blog.html">
+                <span>Articles</span>
+              </a>
+            </li>
+            <li class="projects">
+              <a href="/portfolio.html">
+                <span>Portfolio</span>
+              </a>
+            </li>
+            <li class="about">
+              <a href="/about.html">
+                <span>About</span>
+              </a>
+            </li>
+          </ul>
+          </nav>
+        </div>
+        </header>
+
+        <article id="content" class="hentry">
+
+        <header>
+        <div>
+          <h1 class="entry-title">Debugging Rails with Logs</h1>
+          <p></p>
+        </div>
+        </header>
+
+        <div class="wrapper">
+          <div class="entry-content">
+            <!-- Social Bookmarking Widget.Asynchonous. -->
+<div id="social_bookmarks">
+<div id="custom-social-bookmarks-twitter" class="bookmark_icon"></div>
+<div id="custom-social-bookmarks-plusone" class="bookmark_icon"></div>
+</div>
+<script type="text/javascript">
+jQuery(document).ready(function() {
+    
+  jQuery('#custom-social-bookmarks-twitter').append(decodeURIComponent('%3Ca%20href%3D%22http%3A%2F%2Ftwitter.com%2Fshare%22%20class%3D%22twitter-share-button%22%20data-count%3D%22vertical%22%20data-via%3D%22jackkinsella%22%3ETweet%3C%2Fa%3E%3Cscript%20type%3D%22text%2Fjavascript%22%20src%3D%22http%3A%2F%2Fplatform.twitter.com%2Fwidgets.js%22%3E%3C%2Fscript%3E'));
+
+
+  jQuery('#custom-social-bookmarks-plusone').append(decodeURIComponent('%3Cscript%20type%3D%22text%2Fjavascript%22%20src%3D%22https%3A%2F%2Fapis.google.com%2Fjs%2Fplusone.js%22%3E%3C%2Fscript%3E%3Cg%3Aplusone%20size%3D%22tall%22%3E%3C%2Fg%3Aplusone%3E'));
+
+  jQuery('#custom-social-bookmarks').parent().css('padding', '0px');
+
+});
+</script>
+<p>Part 8 in the series <a href="/2014/06/06/a-comprehensive-guide-to-debugging-rails.html">A Comprehensive Guide To Debugging Rails</a></p>
+
+<h2 id="logs-aka-historic-mirrors">Logs, aka Historic Mirrors</h2>
+
+<ul>
+  <li>
+    <p><strong>Interpreting the Rails server built-in logs:</strong> Seasoned Rails pros will have interpreting logs down second nature, but I’ll outline the important realisations I had as a beginner for the sake of the version of me out there who is new to Rails development. Whenever you visit a page/fill a form/do an Ajax request in Rails, the server logs out a boatload of useful data. When should you refer to these logs? When you notice something you don’t expect to happen or see an error that you don’t know how to even start debugging. In these cases begin by systematically comparing what you see output in the logs with what you expect to see.  Let’s look at the workflow for interpreting the Rails log:</p>
+
+    <ul>
+      <li>
+        <p><strong>Manage your log tab with linux</strong> Usually there is way too much information on your log screen. Start your debugging sessions by clearing the output in your terminal tab with Command+K. Alternatively, if the bug you want to identify has already occurred and for this reason you don’t want to clear the screen, then use the terminal’s Command+F feature to search all its contents (sometimes 1000s of screens worth of data) for something that identifies your bug. Finally I like to pipe log output into a <em>grep</em> command to filter the information I want. For example when debugging Rendered information I might access my logs with <code>tail -f log/development.log | grep Rendered</code>, thereby only displaying lines containing the string “Rendered”. Note that this configuration of tail and grep is a real-time filter, and will update the screen with any new Rendered lines added to the logs as you interact with your Rails application.</p>
+      </li>
+      <li>
+        <p><strong>Was the right URL hit?</strong> Your logs separate each request to your Rails application by a line of white space, so your first step is to browse to where the log entry for the request in question begins by looking for lines of white space. Immediately underneath you’ll see the beginning of a request to a specific URL. For example <code>Started GET "/admin/customers/43434/"</code> means that a GET request was sent to the admin/customers/43434 URL. Does the URL requested match your expectations? You might see the wrong URL here when your Javascript/form/link_to url_helper was incorrect.</p>
+      </li>
+      <li>
+        <p><strong>Did the right controller and action process the request?</strong> So you’re hitting the right URL. Next question is whether that URL was routed correctly to the controller and action you expect. The line <code>Processing by Spree::Admin::OrdersController#edit as HTML</code> explains that the <code>edit</code> method of the <code>OrdersController</code> in the module Spree::Admin was called whenever the URL was requested. You’ll typically see a mismatch with your expectations when there is a bug in your routes.rb mapping URLs to controllers.The as HTML component means HTML was requested, as opposed to another data-type like JSON or JSthis information is useful for debugging controller actions that use respond_to to deal with multiple-formats such as HTML, JS or JSON requests from an API.</p>
+      </li>
+      <li>
+        <p><strong>Did the router name the parameters correctly?</strong> Within your controller action, say #edit above, you expect certain information available in the <code>params</code> object. For example, you might want to have <code>params[:customer_id]</code> available to be fed into a Customer#find database call. If your logger shows <code>Parameters: {"user_id"=&gt;"43434"}</code> then you’ll only have <code>params[:user_id]</code> available instead of the params[:customer_id]. In this case the parameter was misnamed, either in the Javascript/HTML form/Rails view that generated the request or within the parameter naming in the entry for that URL in the routes.rb file. In other cases you might have forgotten to include an important parameter altogether. In other cases again your parameters <em>are</em> present and have the right names but you’ve confused the values each parameter contains. For example imagine your logs had Parameters: <code>{"day"=&gt;"25", "month"=&gt;"2014", "year"=&gt;"4"}</code>. This shows that you’ve confused the values of the month and year parameters.</p>
+      </li>
+      <li>
+        <p><strong>Were the right SQL statements run?</strong> Assuming, as is default in development mode, the <a href="http://guides.rubyonrails.org/debugging_rails_applications.html#log-levels">log level of your Rails application</a> is set to “debug”, any SQL statements run in processing your request will be output in your logs. Sometimes these SQL statements differ from what you expect based on your Ruby code. For example there may be a method (e.g. a sneaky default_scope) adding a not-always-wanted condition to every one of your ActiveRecord scopes. For example I once had a default_scope that limited all searches of my Subject model to entries where the “deleted_at column is NULL”. A year later I’d forgotten about the deafult_scope and kept wondering why I was getting inaccurate results when I performed SQL queries against what I thought was “all” of my Subject models, but was in fact only all my <em>undeleted</em> subjects. I only became aware of this issue by seeing that the SQL generated in the log contained this added statement about “deleted_at” being null <code>SQL (0.7ms) Subject Load (0.8ms) SELECT "subjects".* FROM "subjects" WHERE "user"."id" = 110 AND "deleted_at" is NULL</code>;</p>
+      </li>
+      <li>
+        <p><strong>Were the right templates and partials rendered?:</strong> The Rails logs lists the various views and partials that were used to compile the frontend output, typically the HTML web page. If the wrong templates or partials appear listed here that indicates a mistake in your templating logic. A more complicated type of potential error here are “silent overrides”, which happen when your Rails application and its dependencies have two templates with the same name (e.g. _product.html.erb), and one version (say the one included within the gem “spree_social”) is rendered instead of the one you wanted (contained, say in the gem “spree_core”). Therefore, to debug these issues, pay attention to the full filename of the rendered partial in question.</p>
+
+        <pre><code>Rendered /spree_social/backend/app/views/spree/_product.html.erb (0.0ms)
+Rendered /backend/app/views/spree/admin/shared/_alert.html.erb (0.0ms)
+Rendered /Users/jkinsella/.rvm/gems/ruby-1.9.3-p545@oxnotes/bundler/gems/spree-ecd9f3f29779/backend/app/views/spree/admin/shared/_tabs.html.erb
+</code></pre>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Were any exceptions/warnings logged?</strong> Unrescued exceptions appear alongside their error message and backtrace within your logs. When your front-end seems unresponsive, say after you click “save comment” and nothing happens, then check your logs to see whether an exception appeared.</p>
+  </li>
+  <li>
+    <p><strong>Was the cache used?</strong> Entries such as <code>Cache write: views/taxonomies_sidebar/2014-04-28</code> show that your application has cached data at the key (view/taxon…). The corresponding read entry, <code>Cache read: views/taxonomies_sidebar/2014-04-28</code> indicates that your application is pulling previously stored data at that key out of the cache. The presence and absence of cache reads and writes for given keys helps you debug caching problems.</p>
+  </li>
+  <li>
+    <p><strong>Was the HTTP status correct?</strong> At the end of a log entry for a request will be something like <code>Completed 200 OK in 1700.0ms</code>. The three digit number after “Completed”, 200 here, is your HTTP status code. 200 indicates success, which is usually what you want for typical web-pages. In other situations, you specifically want other HTTP codes, be that for prudent redirecting (301, 302), communication of “unauthorised”(401), or acknowledgement of missing content (404). Often you’ll see the status code 500 in debugging, and rarely will this be desired, for this indicates an internal server error. Client-side Javascript code often branches depending on the HTTP status returned from an AJAX request, so these entries in the log will come in handy debugging issues here.</p>
+  </li>
+  <li>
+    <p><strong>Tailed live Heroku logs:</strong> Heroku doesn’t store your logs, it being a read-only file system, but luckily you can view live requests as they hit our website with <code>heroku logs -t</code>. Pro-tip: leave this open in a terminal for some time (e.g. 20 minutes), then use the search function of your terminal app (Command + F) to search for the keywords which would indicate your bug. Unlike your development mode log, your production log is by default set to “info”, meaning that you won’t get information about caching or SQL commands run. When you want this additional information, increase the log level to debug with <code>heroku config:add LOG_LEVEL="debug"</code>. (This assumes you have set up your production.rb environment file to respond to ENV[“LOG_LEVEL”]) As soon as you’ve finished debugging switch the log level back to the default with <code>heroku config:add LOG_LEVEL="info"</code> otherwise our logs will fill up rapidly and become expensive to archive in the third party software we employ.</p>
+  </li>
+  <li>
+    <p><strong>Archived logs:</strong> As mentioned above, our production server sits on Heroku, which, as a read-only filesystem, doesn’t save our web-app logs for future reference. Therefore we use a third party service, LogEntries, to capture and store our logs. You can access the web-app interface for LogEntries through the Heroku dashboard, and choose time-ranges within which to search by keyword for application errors, HTTP statuses, specific parameters, or logged information you manually output from your application.</p>
+  </li>
+  <li>
+    <p><strong>Heroku Scheduler Logs:</strong> View all the processes that Heroku has currently running for your application with <code>heroku ps</code>. While a scheduled task is running you’ll see a process named something like scheduler.X, with X representing an integer number, say 1 in this case. You can inspect the logs of this scheduled process with <code>$ heroku logs --ps scheduler.1</code>.</p>
+  </li>
+  <li>
+    <p><strong>s3 Access Logs:</strong> Like many Heroku applications we store binary data on S3. Requests for this data sometimes completely skip our website, and this is done by intentionally as a performance optimisation of our own design. This means we lose potential debugging information. To remedy this we have enabled the optional s3 logging feature in the relevant Oxbridge Notes buckets (through the AWS S3 web console) and thereby created logs within a bucket <code>oxbridgenotes-logging</code>. Information about interpreting these logs is found in <a href="http://s3browser.com/amazon-s3-bucket-logging-server-access-logs.phphttp://s3browser.com/amazon-s3-bucket-logging-server-access-logs.php">this article</a>, and advice on using Ruby to read them in a usable manner is found <a href="http://sixones.com/2012/11/06/s3-logs-into-combined-log-format.html">here</a>.</p>
+  </li>
+  <li>
+    <p><strong>Alerts based on logs:</strong> Through our production log archiving software, LogEntries, we can set alerts to be sent via email/Campfire/other services when the logs contain an entry matching a certain regular expression and optionally when that same entry matches a given number of times, e.g. once, ten times, one hundred times. This allows us to inform ourselves about errors that would not be reported by our Rails based exception notification, that is errors that happen outside of the Rails application. In particular these are errors at the level of Heroku platform, such as request time-outs, failure of our Rails app to boot at all, or failures of supporting services such as Memcachier, which are provisioned through the Heroku platform.</p>
+  </li>
+  <li>
+    <p><strong>Intentional logging:</strong> At any point in your application code you may ask the Rails logger to output some information, such as the contents of a suspect local variable. In the development environment logging variables is a poor mans debugger. I don’t like to make general statements but Ill make an exception here: its <em>always</em> faster to throw in a binding.pry and poke around in the debugger. The intentional logging technique is used in production for bugs that are difficult or impossible to reproduce in your development environment, for example bugs involving third party services without reliable sandbox environments (hi Paypal!). The keys to intentional logging are a) label the variables (i.e. don’t output the contents of the variable paypal_response_code, which might be “420”, because alone and without context you will need to refer back to the code to understand what the hell a single line in your log with the number 420 means. Instead output “The Paypal response code is 420. They must live in Colorado. “) b) choose relatively unique keywords within your log statements so that you can search/grep weeks’ worth of logs and only return the results you want (you’ll probably get this benefit “for free” if you label your variables as per my last point); c) be careful that your log entry doesn’t itself cause an error (example: <code>Rails.logger.info {puts order.products.first.country }</code> could blow up and cause the entire webpage to fail when there are no products, an error that would not exist without the added logging. Insulate against this class of error by adding protection against there being a nil, for example by inserting the try method into your chain <code>Rails.logger.info {puts order.products.first.try(:country)})</code>; d) log out all variables that could potentially be useful in debugging. When you’re using intentional logging you’ll often feel that there’s a 90% chance that one specific variable is relevant, and only a 10% chance that another one is relevant. I’ve repeatedly found it useful to liberally add logging statements for all variables that might potentially be useful, my reasoning being that it’s cheap to add an extra logging statement, and slow and frustrating to realise after the fact that you have not logged enough information and need to modify the code, redeploy, wait for the bug to appear again, then interpret the log once more; e) never delete a logging statement, only comment it out. Why? Because bugs are like acne in that they keep reappearing, and you’ll be glad of your reusable commented out logging statements when it rears its ugly head again.</p>
+  </li>
+</ul>
+
+<script>(function() {
+var hn_link = "http://news.ycombinator.com/submitlink?u=";
+if (window.hn_url) { 
+	hn_link += encodeURIComponent(hn_url); 
+}
+else { 
+	hn_link += encodeURIComponent(document.location);
+}
+if (window.hn_title) { 
+	hn_link += "&t=" + encodeURIComponent(hn_title); 
+}
+else { 
+	hn_link += "&t=" + encodeURIComponent(document.title);
+}
+
+var write_string = "<div id='hacker-news'><img src='http://ycombinator.com/images/y18.gif' alt='Hacker News' width=18 height=18 style='border:1px #ffffff solid; margin-left:0;'/><a href="+hn_link+" alink='#000000'; vlink='#828282' style='text-decoration:none' target='_blank'>Discuss this post on Hacker News</a></div>";
+document.write(write_string);
+})()
+
+</script>
+<h2 class="section-title"> One Last Thing </h2>
+<p>
+  I spend hours researching and writing these posts. If you'd
+  like to return the good will and say thanks please <a
+    href="#masthead">Tweet this page</a> or, better again, mention it on your blog.
+</p> 
+<p>
+  <small>Written by Jack Kinsella, 06 Jun 2014</small>
+</p>
+<h2 class="section-title"> Related Posts </h2>
+<ul class="posts">
+    
+    <li><a href="/2014/06/06/debugginging-rails-with-pry-console.html">Debugging Rails with Pry Console</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-pry-debugger.html">Debugging Rails with Pry Debugger</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-operating-system-tools.html">Debugging Rails with Operating System Tools</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-online-or-third-party-tools.html">Debugging Rails with Online or Third Party Tools</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-memcached.html">Debugging Rails with Memcached</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-git.html">Debugging Rails with Git</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-custom-instrumentation.html">Debugging Rails with Custom Instrumentation</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-chrome-devtools.html">Debugging Rails With Chrome DevTools</a></li>
+    
+    <li><a href="/2014/06/06/debugging-rails-with-built-in-tools.html">Debugging Rails With Built-in Tools</a></li>
+    
+    <li><a href="/2014/06/06/a-comprehensive-guide-to-debugging-rails.html">A Comprehensive Guide To Debugging Rails</a></li>
+    
+  </ul>
+
+          </div>
+        </div>
+
+        </article>
+
+        <footer id="colophon">
+        <div class="wrapper">
+          <p><i> Jack Kinsella calls himself an analyst because it's suitably nondescript and affords him the possibility of being inconsistent in interests. He owns <a href="http://www.oxbridgenotes.co.uk">Oxbridge Notes</a>, co-founded <a href="http://www.bolivianexpress.org">Bolivian Express</a>, and co-organises the elite private marketing group, Growth Hacker Berlin. Follow me if you enjoyed my writing.</i></p>
+
+          <section class="links about_and_follow">
+          <ul>
+            <li>
+              <a href="http://twitter.com/jackkinsella">
+                Twitter @jackkinsella
+              </a>
+            </li>
+            <li id="followBlog">
+              <a href="http://feeds.feedburner.com/jackkinsella">
+                RSS Feed
+              </a>
+            </li>
+            <li id="email">
+              <script type="text/javascript" language="javascript">
+                <!--
+                ML="sonS0.:>rei hC2\"cgf@u?abljkt/%m=<";
+                MI="PF;<89BO?NF:HK16IF@J5J:209HHFCANF:H5@1NE0DGI9@KO=120DHK:2AM>43:K9?7IF@J5J:209HHFCANF:H5@1NPLF7";
+                OT="";
+                for(j=0;j<MI.length;j++){
+                  OT+=ML.charAt(MI.charCodeAt(j)-48);
+                }document.write(OT);
+// --></script>
+            </a>
+          </li>
+        </ul>
+      </section>
+        <section id="copyright">
+        <p>
+          Coded and created by Jack Kinsella.
+      </p>
+      </section>
+    </div>
+    </footer>
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-11447599-9']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+       })();
+
+</script>
+
+       </body>
+     </html>
