@@ -4,7 +4,7 @@
  <title>Jack Kinsella</title>
  <link href="http://www.jackinsella.ie/atom.xml" rel="self"/>
  <link href="http://www.jackkinsella.ie/"/>
- <updated>2014-06-08T19:09:14+02:00</updated>
+ <updated>2014-06-08T19:19:10+02:00</updated>
  <id>http://www.jackkinsella.ie/</id>
  <author>
    <name>Jack Kinsella</name>
@@ -218,7 +218,7 @@ end
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;If you Google that full string you will get no results that help explain your exception Google will search Stack Overflow, mailing list archives and other websites for an error containing the user string “jkinsella”, the ruby version “ruby-1-9-3.p392” and active support version “4.2.1”an exceedingly unlikely combination. A better Google query would be “active_support dependencies.rb:247:in `require’”, since that will return results for backtraces by people with any username, any Ruby version, and (nearly) any version of ActiveSupporta much broader search thats more likely to deliver results.&lt;/p&gt;
+&lt;p&gt;If you Google that full string you will get no results that help explain your exception Google will search Stack Overflow, mailing list archives and other websites for an error containing the user string “jkinsella”, the ruby version “ruby-1-9-3.p392” and active support version “4.2.1”an exceedingly unlikely combination. A better Google query would be “active_support dependencies.rb:247:in `require’”, since that will return results for backtraces by people with any username, any Ruby version, and (nearly) any version of ActiveSupport, a much broader search that’s more likely to deliver results.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
@@ -385,10 +385,10 @@ Rendered /Users/jkinsella/.rvm/gems/ruby-1.9.3-p545@oxnotes/bundler/gems/spree-e
     &lt;p&gt;&lt;strong&gt;Logging in as a particular user:&lt;/strong&gt; Sometimes you have to walk a mile in a user’s shoes to understand why your software broke. To do this &lt;a href=&quot;https://devcenter.heroku.com/articles/heroku-postgres-import-export&quot;&gt;download the production database freshly to your development machine&lt;/a&gt; (so as to take into account recent changes that might influence the bug), find the user experiencing bugs in the Rails console &lt;code&gt;user = User.find_by_email &quot;something@hotmail.com&quot;&lt;/code&gt;, then reset that user’s password to something generic (we have a custom method to do just that: user.default). This method will print out a new password for that user, and you can use this to log in as that user in development mode. This new password does not affect the user’s production account, which retains the password as the user originally set it. (And yes, logging in as a user is acceptable in our business since this debugging technique is outlined within our website’s privacy policy and the most sensitive information you’d see by doing this is a customers purchase history, information that was already readily available in our standard Admin area.)&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Undeleted Failed Delayed Jobs:&lt;/strong&gt; We use the “delayed_job” gem to queue up background tasks, but by default this does not alert you whenever a background task fails. Thats a lot of important missing information therefore thanks to a custom modification we made to DelayedJob (&lt;a href=&quot;https://gist.github.com/jackkinsella/842395841a0fff204e35&quot;&gt;gist&lt;/a&gt; here), an email is sent every time an exception is raised during a background job with heaps of useful debugging information.&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;Failed Delayed Jobs:&lt;/strong&gt; We use the “delayed_job” gem to queue up background tasks, but by default this does not alert you whenever a background task fails. Thats a lot of important missing information therefore thanks to a custom modification we made to DelayedJob (&lt;a href=&quot;https://gist.github.com/jackkinsella/842395841a0fff204e35&quot;&gt;gist&lt;/a&gt; here), an email is sent every time an exception is raised during a background job with heaps of useful debugging information.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Undeleted Failed Delayed Jobs:&lt;/strong&gt; The exception notification system for DelayedJobs outline above has been known to fail in the past, and in such cases you want to refer to the DelayedJob database items in production for further debugging. Check for the presence of jobs with errors in production by typing our custom DelayedJob &lt;code&gt;scope Delayed::Job.with_errors&lt;/code&gt;. If any results appear then view the error backtrace for an individual failed job with &lt;code&gt;puts failed_job.last_error&lt;/code&gt;. Read the calling function that caused the error, alongside its inputs with &lt;code&gt;puts failed_job.handler&lt;/code&gt; (we use puts in both cases because it displays the yaml output in a readable manner). Example output (Ill explain below)&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;Undeleted Failed Delayed Jobs:&lt;/strong&gt; The exception notification system for DelayedJobs outlined above has been known to fail in the past, and in such cases you want to refer to the DelayedJob database items in production for further debugging. Check for the presence of jobs with errors in production by typing our custom DelayedJob &lt;code&gt;scope Delayed::Job.with_errors&lt;/code&gt;. If any results appear then view the error backtrace for an individual failed job with &lt;code&gt;puts failed_job.last_error&lt;/code&gt;. Read the calling function that caused the error, alongside its inputs with &lt;code&gt;puts failed_job.handler&lt;/code&gt; (we use puts in both cases because it displays the yaml output in a readable manner). Example output (Ill explain below)&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
