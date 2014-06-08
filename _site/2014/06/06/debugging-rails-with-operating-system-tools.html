@@ -72,7 +72,7 @@
 </div>
 <script type="text/javascript">
 jQuery(document).ready(function() {
-
+    
   jQuery('#custom-social-bookmarks-twitter').append(decodeURIComponent('%3Ca%20href%3D%22http%3A%2F%2Ftwitter.com%2Fshare%22%20class%3D%22twitter-share-button%22%20data-count%3D%22vertical%22%20data-via%3D%22jackkinsella%22%3ETweet%3C%2Fa%3E%3Cscript%20type%3D%22text%2Fjavascript%22%20src%3D%22http%3A%2F%2Fplatform.twitter.com%2Fwidgets.js%22%3E%3C%2Fscript%3E'));
 
 
@@ -129,28 +129,28 @@ jQuery(document).ready(function() {
     <p><strong>ack for real world usage examples:</strong> Sometimes legacy functions are nicely documentedbe that in your project documentation, the unit tests validating that function, or the in-code comments above the function. More often though, these functions arent documented at all and it may not be apparent how they should be used. The very fact that a legacy function has already been used elsewhere in your project leads to implicit usage documentation. For example you find the <strong>generate_product(subject, price)</strong> function and what data type price is supposed to be  a string, Integer, Float, or something else? Type <strong>$ ack generate_product</strong> and amongst the results you may find clues of prior usage, such as <strong>generate_product(subject, 12.33)</strong>, indicating that you should use a float. A variation of this technique is to refer to the values historically saved within a database column by printing out all the unique values ever saved and then inferring what format kind of format the column expects. For example <strong>Product.select(pricing_category).uniq</strong> returns all the pricing_categories saved within the database, informing you that it’s a one letter upper-case string code.</p>
   </li>
   <li>
-    <p><strong>dtruss (OS X) / strace (linux):</strong> Monitor a) which operating system level calls (syscalls) your program makes, with what arguments, and how long each call takes to execute; and b) the OS signals a process receives. <strong>Dtruss</strong> spits out a fire a great deal of data, but is nevertheless useful in situations where you can’t afford to stop the running program (e.g. in production) or when you have a hunch that the problematic program is bug-free but you're just using it wrong (e.g. your Unicorn server; init processes; anything involving configuration files that should appear in a specific location). Dtruss works programs ultimately rely on the operating system to do work such as opening files, forking new processes or printing output to screen, and these operations provide traceable clues as to the functioning or malfunctioning of your program. When using OS X you only have <strong>dtruss</strong> available to you. Begin with <code>$ sudo dtruss -p PID_OF_YOUR_RUBY_PROCESS -f</code>. The <code>f</code> option specifies that youd also like to follow child processes, usually a sensible decision in understanding the scope of your program. The <code>a</code> option asks <strong>dtruss</strong> to print all information, including elapsed time and the process in question, a welcome counterpart to the <code>f</code> option. As your Ruby process runs you’ll see a stream of operating system calls. You're probably confused about what each of these functions means—never fear. I quote the author of the Passionate Programmer, Chad Fowler on <a href="http://chadfowler.com/blog/2014/01/26/the-magic-of-strace/">his experience with learning strace</a> <em>Neither did I at some point. I learned most of this stuff by tracing broken programs and reading man pages</em>. For a full tutorial refer to Chad's excellent original piece.</p>
+    <p><strong>dtruss (OS X) / strace (linux):</strong> Monitor a) which operating system level calls (syscalls) your program makes, with what arguments, and how long each call takes to execute; and b) the OS signals a process receives. <strong>Dtruss</strong> spits out a fire a great deal of data, but is nevertheless useful in situations where you can’t afford to stop the running program (e.g. in production) or when you have a hunch that the problematic program is bug-free but youre just using it wrong (e.g. your Unicorn server; init processes; anything involving configuration files that should appear in a specific location). Dtruss works programs ultimately rely on the operating system to do work such as opening files, forking new processes or printing output to screen, and these operations provide traceable clues as to the functioningor malfunctioningof your program. When using OS X you only have <strong>dtruss</strong> available to you. Begin with <code>$ sudo dtruss -p PID_OF_YOUR_RUBY_PROCESS -f</code>. The <code>f</code> option specifies that youd also like to follow child processes, usually a sensible decision in understanding the scope of your program. The <code>a</code> option asks <strong>dtruss</strong> to print all information, including elapsed time and the process in question, a welcome counterpart to the <code>f</code> option. As your Ruby process runs you’ll see a stream of operating system calls. Youre probably confused about what each of these functions meansI quote author of the Passionate Programmer, Chad Fowler on <a href="http://chadfowler.com/blog/2014/01/26/the-magic-of-strace/">his experience with learning strace</a> <em>Neither did I at some point. I learned most of this stuff by tracing broken programs and reading man pages</em>. For a full tutorial refer to Chads excellent piece.</p>
   </li>
   <li>
     <p><strong>man search:</strong> You probably know that you can type <code>$ man ANY_COMMAND_LINE_OR_SYSTEM_COMMAND</code> to display its documentation in the terminal. A complementary time-saver that I only learned about much later was that you quickly search for keywords within man by typing forward slash followed by your keyword, e.g. /directory. Move forwards and backwards through the highlighted matching results with N or n.</p>
   </li>
   <li>
-    <p><strong>top:</strong> Displays constantly updated, sorted information about resource usage of each process. For example <code>$ top -o cpu</code>, shows the currently running processes in order of their CPU usage. (the o option stands for order). Top is useful to identify whether a stalled processes is statically stalled (e.g. waiting for a resource to be released/sleeping) since this would have close to 0% CPU usage, or is dynamically stalled (e.g. infinite loop) since this often has near total CPU usage.</p>
+    <p><strong>top:</strong> Displays constantly updated, sorted information about resource usage of each process. For example <code>$ top -o cpu</code>, shows the currently running processes in order of their CPU usage. (the o option stands for order). Top is useful to identify whether a stalled processes is statically stalled (e.g. waiting for a resource to be released/sleeping) since this would have close to 0% CPU usage, or is dynamically stall (e.g. infinite loop) since this often has heavy CPU usage.</p>
   </li>
 </ul>
 
 <script>(function() {
 var hn_link = "http://news.ycombinator.com/submitlink?u=";
-if (window.hn_url) {
-	hn_link += encodeURIComponent(hn_url);
+if (window.hn_url) { 
+	hn_link += encodeURIComponent(hn_url); 
 }
-else {
+else { 
 	hn_link += encodeURIComponent(document.location);
 }
-if (window.hn_title) {
-	hn_link += "&t=" + encodeURIComponent(hn_title);
+if (window.hn_title) { 
+	hn_link += "&t=" + encodeURIComponent(hn_title); 
 }
-else {
+else { 
 	hn_link += "&t=" + encodeURIComponent(document.title);
 }
 
@@ -164,33 +164,33 @@ document.write(write_string);
   I spend hours researching and writing these posts. If you'd
   like to return the good will and say thanks please <a
     href="#masthead">Tweet this page</a> or, better again, mention it on your blog.
-</p>
+</p> 
 <p>
   <small>Written by Jack Kinsella, 06 Jun 2014</small>
 </p>
 <h2 class="section-title"> Related Posts </h2>
 <ul class="posts">
-
+    
     <li><a href="/2014/06/06/debugginging-rails-with-pry-console.html">Debugging Rails with Pry Console</a></li>
-
+    
     <li><a href="/2014/06/06/debugging-rails-with-pry-debugger.html">Debugging Rails with Pry Debugger</a></li>
-
+    
     <li><a href="/2014/06/06/debugging-rails-with-online-or-third-party-tools.html">Debugging Rails with Online or Third Party Tools</a></li>
-
+    
     <li><a href="/2014/06/06/debugging-rails-with-memcached.html">Debugging Rails with Memcached</a></li>
-
+    
     <li><a href="/2014/06/06/debugging-rails-with-logs.html">Debugging Rails with Logs</a></li>
-
+    
     <li><a href="/2014/06/06/debugging-rails-with-git.html">Debugging Rails with Git</a></li>
-
+    
     <li><a href="/2014/06/06/debugging-rails-with-custom-instrumentation.html">Debugging Rails with Custom Instrumentation</a></li>
-
+    
     <li><a href="/2014/06/06/debugging-rails-with-chrome-devtools.html">Debugging Rails With Chrome DevTools</a></li>
-
+    
     <li><a href="/2014/06/06/debugging-rails-with-built-in-tools.html">Debugging Rails With Built-in Tools</a></li>
-
+    
     <li><a href="/2014/06/06/a-comprehensive-guide-to-debugging-rails.html">A Comprehensive Guide To Debugging Rails</a></li>
-
+    
   </ul>
 
           </div>
