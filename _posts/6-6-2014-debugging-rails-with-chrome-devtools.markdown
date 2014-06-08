@@ -15,15 +15,25 @@ Part 11 in the series [A Comprehensive Guide To Debugging Rails](/2014/06/06/a-c
 * **Chrome DevTools Console:**. Activate with (Command+Alt+J) and you have a REPL console at your disposal for executing Javascript code and running experiments on page. One gotcha: when debugging your Javascript be aware that due to minification and uglification by Rails, you might only be able to see the Javascript code in human-understandable format within development mode.
 
 * **Chrome DevTools Javascript Debugger:** Refer to [Google's excellent documentation on DevTools Debugger](https://developer.chrome.com/devtools/docs/javascript-debugging) for details. Here's the most important parts with regards to debugging Rails:
+
   * set debugging breakpoints by inserting the keyword "debugger" into your Javascript source code or entering it visually within DevTools (Sources > Select JS File > Click on some line number so that a blue tag appears). The JS debugger functions much like binding.pry above.
+
   * set Javascript conditions for the breakpoint to trigger (Right click "edit" when hovering over a breakpoint)
+
   * view the call stack (i.e. backtrace) and list variables in action at that point (Sources > Call Stack)
+
   * bring up the Javascript console to look around or experiment within the function where the breakpoint was called (keyword ESC)
+
   * hover over variables within the breakpointed code in the left-hand panel to reveal their currently assigned values
+
   * set breakpoints on Javascript events, such as whenever you click or keypress (Sources > Event Listener Breakpoints)
+
   * set breakpoints on XHR (AJAX) requests to a specified URL (example usages: when a download for the file /chapter_1.txt starts; when a form POSTs to one of your Rails routes) (Sources > XHR Breakpoints > +)
+
   * pretty print, such that minified Javascript that otherwise has its entire contents written onto one massively overloaded line of code, is spread out onto many separate lines, making it easier to read and visually insert debugging breakpoints. (Source Code File > Curly Braces)
+
   * Jump to a particular function by popping up an autocomplete search containing all the function names(Command + Shift + 0). Much like using Ctags in your text editor.
+
   * set breakpoints on DOM manipulations of a specific HTML element (e.g. when a paragraph is added/removed from a div; when an elements "hidden" attribute is modified). (Elements Tab > Select Element > "Break On").
 
-* **Chrome DevTools Network tab:** Sometimes you want to inspect what resources (images, documents, APIs, javascripts, css files) were requested by your application, and whether these successfully downloaded. Chrome DevTool's Network tab provides a listing of each resource requested alongside the HTTP method used and the HTTP status returned (e.g. 200, 404), For greater detail click on one of these resources and you'll be able to view HTTP headers (including caching information, accept headers and host information), or preview the contents of a resource. If you see no resources within the Network tab despite expecting otherwise, then you need refresh the page, this time with the web inspector open before requesting/refreshing the page.
+* **Chrome DevTools Network tab:** Sometimes you want to inspect what resources (images, documents, APIs, Javascripts, css files) were requested by your application, and whether these successfully downloaded. Chrome DevTool's Network tab provides a listing of each resource requested alongside the HTTP method used and the HTTP status returned (e.g. 200, 404), For greater detail click on one of these resources and you'll be able to view HTTP headers (including caching information, accept headers and host information), or preview the contents of a resource. If you see no resources within the Network tab despite expecting otherwise, then you need refresh the page, this time with the web inspector open before requesting/refreshing the page.

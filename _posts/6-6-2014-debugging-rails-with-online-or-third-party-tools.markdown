@@ -5,6 +5,7 @@ title: Debugging Rails with Online or Third Party Tools
 ---
 
 Part 7 in the series [A Comprehensive Guide To Debugging Rails](/2014/06/06/a-comprehensive-guide-to-debugging-rails.html)
+
 ## Online and Third Party Mirrors ##
 
 * **Google Webmaster Tools:** Google Webmaster Tools helps you evaluate your websites health in Google search engine results by providing reports about how many URLs were indexed by Google, what search engine queries your website ranks for, and how many URLs were contained in your sitemap. Webmaster tools also lists web-crawler errors, thereby indicating pages that 404 or have incorrect permissions. Webmaster Tools helps you avoid issues catastrophic to your SEO operation, therefore you don't want to miss a single issue they raise. Keep in the loop by configuring their alerts setting to email you "All issues".
