@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
- 
+
  <title>Jack Kinsella</title>
  <link href="http://www.jackinsella.ie/atom.xml" rel="self"/>
  <link href="http://www.jackkinsella.ie/"/>
- <updated>2014-06-08T21:42:10+02:00</updated>
+ <updated>2014-06-08T23:05:57+02:00</updated>
  <id>http://www.jackkinsella.ie/</id>
  <author>
    <name>Jack Kinsella</name>
  </author>
- 
+
  <entry>
    <title>Debugging Rails with Pry Console</title>
    <link href="http://www.jackkinsella.ie/2014/06/06/debugginging-rails-with-pry-console.html"/>
@@ -59,7 +59,7 @@
 &lt;/ul&gt;
 </content>
  </entry>
- 
+
  <entry>
    <title>Debugging Rails with Pry Debugger</title>
    <link href="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-pry-debugger.html"/>
@@ -134,7 +134,7 @@ end
 
 </content>
  </entry>
- 
+
  <entry>
    <title>Debugging Rails with Operating System Tools</title>
    <link href="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-operating-system-tools.html"/>
@@ -166,7 +166,7 @@ end
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;tcpdump:&lt;/strong&gt; The lowest common denominator across unix-like systems for dumping traffic on a network. Say you want to monitor all packet traffic originating from the domain oxbridgenotes.com and interacting with some daemon program or opaque command line script. In this situation you cant simply open up Google Chrome DevTools Network Tab and monitor the request in this way. Instead you must rely on command line tools, and here the command in question is: &lt;code&gt;$ sudo tcpdump -s 0 -A host &quot;www.oxbridgenotes.co.uk&quot;&lt;/code&gt;. The &lt;code&gt;s 0&lt;/code&gt; option specifies to remove the limits on packet size normally present. The A options says print out ASCII renditions of the packets. Tcpdumps output shows the source IP address and the destination IP address of each packet alongside what was contained within, enabling you to ensure that correct information was sent from the right places at this level. On other occasions, such as when debugging web-sockets, you might want to monitor traffic on a particular port: &lt;strong&gt;&lt;code&gt;$ sudo tcpdump port 8000&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;tcpdump:&lt;/strong&gt; The lowest common denominator across unix-like systems for dumping traffic on a network. Say you want to monitor all packet traffic originating from the domain oxbridgenotes.com and interacting with some daemon program or opaque command line script. In this situation you can’t simply open up Google Chrome DevTools Network Tab and monitor the request in this way. Instead you must rely on command line tools, and here the command in question is: &lt;code&gt;$ sudo tcpdump -s 0 -A host &quot;www.oxbridgenotes.co.uk&quot;&lt;/code&gt;. The &lt;code&gt;s 0&lt;/code&gt; option specifies to remove the limits on packet size normally present. The A options says print out ASCII renditions of the packets. Tcpdumps output shows the source IP address and the destination IP address of each packet alongside what was contained within, enabling you to ensure that correct information was sent from the right places at this level. On other occasions, such as when debugging web-sockets, you might want to monitor traffic on a particular port: &lt;strong&gt;&lt;code&gt;$ sudo tcpdump port 8000&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;&lt;strong&gt;Environmental variables:&lt;/strong&gt; A number of variables set outside the Rails software, i.e. at the OS level, can influence either our code or the third party libraries we use. You’ll know that these variables are in use whenever the codebase contains a reference to the ENV global variable, for example ENV[“LOG_LEVEL”] is Ruby’s way of accessing the environmental variable LOG_LEVEL. View all the environmental variables on production using &lt;code&gt;$ h config&lt;/code&gt;. In development we dump the Heroku environmental variables into the mirrored &lt;code&gt;.env&lt;/code&gt; file with &lt;code&gt;$ heroku config &amp;gt; .env&lt;/code&gt;, and then these variables become available to our software thanks to the Foreman gem. System level environmental variables may also be set, most typically by user modifications to the &lt;code&gt;~/.bashrc&lt;/code&gt; file. You can view the contents of these environmental variables with &lt;strong&gt;echo&lt;/strong&gt;. For example view the contents of the LOG_LEVEL environmental variable with &lt;code&gt;$ echo $LOG_LEVEL&lt;/code&gt;(notice the dollar sign necessarily appended to the variable name). To list all variables and their values type: &lt;code&gt;$ printenv&lt;/code&gt;. Access the same listing within your Rails console by typing ENV.&lt;/p&gt;
@@ -184,10 +184,10 @@ end
     &lt;p&gt;&lt;strong&gt;history grepping:&lt;/strong&gt; Search previous command line commands. For example I can search all curl commands with &lt;code&gt;$ history | grep curl&lt;/code&gt;, and use this to refresh my memory about a particular set of flags I used to solve a problem in the past. I set my history to hold 20000 lines with &lt;code&gt;export HISTSIZE=20000&lt;/code&gt; added to my ~/.bashrc, meaning that I effectively keep my history of commands as a reference for years.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;ack for real world usage examples:&lt;/strong&gt; Sometimes legacy functions are nicely documentedbe that in your project documentation, the unit tests validating that function, or the in-code comments above the function. More often though, these functions arent documented at all and it may not be apparent how they should be used. The very fact that a legacy function has already been used elsewhere in your project leads to implicit usage documentation. For example you find the &lt;strong&gt;generate_product(subject, price)&lt;/strong&gt; function and what data type price is supposed to be  a string, Integer, Float, or something else? Type &lt;strong&gt;$ ack generate_product&lt;/strong&gt; and amongst the results you may find clues of prior usage, such as &lt;strong&gt;generate_product(subject, 12.33)&lt;/strong&gt;, indicating that you should use a float. A variation of this technique is to refer to the values historically saved within a database column by printing out all the unique values ever saved and then inferring what format kind of format the column expects. For example &lt;strong&gt;Product.select(pricing_category).uniq&lt;/strong&gt; returns all the pricing_categories saved within the database, informing you that its a one letter upper-case string code.&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;ack for real world usage examples:&lt;/strong&gt; Sometimes legacy functions are nicely documentedbe that in your project documentation, the unit tests validating that function, or the in-code comments above the function. More often though, these functions arent documented at all and it may not be apparent how they should be used. The very fact that a legacy function has already been used elsewhere in your project leads to implicit usage documentation. For example you find the &lt;strong&gt;generate_product(subject, price)&lt;/strong&gt; function and what data type price is supposed to be  a string, Integer, Float, or something else? Type &lt;strong&gt;$ ack generate_product&lt;/strong&gt; and amongst the results you may find clues of prior usage, such as &lt;strong&gt;generate_product(subject, 12.33)&lt;/strong&gt;, indicating that you should use a float. A variation of this technique is to refer to the values historically saved within a database column by printing out all the unique values ever saved and then inferring what format kind of format the column expects. For example &lt;strong&gt;Product.select(pricing_category).uniq&lt;/strong&gt; returns all the pricing_categories saved within the database, informing you that it’s a one letter upper-case string code.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;dtruss (OS X) / strace (linux):&lt;/strong&gt; Monitor a) which operating system level calls (syscalls) your program makes, with what arguments, and how long each call takes to execute; and b) the OS signals a process receives. &lt;strong&gt;Dtruss&lt;/strong&gt; spits out a fire a great deal of data, but is nevertheless useful in situations where you cant afford to stop the running program (e.g. in production) or when you have a hunch that the problematic program is bug-free but youre just using it wrong (e.g. your Unicorn server; init processes; anything involving configuration files that should appear in a specific location). Dtruss works programs ultimately rely on the operating system to do work such as opening files, forking new processes or printing output to screen, and these operations provide traceable clues as to the functioningor malfunctioningof your program. When using OS X you only have &lt;strong&gt;dtruss&lt;/strong&gt; available to you. Begin with &lt;code&gt;$ sudo dtruss -p PID_OF_YOUR_RUBY_PROCESS -f&lt;/code&gt;. The &lt;code&gt;f&lt;/code&gt; option specifies that youd also like to follow child processes, usually a sensible decision in understanding the scope of your program. The &lt;code&gt;a&lt;/code&gt; option asks &lt;strong&gt;dtruss&lt;/strong&gt; to print all information, including elapsed time and the process in question, a welcome counterpart to the &lt;code&gt;f&lt;/code&gt; option. As your Ruby process runs you’ll see a stream of operating system calls. Youre probably confused about what each of these functions meansI quote author of the Passionate Programmer, Chad Fowler on &lt;a href=&quot;http://chadfowler.com/blog/2014/01/26/the-magic-of-strace/&quot;&gt;his experience with learning strace&lt;/a&gt; &lt;em&gt;Neither did I at some point. I learned most of this stuff by tracing broken programs and reading man pages&lt;/em&gt;. For a full tutorial refer to Chads excellent piece.&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;dtruss (OS X) / strace (linux):&lt;/strong&gt; Monitor a) which operating system level calls (syscalls) your program makes, with what arguments, and how long each call takes to execute; and b) the OS signals a process receives. &lt;strong&gt;Dtruss&lt;/strong&gt; spits out a fire a great deal of data, but is nevertheless useful in situations where you can’t afford to stop the running program (e.g. in production) or when you have a hunch that the problematic program is bug-free but youre just using it wrong (e.g. your Unicorn server; init processes; anything involving configuration files that should appear in a specific location). Dtruss works programs ultimately rely on the operating system to do work such as opening files, forking new processes or printing output to screen, and these operations provide traceable clues as to the functioningor malfunctioningof your program. When using OS X you only have &lt;strong&gt;dtruss&lt;/strong&gt; available to you. Begin with &lt;code&gt;$ sudo dtruss -p PID_OF_YOUR_RUBY_PROCESS -f&lt;/code&gt;. The &lt;code&gt;f&lt;/code&gt; option specifies that youd also like to follow child processes, usually a sensible decision in understanding the scope of your program. The &lt;code&gt;a&lt;/code&gt; option asks &lt;strong&gt;dtruss&lt;/strong&gt; to print all information, including elapsed time and the process in question, a welcome counterpart to the &lt;code&gt;f&lt;/code&gt; option. As your Ruby process runs you’ll see a stream of operating system calls. Youre probably confused about what each of these functions meansI quote author of the Passionate Programmer, Chad Fowler on &lt;a href=&quot;http://chadfowler.com/blog/2014/01/26/the-magic-of-strace/&quot;&gt;his experience with learning strace&lt;/a&gt; &lt;em&gt;Neither did I at some point. I learned most of this stuff by tracing broken programs and reading man pages&lt;/em&gt;. For a full tutorial refer to Chads excellent piece.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;&lt;strong&gt;man search:&lt;/strong&gt; You probably know that you can type &lt;code&gt;$ man ANY_COMMAND_LINE_OR_SYSTEM_COMMAND&lt;/code&gt; to display its documentation in the terminal. A complementary time-saver that I only learned about much later was that you quickly search for keywords within man by typing forward slash followed by your keyword, e.g. /directory. Move forwards and backwards through the highlighted matching results with N or n.&lt;/p&gt;
@@ -198,7 +198,7 @@ end
 &lt;/ul&gt;
 </content>
  </entry>
- 
+
  <entry>
    <title>Debugging Rails with Online or Third Party Tools</title>
    <link href="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-online-or-third-party-tools.html"/>
@@ -232,7 +232,7 @@ end
 &lt;/ul&gt;
 </content>
  </entry>
- 
+
  <entry>
    <title>Debugging Rails with Memcached</title>
    <link href="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-memcached.html"/>
@@ -252,7 +252,7 @@ end
 &lt;/ul&gt;
 </content>
  </entry>
- 
+
  <entry>
    <title>Debugging Rails with Logs</title>
    <link href="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-logs.html"/>
@@ -322,7 +322,7 @@ Rendered /Users/jkinsella/.rvm/gems/ruby-1.9.3-p545@oxnotes/bundler/gems/spree-e
 &lt;/ul&gt;
 </content>
  </entry>
- 
+
  <entry>
    <title>Debugging Rails with Git</title>
    <link href="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-git.html"/>
@@ -354,7 +354,7 @@ Rendered /Users/jkinsella/.rvm/gems/ruby-1.9.3-p545@oxnotes/bundler/gems/spree-e
 &lt;/ul&gt;
 </content>
  </entry>
- 
+
  <entry>
    <title>Debugging Rails with Custom Instrumentation</title>
    <link href="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-custom-instrumentation.html"/>
@@ -406,7 +406,7 @@ Rendered /Users/jkinsella/.rvm/gems/ruby-1.9.3-p545@oxnotes/bundler/gems/spree-e
 &lt;/ul&gt;
 </content>
  </entry>
- 
+
  <entry>
    <title>Debugging Rails With Chrome DevTools</title>
    <link href="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-chrome-devtools.html"/>
@@ -468,7 +468,7 @@ Rendered /Users/jkinsella/.rvm/gems/ruby-1.9.3-p545@oxnotes/bundler/gems/spree-e
 &lt;/ul&gt;
 </content>
  </entry>
- 
+
  <entry>
    <title>Debugging Rails With Built-in Tools</title>
    <link href="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-built-in-tools.html"/>
@@ -503,7 +503,7 @@ Rendered /Users/jkinsella/.rvm/gems/ruby-1.9.3-p545@oxnotes/bundler/gems/spree-e
 &lt;/ul&gt;
 </content>
  </entry>
- 
+
  <entry>
    <title>A Comprehensive Guide To Debugging Rails</title>
    <link href="http://www.jackkinsella.ie/2014/06/06/a-comprehensive-guide-to-debugging-rails.html"/>
@@ -535,7 +535,7 @@ Berlin&lt;/a&gt; for providing me with brilliant
 programming mentors and teachers.&lt;/p&gt;
 </content>
  </entry>
- 
+
  <entry>
    <title>On Passive Income</title>
    <link href="http://www.jackkinsella.ie/2014/04/24/on-passive-income.html"/>
@@ -1036,7 +1036,7 @@ McKenzie&lt;/a&gt;.&lt;/p&gt;
 
 </content>
  </entry>
- 
+
  <entry>
    <title>Automating Popularity</title>
    <link href="http://www.jackkinsella.ie/2011/12/14/automating-popularity.html"/>
@@ -1051,7 +1051,7 @@ McKenzie&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Thanks to &lt;a href=&quot;https://twitter.com/#!/meetforeal&quot;&gt;Ellen Dudley&lt;/a&gt; and &lt;a href=&quot;https://twitter.com/#!/amonter5&quot;&gt;Adrian Avendano&lt;/a&gt;, two awesome people changing the world for the better, for organising Ignite the West.&lt;/p&gt;
 &lt;p&gt;PS If you have a research project or app idea in this area, &lt;a href=&quot;/rails-developer-london.html&quot;&gt;I can make it happen&lt;/a&gt;&lt;/p&gt;</content>
  </entry>
- 
+
  <entry>
    <title>Janki Method</title>
    <link href="http://www.jackkinsella.ie/2011/12/05/janki-method.html"/>
@@ -1229,7 +1229,7 @@ McKenzie&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;My Jankiest Face&lt;/p&gt;&lt;/p&gt;
 &lt;/div&gt;</content>
  </entry>
- 
+
  <entry>
    <title>Why Bother With Cucumber Testing?</title>
    <link href="http://www.jackkinsella.ie/2011/09/26/why-bother-with-cucumber-testing.html"/>
@@ -1318,7 +1318,7 @@ McKenzie&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Cucumber has its uses, principally as a high level analysis tool on large, polyglot projects. That said, few programmers work in this kind of position, and acceptance tests beyond a list of the method names of regular integration tests seems wasteful. Cucumber, as used by the majority of Rails programmers, is no more than a clumsy wrapper over basic integration tests. The differences are not just cosmetic: Cucumber&amp;#8217;s syntax is costly, both to the programmer and to the client, whose time and money are wasted. Furthermore, the use of Cucumber in open source software intended for technical users and its use in solopreneur efforts is downright ridiculous. Nevertheless, programmers continue to use Cucumber inappropriately.&lt;/p&gt;
 &lt;p&gt;Why not admit to yourself that you don&amp;#8217;t do acceptance testing and that you do not need it in your projects? Swap Cucumber for pure integration tests using Capybara, and you&amp;#8217;ll be surprised by how much more productive you can be.&lt;/p&gt;</content>
  </entry>
- 
+
  <entry>
    <title>Textmate to VIM</title>
    <link href="http://www.jackkinsella.ie/2011/09/05/textmate-to-vim.html"/>
@@ -2102,5 +2102,5 @@ A to enter &lt;span class=&quot;caps&quot;&gt;EDIT&lt;/span&gt; mode at the end&
 	&lt;li&gt;&lt;a href=&quot;http://peepcode.com/products/smash-into-vim-i&quot; title=&quot;Commercial&quot;&gt;PeepCode&amp;#8217;s Video Series&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content>
  </entry>
- 
+
 </feed>
