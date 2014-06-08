@@ -4,7 +4,7 @@ author: Jack Kinsella
 title: Debugging Rails with Pry Console
 ---
 
-Part 2 in the series [A Comprehensive Guide To Debugging Rails](/2014/06/06/a-comprehensive-guide-to-debugging-rails.html)
+Part 3 in the series [A Comprehensive Guide To Debugging Rails](/2014/06/06/a-comprehensive-guide-to-debugging-rails.html)
 
 ## Pry Console ##
 

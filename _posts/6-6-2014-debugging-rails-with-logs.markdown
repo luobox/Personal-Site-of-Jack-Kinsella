@@ -4,7 +4,7 @@ author: Jack Kinsella
 title: Debugging Rails with Logs
 ---
 
-Part 7 in the series [A Comprehensive Guide To Debugging Rails](/2014/06/06/a-comprehensive-guide-to-debugging-rails.html)
+Part 8 in the series [A Comprehensive Guide To Debugging Rails](/2014/06/06/a-comprehensive-guide-to-debugging-rails.html)
 ## Logs, aka Historic Mirrors ##
 
 * **Interpreting the Rails server built-in logs:** Seasoned Rails pros will have interpreting logs down second nature, but I'll outline the important realisations I had as a beginner for the sake of the version of me out there who’s new to Rails development. Whenever you visit a page/fill a form/do an Ajax request in Rails, the server logs out a boatload of useful data. When should you refer to these logs? When you notice something you don't expect to happen or see an error that you don't know how to even start debugging. In these cases begin by systematically comparing what you see output in the logs with what you expect to see.  Let's look at the workflow for interpreting the Rails log:

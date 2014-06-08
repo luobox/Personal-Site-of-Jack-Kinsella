@@ -4,7 +4,7 @@ author: Jack Kinsella
 title: Debugging Rails With Chrome DevTools
 ---
 
-Part 2 in the series [A Comprehensive Guide To Debugging Rails](/2014/06/06/a-comprehensive-guide-to-debugging-rails.html)
+Part 11 in the series [A Comprehensive Guide To Debugging Rails](/2014/06/06/a-comprehensive-guide-to-debugging-rails.html)
 
 ## Chrome DevTools Mirrors ##
 

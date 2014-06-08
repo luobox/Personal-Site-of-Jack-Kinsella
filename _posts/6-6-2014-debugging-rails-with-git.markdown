@@ -4,7 +4,7 @@ author: Jack Kinsella
 title: Debugging Rails with Git
 ---
 
-Part 5 in the series [A Comprehensive Guide To Debugging Rails](/2014/06/06/a-comprehensive-guide-to-debugging-rails.html)
+Part 6 in the series [A Comprehensive Guide To Debugging Rails](/2014/06/06/a-comprehensive-guide-to-debugging-rails.html)
 ## Git Source Control Mirrors ##
 
 * **Git Search** `$ git log -Gturbolinks --pretty=oneline` returns all git commits which added or removed "turbolinks", be that a method name, code comment, or part of the documentation. Shockingly fast, this is irreplaceable for figuring out which commits caused a particular change.	

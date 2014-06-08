@@ -4,7 +4,7 @@ author: Jack Kinsella
 title: Debugging Rails with Operating System Tools
 ---
 
-Part 4 in the series [A Comprehensive Guide To Debugging Rails](/2014/06/06/a-comprehensive-guide-to-debugging-rails.html)
+Part 5 in the series [A Comprehensive Guide To Debugging Rails](/2014/06/06/a-comprehensive-guide-to-debugging-rails.html)
 ## Operating System Level Mirrors ##
 
 * **Domain name/DNS info:** View and debug DNS/IP issues using nslookup. To see the mail records (MX) for a domain type `$ nslookup -type=mx oxbridgenotes.co.uk` (note that you need to drop any possible "www" in front of the domain here). Look up the IP addresses associated with a domain using `$ nslookup www.oxbridgenotes.co.uk`. Find out how long a DNS record will be cached for with `$ nslookup -debug www.oxbridgenotes.co.uk`. See all possible nameservers with `$ nslookup -type=ns www.oxbridgenotes.co.uk`. Knowing the possible nameservers from which to query IP address and other information enables you to query the result of one particular nameserver using `$ nslookup www.oxbridgenotes.co.uk ns1.redhat.com` (where ns1.redhat.com was returned as a possible nameserver using type=ns). Why might you want to do this? To quickly verify that changes you made to your DNS records were carried out successfully without waiting a lifetime for the records to propagate across the internet.

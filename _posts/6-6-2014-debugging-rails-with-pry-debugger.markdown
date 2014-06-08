@@ -4,7 +4,7 @@ author: Jack Kinsella
 title: Debugging Rails with Pry Debugger
 ---
 
-Part 3 in the series [A Comprehensive Guide To Debugging Rails](/2014/06/06/a-comprehensive-guide-to-debugging-rails.html)
+Part 4 in the series [A Comprehensive Guide To Debugging Rails](/2014/06/06/a-comprehensive-guide-to-debugging-rails.html)
 ## Rails Debugging with Pry ##
 
 *If you don't yet know what a debugging session is, think of it as opening the Rails console at a chosen point in the execution path.*

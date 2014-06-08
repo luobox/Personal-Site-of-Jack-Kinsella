@@ -4,7 +4,7 @@ author: Jack Kinsella
 title: Debugging Rails with Custom Instrumentation
 ---
 
-Part 9 in the series [A Comprehensive Guide To Debugging Rails](/2014/06/06/a-comprehensive-guide-to-debugging-rails.html)
+Part 10 in the series [A Comprehensive Guide To Debugging Rails](/2014/06/06/a-comprehensive-guide-to-debugging-rails.html)
 ## Our Custom Mirrors ##
 
 * **debugging_id:** Within the HTML on some web-pages (product page, sample page) we place invisible code indicating the database ID of the object that page is based off, which you can use to quickly find the record within the Rails console during debugging sessions. This beats typing multi-parameter string-based searches. Deaden your doubts about the value of this techniques by comparing the short Product.find(313) with the clunky `Product.where(permalink: "medicine", year:2011, institution: "University of Oxford" )`. To see these debugging IDs open up a relevant page, enable the web-inspector, search (Command-F) for "debugging" and read the ID within the source code. Within the admin side of the website, where the placement of a visible debugging ID poses no risk of alienating customers, we often include the debugging ID within the page's viewable HTML, obviating the need for “inspect element”.
