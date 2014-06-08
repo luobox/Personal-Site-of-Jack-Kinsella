@@ -4,11 +4,560 @@
  <title>Jack Kinsella</title>
  <link href="http://www.jackinsella.ie/atom.xml" rel="self"/>
  <link href="http://www.jackkinsella.ie/"/>
- <updated>2014-05-17T11:08:50+02:00</updated>
+ <updated>2014-06-08T13:24:20+02:00</updated>
  <id>http://www.jackkinsella.ie/</id>
  <author>
    <name>Jack Kinsella</name>
  </author>
+ 
+ <entry>
+   <title>Debugginging Rails With Pry Console</title>
+   <link href="http://www.jackkinsella.ie/2014/06/06/debugginging-rails-with-pry-console.html"/>
+   <updated>2014-06-06T00:00:00+02:00</updated>
+   <id>http://tom.preston-werner.com/2014/06/06/debugginging-rails-with-pry-console</id>
+   <content type="html">&lt;p&gt;﻿—
+layout: post
+author: Jack Kinsella
+title: Debugging Rails with Pry Console
+—&lt;/p&gt;
+
+&lt;p&gt;Part 2 in the series &lt;a href=&quot;/2014/06/06/a-comprehensive-guide-to-debugging-rails.html&quot;&gt;A Comprehensive Guide To Debugging Rails&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;pry-console&quot;&gt;Pry Console&lt;/h2&gt;
+
+&lt;p&gt;Step one in programming with Rails: replace the typical Rails console (based on IRB) with the superior console provided by the “pry” gem.&lt;/p&gt;
+
+&lt;p&gt;Amongst other things Pry is fantastic for browsing the contents of your codebase. You’re probably thinking you can also browse your available functions and classes through other means such as &lt;strong&gt;ack&lt;/strong&gt; and &lt;strong&gt;Ctags&lt;/strong&gt;, but both suffer some limitations and therefore offer only an imperfect view of your codebase. &lt;strong&gt;Ack&lt;/strong&gt; typically operates at a folder level and therefore you exclude from your search code within your gems. &lt;strong&gt;Ctags&lt;/strong&gt;, configured correctly, can easily include the code from your gems, but still shows an incomplete picture owing to its inability to tag functions that were created dynamically by your Ruby code, such as with define_method. Your Pry console, however, offers a more complete reflection and registers all classes and methods already required or dynamically defined.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;The &lt;strong&gt;ls command&lt;/strong&gt; is essentially a unified wrapper to a number of Ruby’s introspection mechanisms, including (but not limited to) the following: #methods, #instance_variables, #constants, #local_variables, #instance_methods, #class_variables, and all the various permutations thereof. Run in the context of the current object with &lt;code&gt;ls&lt;/code&gt; alone, or in the context of another Ruby object by providing it as its first argument &lt;code&gt;ls product&lt;/code&gt;. &lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Filter results of ls to only see methods containing the string ‘map’:&lt;/strong&gt; &lt;code&gt;ls -G map&lt;/code&gt; or methods within the module Repo that start with the letter ‘b’ : &lt;code&gt;ls -M Repo --grep ^b&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;cd command&lt;/strong&gt;, change “self”, i.e. the object within which you sit and observe your application, to another Ruby object. Example: &lt;code&gt;cd product&lt;/code&gt;, or, since classes are also objects within Ruby, you can also run &lt;code&gt;cd Spree::Product&lt;/code&gt;. The cd command allows you to move into an object, thereby introspecting local variables easily and calling private methods without the awkwardness of accessing them from outside an object with code such as: &lt;code&gt;obj.send :method_name&lt;/code&gt; . To leave an object and return back to where you came from type &lt;code&gt;cd -&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;List &lt;strong&gt;global variables:&lt;/strong&gt; &lt;code&gt;ls -g&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;List &lt;strong&gt;constants:&lt;/strong&gt; &lt;code&gt;ls -c&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;See all &lt;strong&gt;methods within a namespace whose &lt;em&gt;names&lt;/em&gt; contains&lt;/strong&gt; the word currency: &lt;code&gt;find-method currency Spree&lt;/code&gt;. This is slower albeit more thorough than typical acking, for the reasons mentioned above.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Find all methods whose contents or &lt;em&gt;comments&lt;/em&gt; contain the word currency:&lt;/strong&gt; Similar to the previous point, except with an added flag you can use this function to peer &lt;em&gt;inside&lt;/em&gt; method definitions: &lt;code&gt;find-method -c bug Spree&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;View latest exception:&lt;/strong&gt; The latest exception is contained within a special variable &lt;code&gt;_ex_&lt;/code&gt;. See its backtrace with &lt;code&gt;wtf&lt;/code&gt;? and the code that raised the exception with &lt;code&gt;cat --ex&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;View source code of&lt;/strong&gt;&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;any method in your application or its gems:&lt;/strong&gt; &lt;code&gt;show-source Spree::Product#bought_since&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;of a class, separating each monkey patch out:&lt;/strong&gt; &lt;code&gt;show-source -a Spree::Product&lt;/code&gt;. Great for when the source code doesn’t reveal why a class/method is acting the way it is, and you suspect a monkey patch quietly overriding some functionality.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;of a Proc/lambda:&lt;/strong&gt; &lt;code&gt;show-source my_proc&lt;/code&gt; Typically in Ruby you cannot inspect the contents of a Proc, so this is damn nifty debugging feature.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Debugging Rails With Pry Debugger</title>
+   <link href="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-pry-debugger.html"/>
+   <updated>2014-06-06T00:00:00+02:00</updated>
+   <id>http://tom.preston-werner.com/2014/06/06/debugging-rails-with-pry-debugger</id>
+   <content type="html">&lt;p&gt;﻿—
+layout: post
+author: Jack Kinsella
+title: Debugging Rails with Pry Debugger
+—&lt;/p&gt;
+
+&lt;p&gt;Part 3 in the series &lt;a href=&quot;/2014/06/06/a-comprehensive-guide-to-debugging-rails.html&quot;&gt;A Comprehensive Guide To Debugging Rails&lt;/a&gt;
+## Rails Debugging with Pry ##&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;If you don’t yet know what a debugging session is, think of it as opening the Rails console at a chosen point in the execution path.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;At any point in your source code (including within the downloaded code of the gems included into your Gemfile and conveniently opened in the text editor with ·bundle open gem_name·) you can insert the line ·binding.pry·. Whenever the Ruby interpreter executes that line, it stops what it’s doing and opens a Pry REPL session at that point.  Had you been interacting with the website via the browser you’ll need to switch programs to the terminal console tab in which your Rails server was running for you to see the Pry session.&lt;/p&gt;
+
+&lt;p&gt;For the sake of clarity in explaining what is to follow I include a code-snippet here.&lt;/p&gt;
+
+&lt;p&gt;```
+def place_everyone_on_sale
+  Seller.all.each do |seller|
+    place_on_sale(seller)
+  end
+end&lt;/p&gt;
+
+&lt;p&gt;def place_on_sale(seller)
+  binding.pry          # Execution will stop here.
+  new_products = generate_products(seller)
+  new_product.advertise
+  new_products
+end&lt;/p&gt;
+
+&lt;p&gt;def generate_products(seller)
+   seller.documents.each do |document|
+     document.place_online if document.releasable
+   end
+end
+```&lt;/p&gt;
+
+&lt;p&gt;Within your Pry console you have all the features mentioned already to inspect state or introspect your program with the likes of ls product. Debugging adds “stack navigation” across stack frames. Let’s lie a little and define a stack frame as a “REPL console opened up at any of the possible points along the stack trace” Why might we want to &lt;strong&gt;navigate&lt;/strong&gt; stack frames? To further pinpoint our error by looking for more specific causes. We do this sometimes by looking for the moment when a certain variable changes value (e.g. a cookie gets set). Other times we navigate to observe the flow of execution, comparing what we expect with what we see. For example you might notice that the wrong branch of an if-else construct was executed.&lt;/p&gt;
+
+&lt;p&gt;Having executed &lt;code&gt;place_everything_on_sale&lt;/code&gt; in the code snippet above, you’ll find yourself launched into a Pry session within the &lt;code&gt;place_on_sale&lt;/code&gt; method and presented with a question of what you’d like to do next.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;The &lt;strong&gt;step command&lt;/strong&gt; continues execution by moving you &lt;em&gt;into&lt;/em&gt; the method on the next line, changing your stack frame to be inside that method. Phrased another way it goes deeper. Following our code example, running &lt;code&gt;step&lt;/code&gt; will bring you within the &lt;code&gt;generate_products&lt;/code&gt; method, at which point you’ll be asked what you’d like to do next.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;You’ve “stepped” into the &lt;code&gt;generate_products&lt;/code&gt; method with &lt;code&gt;step&lt;/code&gt; above, but now you’ve decided that you want to skip to the end of the &lt;code&gt;generated_products&lt;/code&gt; method without the debugger asking for your choice of navigation command after every line. Type &lt;code&gt;finish&lt;/code&gt; to execute until the current stack frame has run every line, closed and return a value, thereby surfacing by one level, that is moving back into the stack frame from which you had previously stepped out of. Following the example, that brings you back into the &lt;code&gt;place_on_sale&lt;/code&gt; method to the point after the interpreter has evaluated &lt;code&gt;generated_products&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The &lt;strong&gt;next command&lt;/strong&gt; runs the current line and moves to the next line or method in the &lt;em&gt;current context&lt;/em&gt;, i.e. progressing without changing stack frame. Phrased another way, continue one line down the current method without going deeper. Looking at the code example, (and pretending that we’d just retarted our program , run &lt;code&gt;place_everything_on_sale&lt;/code&gt;, and freshly opened up a Pry session), typing &lt;code&gt;next&lt;/code&gt; will completely execute the generate_products without dropping you into its internals then it will assign the return value to the new_products variable. Nexts are bigger that steps, or in Rails terms, a next has_many steps. All the code within the generate_products method (which would otherwise be many steps), has been concluded with a single use of the &lt;code&gt;next&lt;/code&gt; command. Your next navigation decision will be whether to step, next at &lt;code&gt;new_product.advertise&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Abandon the Pry session and continue the program execution as normal with &lt;strong&gt;the &lt;code&gt;continue&lt;/code&gt; command&lt;/strong&gt;. If the interpreter encounters another binding.pry statement, (which will happen when you call the &lt;code&gt;place_everyone_on_sale&lt;/code&gt; method above), it will execute the place_on_sale method once for every seller, therefore opening a Pry session on every iteration. This can be incredibly annoying, since your program will stop and you’ll have to navigate the debugger every single time, so you’ll probably want to type &lt;code&gt;exit-program&lt;/code&gt; to cancel the effect of any following binding.pry statements, without, so to speak exiting your Rails program.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;View the source code of the method you are currently within:&lt;/strong&gt;  &lt;code&gt;whereami&lt;/code&gt; Great for confirming that you are in the right class or for seeing where you have ended up after travelling through a few frames in your debugging session.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Print and navigate call stack&lt;/strong&gt; When an exception is raised in Ruby it prints a stack trace of all the methods called prior to that exception. Sometimes you want to view the stack trace thus far despite there being no exception raised. Thanks to one particular pry extension installed by adding the “&lt;code&gt;pry-stack_explorer&lt;/code&gt;  gem, you can do this with &lt;code&gt;show-stack -v&lt;/code&gt;. This command outputs the stack trace, indicating the current frame with an arrow. You can navigate to another frame with up or “up {n}”, e.g. up 3 to go upwards three frames, that is move your REPL to the context of the method that called the method (and so on…) that eventually called the method in which you are currently placed. Type &lt;code&gt;show-stack&lt;/code&gt; to see where you have moved to in the stack, and down to move frames in the opposite direction.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Exit context with a value:&lt;/strong&gt; Sometimes you want to manipulate program flow by returning a certain value from a Pry session. For a strained example, imagine you had a line of code that read &lt;code&gt;first_name = binding.pry&lt;/code&gt;. The first_name variable is assigned the output from the Pry session, and you can set this value to “jack” with &lt;code&gt;exit &quot;jack&quot;&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Sometimes you want to specify exactly when the binding.pry will crack open a pry-session. I do this with Ruby code conditionals:
+&lt;code&gt;
+   binding.pry if session[:added_to_cart] == true
+   binding.pry if @first_name == &quot;Jack&quot;
+   binding.pry if iteration &amp;gt; 4
+&lt;/code&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Debugging Rails With Operating System Tools</title>
+   <link href="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-operating-system-tools.html"/>
+   <updated>2014-06-06T00:00:00+02:00</updated>
+   <id>http://tom.preston-werner.com/2014/06/06/debugging-rails-with-operating-system-tools</id>
+   <content type="html">&lt;p&gt;﻿—
+layout: post
+author: Jack Kinsella
+title: Debugging Rails with Operating System Tools
+—&lt;/p&gt;
+
+&lt;p&gt;Part 4 in the series &lt;a href=&quot;/2014/06/06/a-comprehensive-guide-to-debugging-rails.html&quot;&gt;A Comprehensive Guide To Debugging Rails&lt;/a&gt;
+## Operating System Level Mirrors ##&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Domain name/DNS info:&lt;/strong&gt; View and debug DNS/IP issues using nslookup. To see the mail records (MX) for a domain type &lt;code&gt;$ nslookup -type=mx oxbridgenotes.co.uk&lt;/code&gt; (note that you need to drop any possible “www” in front of the domain here). Look up the IP addresses associated with a domain using &lt;code&gt;$ nslookup www.oxbridgenotes.co.uk&lt;/code&gt;. Find out how long a DNS record will be cached for with &lt;code&gt;$ nslookup -debug www.oxbridgenotes.co.uk&lt;/code&gt;. See all possible nameservers with &lt;code&gt;$ nslookup -type=ns www.oxbridgenotes.co.uk&lt;/code&gt;. Knowing the possible nameservers from which to query IP address and other information enables you to query the result of one particular nameserver using &lt;code&gt;$ nslookup www.oxbridgenotes.co.uk ns1.redhat.com&lt;/code&gt; (where ns1.redhat.com was returned as a possible nameserver using type=ns). Why might you want to do this? To quickly verify that changes you made to your DNS records were carried out successfully without waiting a lifetime for the records to propagate across the internet.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;List of open files and sockets:&lt;/strong&gt; Figure out what files or sockets your Rails server is at that second interacting with by typing &lt;code&gt;$ lsof -p &amp;lt;PID&amp;gt;&lt;/code&gt;, where PID is the process id of the Rails application process. Useful in combination with &lt;strong&gt;dtruss&lt;/strong&gt; when you’d like to map out the file-descriptor arguments to &lt;strong&gt;syscalls&lt;/strong&gt; to the names of the files/sockets in question.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;curl:&lt;/strong&gt; Sometimes you cannot easily test a particular URL from within the browser. In these cases curl comes to the rescue. Request the &lt;code&gt;localhost:3000/product_list&lt;/code&gt; URL from the command line with &lt;code&gt;$ curl http://localhost:3000/product_list&lt;/code&gt;. By default curl performs a GET request, but can also be set to use other HTTP verbs such as POST/PUT with the “X” flag. For example &lt;code&gt;$ curl -X POST http://localhost:3000/to_txt -F file=@/Users/jkinsella/Code/oxnotes-docservice/fixtures/length.pdf&lt;/code&gt; posts a form (“F flag”) that includes a local file (preceded by “@”). Curl is particularly useful for making requests with custom headers, specified using the “H” flag. For example &lt;code&gt;$ curl localhost:3000/product_list -H &quot;Content-Type:image/gif&quot;&lt;/code&gt;. Another common use-case is to exclusively return the HTML headers from a request without waiting for the whole body of the request. Use the “I” option, e.g. “curl -I www.google.com”&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Process Listing:&lt;/strong&gt; Whenever your Rails application starts (server, console, Rake, whatever) it creates an operating system level process. You can search for this process using &lt;code&gt;$ ps aux | grep rails&lt;/code&gt;. The output provides information about the process ID, the state/health of that process, and the memory/CPU resources it consumes. For detailed information on interpreting this output refer to man ps. Watch out for situations when you see more Rails processes output than you expect, as this might indicate processes that are hidden/daemons/still running despite not having a terminal tab open and attached the them. Process listing is your best friend in debugging situations where Rails interacts with another program on your operating system. For example many Rails websites use the separate database program &lt;strong&gt;postgres&lt;/strong&gt;, and when things aren’t working with your database, a great first step is to check whether the postgres process is running correctly.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;C Debugger (gdb):&lt;/strong&gt; (This section assumes you are using the standard Ruby install that is compiled in C, as opposed to MacRuby, JRuby etc.) The C debugger is used to debug problems a Ruby debugger will have difficulty reaching, notably infinite loop bugs. (You’ll notice an infinite loop bug because the program seemingly freezes without exitting or spitting out a stack trace.) or in situations where you have a sporadic bug that may disappear on restart and you  would rather find out what’s wrong &lt;em&gt;now&lt;/em&gt;. In getting the gdb to work, the order in which you enter commands is important. First, start your Rails process (server / console / whatever) as normal. Second, execute the request/console command that causes the infinite looping problem. Wait until the Ruby process is stalled then open up a new terminal tab and activate the gdb. Typically you start it with &lt;code&gt;$ sudo gdb $(which ruby) 67563&lt;/code&gt;, where the first argument dynamically figures out the Ruby compiler you are using (a necessary argument to gdb), and the second argument is the process id (pid) of the Ruby process running your Rails application. (Figure out what this pid is by running &lt;code&gt;ps aux | grep ruby&lt;/code&gt;). Now that gdb is attached to your Rails process you can force a Ruby backtrace with &lt;code&gt;call (void)rb_backtrace()&lt;/code&gt;. This backtrace will not appear in your Rails server process terminal tab like it would when you are interacting your Rails software normally through URL requests; instead the backtrace will be appended to the &lt;code&gt;log/development.log&lt;/code&gt; file, which you monitor with &lt;code&gt;$ tail -f log/development.log&lt;/code&gt;. The backtrace forced through at the C level provides an otherwise unavailable insight into why and where the program stalled. Gdb also provides the possibility of debugging at C level, but that’s beyond the scope of this article. 
+    &lt;ul&gt;
+      &lt;li&gt;Installation woes: On Mavericks you’ll need to install &lt;strong&gt;gdb&lt;/strong&gt; with Homebrew then &lt;a href=&quot;http://wiki.lazarus.freepascal.org/GDB_on_OS_X_Mavericks_and_Xcode_5&quot;&gt;codesign it by following this guide&lt;/a&gt;. &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;tcpdump:&lt;/strong&gt; The lowest common denominator across unix-like systems for dumping traffic on a network. Say you want to monitor all packet traffic originating from the domain oxbridgenotes.com and interacting with some daemon program or opaque command line script. In this situation you can’t simply open up Google Chrome DevTools Network Tab and monitor the request in this way. Instead you must rely on command line tools, and here the command in question is: &lt;code&gt;$ sudo tcpdump -s 0 -A host &quot;www.oxbridgenotes.co.uk&quot;&lt;/code&gt;. The “&lt;code&gt;s 0&lt;/code&gt;” option specifies to remove the limits on packet size normally present. The “A” options says print out ASCII renditions of the packets. Tcpdump’s output shows the source IP address and the destination IP address of each packet alongside what was contained within, enabling you to ensure that correct information was sent from the right places at this level. On other occasions, such as when debugging web-sockets, you might want to monitor traffic on a particular port: &lt;strong&gt;&lt;code&gt;$ sudo tcpdump port 8000&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Environmental variables:&lt;/strong&gt; A number of variables set outside the Rails software, i.e. at the OS level, can influence either our code or the third party libraries we use. You’ll know that these variables are in use whenever the codebase contains a reference to the ENV global variable, for example ENV[“LOG_LEVEL”] is Ruby’s way of accessing the environmental variable LOG_LEVEL. View all the environmental variables on production using &lt;code&gt;$ h config&lt;/code&gt;. In development we dump the Heroku environmental variables into the mirrored &lt;code&gt;.env&lt;/code&gt; file with &lt;code&gt;$ heroku config &amp;gt; .env&lt;/code&gt;, and then these variables become available to our software thanks to the Foreman gem. System level environmental variables may also be set, most typically by user modifications to the &lt;code&gt;~/.bashrc&lt;/code&gt; file. You can view the contents of these environmental variables with &lt;strong&gt;echo&lt;/strong&gt;. For example view the contents of the LOG_LEVEL environmental variable with &lt;code&gt;$ echo $LOG_LEVEL&lt;/code&gt;(notice the dollar sign necessarily appended to the variable name). To list all variables and their values type: &lt;code&gt;$ printenv&lt;/code&gt;. Access the same listing within your Rails console by typing ENV.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Temporary Files:&lt;/strong&gt; Our application uses the tmp/ folder to store temporary files, such the Word documents we temporarily download before zipping into larger packages and uploading to s3 for storage. Inspect the contents of this folder to debug issues such as whether the algorithm is downloading files correctly. It’s useful to employ the &lt;strong&gt;watch&lt;/strong&gt; command to periodically run another sub command (here &lt;strong&gt;ls&lt;/strong&gt;) on the tmp folder, for example &lt;code&gt;$ watch -n 10 ls tmp/seller-invoices&lt;/code&gt; checks the contents of the &lt;code&gt;tmp/seller-invoices&lt;/code&gt; folder every ten seconds, updating the screen with the contents, enabling you to see changes as they happen.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;which:&lt;/strong&gt; A godsend for figuring out whether there are multiple installations of command line programs, be that our own or those installed by gems or &lt;code&gt;homebrew&lt;/code&gt;, and for ascertaining whether invoking that program via command line uses the version we intended. &lt;code&gt;$ which -a postgres&lt;/code&gt; reveals all the locations of postgresql binaries currently on the $PATH, with the binary called whenever you type the unqualified command (e.g. $ postgres) appearing first in this list. Change the order of the commands output by “which” by modifying the $PATH variable in your ~/.bashrc file.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Exuberant Ctags:&lt;/strong&gt; Used in conjunction with Vim through the &lt;a href=&quot;https://github.com/xolox/vim-easytags&quot;&gt;EasyTags&lt;/a&gt; plugin, Exuberant Ctags lets you quickly jump to the definition of any function within your codebase. Force a project level tag refresh with :UpdateTags -R ~/Code/oxbridgenotes/.  Enter Vim and jump to the function &lt;code&gt;generate_products&lt;/code&gt; by &lt;code&gt;typing :ta generate_products&lt;/code&gt;. The &lt;code&gt;:ta&lt;/code&gt; command also accepts regular expressions, meaning you can find all functions starting with “generate” using &lt;code&gt;:ta /generate/*&lt;/code&gt;. View the entire list of matches with &lt;code&gt;:ts(elect)&lt;/code&gt; (bracketed letters are optional in invoking the Vim function) and move forwards one tag with &lt;code&gt;:tn(ext)&lt;/code&gt; and backward with &lt;code&gt;:tp(rev)&lt;/code&gt;. By default Ctags show all the tags within your Rails project directory, leaving out that of the gems. It’s more helpful to extend tagging to include the codebase of all your gems by using this command &lt;code&gt;$ ctags -e --exclude=.git --exclude=&#39;*.log&#39; -R *bundle show --paths&lt;/code&gt;. Now you can type in the name of any function within any of the gems listed in your Gemfile` and jump to the source code- an absolutely enormous time-saver.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;history grepping:&lt;/strong&gt; Search previous command line commands. For example I can search all curl commands with &lt;code&gt;$ history | grep curl&lt;/code&gt;, and use this to refresh my memory about a particular set of flags I used to solve a problem in the past. I set my history to hold 20000 lines with &lt;code&gt;export HISTSIZE=20000&lt;/code&gt; added to my ~/.bashrc, meaning that I effectively keep my history of commands as a reference for years.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;ack for “real world usage” examples:&lt;/strong&gt; Sometimes legacy functions are nicely documented—be that in your project documentation, the unit tests validating that function, or the in-code comments above the function. More often though, these functions aren’t documented at all and it may not be apparent how they should be used. The very fact that a legacy function has already been used elsewhere in your project leads to implicit usage documentation. For example you find the &lt;strong&gt;generate_product(subject, price)&lt;/strong&gt; function and what data type price is supposed to be — a string, Integer, Float, or something else? Type &lt;strong&gt;$ ack generate_product&lt;/strong&gt; and amongst the results you may find clues of prior usage, such as &lt;strong&gt;generate_product(subject, 12.33)&lt;/strong&gt;, indicating that you should use a float. A variation of this technique is to refer to the values historically saved within a database column by printing out all the unique values ever saved and then inferring what format kind of format the column expects. For example &lt;strong&gt;Product.select(“pricing_category”).uniq&lt;/strong&gt; returns all the pricing_categories saved within the database, informing you that it’s a one letter upper-case string code.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;dtruss (OS X) / strace (linux):&lt;/strong&gt; Monitor a) which operating system level calls (syscalls) your program makes, with what arguments, and how long each call takes to execute; and b) the OS signals a process receives. &lt;strong&gt;Dtruss&lt;/strong&gt; spits out a fire a great deal of data, but is nevertheless useful in situations where you can’t afford to stop the running program (e.g. in production) or when you have a hunch that the problematic program is bug-free but you’re just using it wrong (e.g. your Unicorn server; init processes; anything involving configuration files that should appear in a specific location). Dtruss works programs ultimately rely on the operating system to do work such as opening files, forking new processes or printing output to screen, and these operations provide traceable clues as to the functioning—or malfunctioning—of your program. When using OS X you only have &lt;strong&gt;dtruss&lt;/strong&gt; available to you. Begin with &lt;code&gt;$ sudo dtruss -p PID_OF_YOUR_RUBY_PROCESS -f&lt;/code&gt;. The “&lt;code&gt;f&lt;/code&gt;” option specifies that you’d also like to follow child processes, usually a sensible decision in understanding the scope of your program. The “&lt;code&gt;a&lt;/code&gt;” option asks &lt;strong&gt;dtruss&lt;/strong&gt; to print all information, including elapsed time and the process in question, a welcome counterpart to the &lt;code&gt;f&lt;/code&gt; option. As your Ruby process runs you’ll see a stream of operating system calls. You’re probably confused about what each of these functions means—I quote author of the Passionate Programmer, Chad Fowler on &lt;a href=&quot;http://chadfowler.com/blog/2014/01/26/the-magic-of-strace/&quot;&gt;his experience with learning strace&lt;/a&gt; &lt;em&gt;“Neither did I at some point. I learned most of this stuff by tracing broken programs and reading man pages”&lt;/em&gt;. For a full tutorial refer to Chad’s excellent piece.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;man search:&lt;/strong&gt; You probably know that you can type &lt;code&gt;$ man ANY_COMMAND_LINE_OR_SYSTEM_COMMAND&lt;/code&gt; to display its documentation in the terminal. A complimentary time-saver that I only learned about much later was that you quickly search for keywords within man by typing forward slash followed by your keyword, e.g. /directory. Move forwards and backwards through the highlighted matching results with “N” or “n”.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;top:&lt;/strong&gt; Displays constantly updated, sorted information about resource usage of each process. For example &lt;code&gt;$ top -o cpu&lt;/code&gt;, shows the currently running processes in order of their CPU usage. (the “o” option stands for order). Top is useful to identify whether a stalled processes is statically stalled (e.g. waiting for a resource to be released/sleeping) since this would have close to 0% CPU usage, or is dynamically stall (e.g. infinite loop) since this often has heavy CPU usage.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Debugging Rails With Online Or Third Party Tools</title>
+   <link href="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-online-or-third-party-tools.html"/>
+   <updated>2014-06-06T00:00:00+02:00</updated>
+   <id>http://tom.preston-werner.com/2014/06/06/debugging-rails-with-online-or-third-party-tools</id>
+   <content type="html">&lt;p&gt;﻿—
+layout: post
+author: Jack Kinsella
+title: Debugging Rails with Online or Third Party Tools
+—&lt;/p&gt;
+
+&lt;p&gt;Part 6 in the series &lt;a href=&quot;/2014/06/06/a-comprehensive-guide-to-debugging-rails.html&quot;&gt;A Comprehensive Guide To Debugging Rails&lt;/a&gt;
+## Online and Third Party Mirrors ##&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Google Webmaster Tools:&lt;/strong&gt; Google Webmaster Tools helps you evaluate your website’s health in Google search engine results by providing reports about how many URLs were indexed by Google, what search engine queries your website ranks for, and how many URLs were contained in your sitemap. Webmaster tools also lists web-crawler errors, thereby indicating pages that 404 or have incorrect permissions. Webmaster Tools helps you avoid issues catastrophic to your SEO operation, therefore you don’t want to miss a single issue they raise. Keep in the loop by configuring their alerts setting to email you “All issues”.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Google Search Results&lt;/strong&gt; We all Google our bugs and errors, but how does one increase the number of relevant results? Start by stripping platform specific information from your search string. For example take an error raising stack trace that contains the following:
+&lt;code&gt;
+/Users/jkinsella/.rvm/gems/ruby-1.9.3-p392/gems/activesupport-4.1.1/lib/active_support/dependencies.rb:247:in `require&#39;
+&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you Google that full string you will get no results that help explain your exception— Google will search Stack Overflow, mailing list archives and other websites for an error containing the user string “jkinsella”, the ruby version “ruby-1-9-3.p392” and active support version “4.2.1”—an exceedingly unlikely combination. A better Google query would be “active_support dependencies.rb:247:in `require’”, since that will return results for backtraces by people with any username, any Ruby version, and (nearly) any version of ActiveSupport—a much broader search that’s more likely to deliver results.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Email delivery reports:&lt;/strong&gt; Sometimes your Rails application sends off emails in production, yet, without raising any exception, your email silently fails to reach the intended recipient. You might only become aware of this weeks later when you notice low customer activation rates. Whenever you suspect email delivery issues, log in to our email delivery provider Sendgrid through the Heroku dashboard and check the  “Email Reports” tab for bounces (especially soft bounces), blocks, and spam reports. Better again, enable all of Sendgrid’s delivery report alerts so as to stay automatically informed.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;New Relic:&lt;/strong&gt; Information about Ruby exceptions raised, application uptime, and application speed, whether that be the speed of web-requests, database calls,, external web service calls (e.g. to API providers like Amazon s3 or Searchify), or browser rendering times. New Relic rocks for debugging performance issues. It differs dramatically in production and development mode so it’s best to think of them as separate tools: the production tool focused on post-facto reporting and the development tool on in-depth debugging. Typically you might use New Relic production (accessed via the Heroku dashboard) to identify problem &lt;em&gt;areas&lt;/em&gt;, then having picked a problem to debug, you’d load up the development tool to debug &lt;em&gt;a known problem&lt;/em&gt;. The reason for this division is motivated by the realisation that you can, at great cost in time/money, optimise the performance of almost any component within a piece of software, but only a select few of these changes will make any noticeable difference to the user experience. To use the development New Relic tool, load up the application locally using our special development “caching_on” environment (Why not the normal development environment? Because development usually reloads Ruby classes on every request, making it unrealistically slow and skewing New Relic results. Read more about &lt;a href=&quot;http://guides.rubyonrails.org/configuring.html&quot;&gt;configuring environments here&lt;/a&gt;.) Visit /newrelic, perform a slow action in another tab and refresh. By default New Relic displays a breakdown of the SQL statements and the Ruby methods that generated these statements. If you’d like in depth information about how long each Ruby method took to run, then you need to click “Start Profiling” within “/newrelic”, and run the slow command again.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Debugging Rails With Memcached</title>
+   <link href="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-memcached.html"/>
+   <updated>2014-06-06T00:00:00+02:00</updated>
+   <id>http://tom.preston-werner.com/2014/06/06/debugging-rails-with-memcached</id>
+   <content type="html">&lt;p&gt;﻿—
+layout: post
+author: Jack Kinsella
+title: Debugging Rails with Memcached
+—&lt;/p&gt;
+
+&lt;p&gt;Part 8 in the series &lt;a href=&quot;/2014/06/06/a-comprehensive-guide-to-debugging-rails.html&quot;&gt;A Comprehensive Guide To Debugging Rails&lt;/a&gt;
+## Memcached Mirrors ##&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Memcached general stats:&lt;/strong&gt; In production you can use the Heroku dashboard to access detailed stats about Memcached usage. You’ll know you’re doing it right if you have a high &lt;strong&gt;hit rate&lt;/strong&gt;, a low &lt;strong&gt;eviction rate&lt;/strong&gt;, and a healthy excess of memory used compared to the allocated Memcached size (Once you run out of space Memcached &lt;a href=&quot;http://stackoverflow.com/questions/11222309/how-data-is-replaced-in-memcache-when-it-is-full-and-memcache-performance&quot;&gt;deletes the oldest cached item&lt;/a&gt;, reducing the effectiveness of your caching). Memcached won’t alert you whenever your cache is in a poor state, so you’ll need to log in and check regularly—indeed I found my cache in a rotten form when I was researching this article. You can also view global Memcached stats with the Rails console using &lt;code&gt;Rails.cache.stats&lt;/code&gt;. Read this for a &lt;a href=&quot;http://www.pal-blog.de/entwicklung/perl/memcached-statistics-stats-command.html&quot;&gt;legend for reading memcached stats output&lt;/a&gt;, and then understand some confusing nuances with &lt;a href=&quot;http://stackoverflow.com/questions/6868256/memcached-eviction-prior-to-key-expiry/10456364#10456364&quot;&gt;this Stack Overflow discussion&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Memcached Cache contents:&lt;/strong&gt; In your codebase or in the console, set the value for a cache key with &lt;code&gt;Rails.cache.write(key) { code_that_returns_value }&lt;/code&gt; or &lt;code&gt;Rails.cache.fetch(key) {code_that_returns_value }&lt;/code&gt;. Read the value associated with a particular key using  Rails.cache.read(key). For cached content set at a controller level, for example set with with &lt;code&gt;caches_action&lt;/code&gt;, the cache key isn’t easy to guess from what you read within the code. Figure out the key by &lt;em&gt;temporarily&lt;/em&gt; setting the log level on production to debug with &lt;code&gt;heroku config:add LOG_LEVEL=&quot;debug&quot;&lt;/code&gt; then searching for entries starting with “Cache” that get triggered following a request to the particular page you are debugging. One example of such an entry is “Cache read: views/www.oxbridgenotes.co.uk/?cache_tag=1398678715/1379180679/407/6804/1398699264&amp;amp;format=html.html”. To inspect the contents of this cached entry within the console you’ll want to type Rails.cache.read(“views/www.oxbridgenotes.co.uk/?cache_tag=1398678715/1379180679/407/6804/1398699264&amp;amp;format=html.html”). I warned you that you’d be unlikely to guess the key. &lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Debugging Rails With Logs</title>
+   <link href="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-logs.html"/>
+   <updated>2014-06-06T00:00:00+02:00</updated>
+   <id>http://tom.preston-werner.com/2014/06/06/debugging-rails-with-logs</id>
+   <content type="html">&lt;p&gt;﻿—
+layout: post
+author: Jack Kinsella
+title: Debugging Rails with Logs
+—&lt;/p&gt;
+
+&lt;p&gt;Part 7 in the series &lt;a href=&quot;/2014/06/06/a-comprehensive-guide-to-debugging-rails.html&quot;&gt;A Comprehensive Guide To Debugging Rails&lt;/a&gt;
+## Logs, aka Historic Mirrors ##&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Interpreting the Rails server built-in logs:&lt;/strong&gt; Seasoned Rails pros will have interpreting logs down second nature, but I’ll outline the important realisations I had as a beginner for the sake of the version of me out there who’s new to Rails development. Whenever you visit a page/fill a form/do an Ajax request in Rails, the server logs out a boatload of useful data. When should you refer to these logs? When you notice something you don’t expect to happen or see an error that you don’t know how to even start debugging. In these cases begin by systematically comparing what you see output in the logs with what you expect to see.  Let’s look at the workflow for interpreting the Rails log:&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;strong&gt;Manage your log tab with linux&lt;/strong&gt; Usually there is way too much information on your log screen. Start your debugging sessions by clearing the output in your terminal tab with Command+K. Alternatively, if the bug you want to identify has already occurred and for this reason you don’t want to clear the screen, then use the terminal’s Command+F feature to search all its contents (sometimes 1000s of screens worth of data) for something that identifies your bug. Finally I like to pipe log output into a &lt;em&gt;grep&lt;/em&gt; command to filter the information I want. For example when debugging Rendered information I might access my logs with &lt;code&gt;tail -f log/development.log | grep Rendered&lt;/code&gt;, thereby only displaying lines containing the string “Rendered”. Note that this configuration of tail and grep is a real-time filter, and will update the screen with any new Rendered lines added to the logs as you interact with your Rails application. &lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;strong&gt;Was the right URL hit?&lt;/strong&gt; Your logs separate each request to your Rails application by a line of white space, so your first step is to browse to where the log entry for the request in question begins by looking for lines of white space. Immediately underneath you’ll see the beginning of a request to a specific URL. For example &lt;code&gt;Started GET &quot;/admin/customers/43434/&quot;&lt;/code&gt; means that a GET request was sent to the admin/customers/43434 URL. Does the URL requested match your expectations? You might see the wrong URL here when your Javascript/form/link_to url_helper was incorrect.&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;strong&gt;Did the right controller and action process the request?&lt;/strong&gt; So you’re hitting the right URL. Next question is whether that URL was routed correctly to the controller and action you expect. The line &lt;code&gt;Processing by Spree::Admin::OrdersController#edit as HTML&lt;/code&gt; explains that the &lt;code&gt;edit&lt;/code&gt; method of the &lt;code&gt;OrdersController&lt;/code&gt; in the module Spree::Admin was called whenever the URL was requested. You’ll typically see a mismatch with your expectations when there is a bug in your routes.rb mapping URLs to controllers.The “as HTML” component means HTML was requested, as opposed to another data-type like JSON or JS—this information is useful for debugging controller actions that use “respond_to” to deal with multiple-formats such as HTML, JS or JSON requests from an API.&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;strong&gt;Did the router name the parameters correctly?&lt;/strong&gt; Within your controller action, say #edit above, you expect certain information available in the &lt;code&gt;params&lt;/code&gt; object. For example, you might want to have &lt;code&gt;params[:customer_id]&lt;/code&gt; available to be fed into a Customer#find database call. If your logger shows &lt;code&gt;Parameters: {&quot;user_id&quot;=&amp;gt;&quot;43434&quot;}&lt;/code&gt; then you’ll only have &lt;code&gt;params[:user_id]&lt;/code&gt; available instead of the params[:customer_id]. In this case the parameter was misnamed, either in the Javascript/HTML form/Rails view that generated the request or within the parameter naming in the entry for that URL in the routes.rb file. In other cases you might have forgotten to include an important parameter altogether. In other cases again your parameters &lt;em&gt;are&lt;/em&gt; present and have the right names but you’ve confused the values each parameter contains. For example imagine your logs had Parameters: &lt;code&gt;{&quot;day&quot;=&amp;gt;&quot;25&quot;, &quot;month&quot;=&amp;gt;&quot;2014&quot;, &quot;year&quot;=&amp;gt;&quot;4&quot;}&lt;/code&gt;. This shows that you’ve confused the values of the month and year parameters.&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;strong&gt;Were the right SQL statements run?&lt;/strong&gt; Assuming, as is default in development mode, the &lt;a href=&quot;http://guides.rubyonrails.org/debugging_rails_applications.html#log-levels&quot;&gt;log level of your Rails application&lt;/a&gt; is set to “debug”, any SQL statements run in processing your request will be output in your logs. Sometimes these SQL statements differ from what you expect based on your Ruby code. For example there may be a method (e.g. a sneaky default_scope) adding a not-always-wanted condition to every one of your ActiveRecord scopes. For example I once had a default_scope that limited all searches of my Subject model to entries where the “deleted_at column is NULL”. A year later I’d forgotten about the deafult_scope and kept wondering why I was getting inaccurate results when I performed SQL queries against what I thought was “all” of my Subject models, but was in fact only all my &lt;em&gt;undeleted&lt;/em&gt; subjects. I only became aware of this issue by seeing that the SQL generated in the log contained this added statement about “deleted_at” being null &lt;code&gt;SQL (0.7ms) Subject Load (0.8ms) SELECT &quot;subjects&quot;.* FROM &quot;subjects&quot; WHERE &quot;user&quot;.&quot;id&quot; = 110 AND &quot;deleted_at&quot; is NULL&lt;/code&gt;;&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;strong&gt;Were the right templates and partials rendered?:&lt;/strong&gt; The Rails logs lists the various views and partials that were used to compile the frontend output, typically the HTML web page. If the wrong templates or partials appear listed here that indicates a mistake in your templating logic. A more complicated type of potential error here are “silent overrides”, which happen when your Rails application and its dependencies have two templates with the same name (e.g. _product.html.erb), and one version (say the one included within the gem “spree_social”) is rendered instead of the one you wanted (contained, say in the gem “spree_core”). Therefore, to debug these issues, pay attention to the full filename of the rendered partial in question.&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;
+Rendered /spree_social/backend/app/views/spree/_product.html.erb (0.0ms)
+Rendered /backend/app/views/spree/admin/shared/_alert.html.erb (0.0ms)
+Rendered /Users/jkinsella/.rvm/gems/ruby-1.9.3-p545@oxnotes/bundler/gems/spree-ecd9f3f29779/backend/app/views/spree/admin/shared/_tabs.html.erb
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Were any exceptions/warnings logged?&lt;/strong&gt; Unrescued exceptions appear alongside their error message and backtrace within your logs. When your front-end seems unresponsive, say after you click “save comment” and nothing happens, then check your logs to see whether an exception appeared.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Was the cache used?&lt;/strong&gt; Entries such as &lt;code&gt;Cache write: views/taxonomies_sidebar/2014-04-28&lt;/code&gt; show that your application has cached data at the key (view/taxon…). The corresponding read entry, &lt;code&gt;Cache read: views/taxonomies_sidebar/2014-04-28&lt;/code&gt; indicates that your application is pulling previously stored data at that key out of the cache. The presence and absence of cache reads and writes for given keys helps you debug caching problems.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Was the HTTP status correct?&lt;/strong&gt; At the end of a log entry for a request will be something like &lt;code&gt;Completed 200 OK in 1700.0ms&lt;/code&gt;. The three digit number after “Completed”, 200 here, is your HTTP status code. 200 indicates success, which is usually what you want for typical web-pages. In other situations, you specifically want other HTTP codes, be that for prudent redirecting (301, 302), communication of “unauthorised”(401), or acknowledgement of missing content (404). Often you’ll see the status code 500 in debugging, and rarely will this be desired, for this indicates an internal server error. Client-side Javascript code often branches depending on the HTTP status returned from an AJAX request, so these entries in the log will come in handy debugging issues here.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Tailed live Heroku logs:&lt;/strong&gt; Heroku doesn’t store your logs, it being a read-only file system, but luckily you can view live requests as they hit our website with &lt;code&gt;heroku logs -t&lt;/code&gt;. Pro-tip: leave this open in a terminal for some time (e.g. 20 minutes), then use the search function of your terminal app (Command + F) to search for the keywords which would indicate your bug. Unlike your development mode log, your production log is by default set to “info”, meaning that you won’t get information about caching or SQL commands run. When you want this additional information, “increase” the log level to “debug” with &lt;code&gt;heroku config:add LOG_LEVEL=&quot;debug&quot;&lt;/code&gt;. (This assumes you have set up your production.rb environment file to respond to ENV[“LOG_LEVEL”]) As soon as you’ve finished debugging switch the log level back to the default with &lt;code&gt;heroku config:add LOG_LEVEL=&quot;info&quot;&lt;/code&gt; —otherwise our logs will fill up rapidly and become expensive to archive in the third party software we employ.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Archived logs:&lt;/strong&gt; As mentioned above, our production server sits on Heroku, which, as a read-only filesystem, doesn’t save our web-app logs for future reference. Therefore we use a third party service, LogEntries, to capture and store our logs. You can access the web-app interface for LogEntries through the Heroku dashboard, and choose time-ranges within which to search by keyword for application errors, HTTP statuses, specific parameters, or logged information you manually output from your application.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Heroku Scheduler Logs:&lt;/strong&gt; View all the processes that Heroku has currently running for your application with &lt;code&gt;heroku ps&lt;/code&gt;. While a scheduled task is running you’ll see a process named something like scheduler.X, with X representing an integer number, say 1 in this case. You can inspect the logs of this scheduled process with &lt;code&gt;$ heroku logs --ps scheduler.1&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;s3 Access Logs:&lt;/strong&gt; Like many Heroku applications we store binary data on S3. Requests for this data sometimes completely skip our website, and this is done by intentionally as a performance optimisation of our own design. This means we lose potential debugging information. To remedy this we have enabled the optional s3 logging feature in the relevant Oxbridge Notes buckets (through the AWS S3 web console) and thereby created logs within a bucket &lt;code&gt;oxbridgenotes-logging&lt;/code&gt;. Information about interpreting these logs is found in &lt;a href=&quot;http://s3browser.com/amazon-s3-bucket-logging-server-access-logs.phphttp://s3browser.com/amazon-s3-bucket-logging-server-access-logs.php&quot;&gt;this article&lt;/a&gt;, and advice on using Ruby to read them in a usable manner is found &lt;a href=&quot;http://sixones.com/2012/11/06/s3-logs-into-combined-log-format.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Alerts based on logs:&lt;/strong&gt; Through our production log archiving software, LogEntries, we can set alerts to be sent via email/Campfire/other services when the logs contain an entry matching a certain regular expression and optionally when that same entry matches a given number of times, e.g. once, ten times, one hundred times. This allows us to inform ourselves about errors that would not be reported by our Rails based exception notification, that is errors that happen outside of the Rails application. In particular these are errors at the level of Heroku platform, such as request time-outs, failure of our Rails app to boot at all, or failures of supporting services such as Memcachier, which are provisioned through the Heroku platform.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Intentional logging:&lt;/strong&gt; At any point in your application code you may ask the Rails logger to output some information, such as the contents of a suspect local variable. In the development environment logging variables is a poor man’s debugger. I don’t like to make general statements but I’ll make an exception here: it’s &lt;em&gt;always&lt;/em&gt; faster to throw in a binding.pry and poke around in the debugger. The intentional logging technique is used in production for bugs that are difficult or impossible to reproduce in your development environment, for example bugs involving third party services without reliable sandbox environments (hi Paypal!). The keys to intentional logging are a) label the variables (i.e. don’t output the contents of the variable paypal_response_code, which might be “420”, because alone and without context you will need to refer back to the code to understand what the hell a single line in your log with the number “420” means. Instead output “The paypal response code is 420. They must live in Colorado. “) b) choose relatively unique keywords within your log statements so that you can search/grep weeks’ worth of logs and only return the results you want (you’ll probably get this benefit “for free” if you label your variables as per my last point); c) be careful that your log entry doesn’t itself cause an error (example: &lt;code&gt;Rails.logger.info {puts order.products.first.country }&lt;/code&gt; could blow up and cause the entire webpage to fail when there are no products, an error that would not exist without the added logging. Insulate against this class of error by adding protection against there being a nil, for example by inserting the try method into your chain &lt;code&gt;Rails.logger.info {puts order.products.first.try(:country)})&lt;/code&gt;; d) log out all variables that could potentially be useful in debugging. When you’re using intentional logging you’ll often feel that there’s a 90% chance that one specific variable is relevant, and only a 10% chance that another one is relevant. I’ve repeatedly found it useful to liberally add logging statements for all variables that might potentially be useful, my reasoning being that it’s cheap to add an extra logging statement, and slow and frustrating to realise after the fact that you have not logged enough information and need to modify the code, redeploy, wait for the bug to appear again, then interpret the log once more; e) never delete a logging statement—only comment it out. Why? Because bugs are like acne in that they keep reappearing, and you’ll be glad of your reusable commented out logging statements when it rears its ugly head again.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Debugging Rails With Git</title>
+   <link href="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-git.html"/>
+   <updated>2014-06-06T00:00:00+02:00</updated>
+   <id>http://tom.preston-werner.com/2014/06/06/debugging-rails-with-git</id>
+   <content type="html">&lt;p&gt;﻿—
+layout: post
+author: Jack Kinsella
+title: Debugging Rails with Git
+—&lt;/p&gt;
+
+&lt;p&gt;Part 5 in the series &lt;a href=&quot;/2014/06/06/a-comprehensive-guide-to-debugging-rails.html&quot;&gt;A Comprehensive Guide To Debugging Rails&lt;/a&gt;
+## Git Source Control Mirrors ##&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Git Search&lt;/strong&gt; &lt;code&gt;$ git log -Gturbolinks --pretty=oneline&lt;/code&gt; returns all git commits which added or removed “turbolinks”, be that a method name, code comment, or part of the documentation. Shockingly fast, this is irreplaceable for figuring out which commits caused a particular change.	&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Git Log&lt;/strong&gt; The output to &lt;code&gt;$ git log&lt;/code&gt; details the changes made to the code as described by the git commit messages you type, starting with the most recent commit message. Perhaps these messages are enough for you to figure out what happened that might have broken your code, or at the very least to understand what your coworkers have changed. The default printout has a low information density, so I prefer to alias &lt;code&gt;gl&lt;/code&gt; in my ~/.bashrc file with &lt;code&gt;alias gl=&quot;git log --graph --pretty=&#39;format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset&#39;&quot;&lt;/code&gt; then call &lt;code&gt;$ gl&lt;/code&gt;. &lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Git Diff:&lt;/strong&gt; This command is priceless for comparing the present state of a specific file/folder with its state at a particular commit. &lt;code&gt;$ git diff 9ce85 -- config/routes.rb&lt;/code&gt; compares the state of the config/routes.rb file with its state at the commit 9ce85.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Git Blame:&lt;/strong&gt; Sometimes you cannot figure out the purpose behind a line of code. Perhaps the code isn’t as “self-documenting” as you hoped, or you find the associated comments opaque. You might have another chance to understand its intention through &lt;code&gt;git blame&lt;/code&gt;. Git blame acts upon a single file, indicating the commit SHA that last changed each line. In this way you can see &lt;em&gt;who&lt;/em&gt; last changed that line, alongside the commit message they entered in association with the committing of those changes to source control. These commit messages might explain the purpose of the code, for example in mentioning that the commit was intended to squash a particular bug. While git blame is available on the command line, the git blame UI on Github is far more usable (&lt;a href=&quot;https://help.github.com/articles/using-git-blame-to-trace-changes-in-a-file&quot;&gt;instructions on usage&lt;/a&gt;), so I recommended that instead.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Git Bisect:&lt;/strong&gt; Sometimes you have absolutely no idea what’s causing a bug, but you do know that the bug did not exist in a previous version of your code. By identifying the git commit that created the bug, you’ll dramatically narrow down your search for what exactly caused the issue. Git bisect solves this problem by allowing you to mark a commit you know for certain &lt;code&gt;contains&lt;/code&gt; the bug as “bad”, and another you know does &lt;em&gt;not contain&lt;/em&gt; the bug as “good”, and then checking out different versions between the two marked commits for you to test whether the bug is present. Testing may be carried out by you manually (e.g. refreshing the browser page and seeing if the visual boxes are still misaligned) then marking that commit as good or bad and moving on, or testing may be carried out automatically, using a shell script with that employs the standard linux protocol of exiting with the code zero for good and non-zero for bad. &lt;a href=&quot;http://git-scm.com/book/en/Git-Basics-Viewing-the-Commit-History&quot;&gt;More detailed information about Git bisect is found here&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Github issue reports for the gem:&lt;/strong&gt; When dealing with problems arising out of gems used (you’ll often know this because lines from the gem library will appear in key places in the stack trace produced by an error), it’s often fruitful to search within the issues section of the Github project for that particular gem. Perhaps someone has already solved the issue or created a fork without that error, a fact you’d learn by looking at the “Network” tab in Github and hovering over each commit message to check for a reference to that bug.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Debugging Rails With Custom Instrumentation</title>
+   <link href="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-custom-instrumentation.html"/>
+   <updated>2014-06-06T00:00:00+02:00</updated>
+   <id>http://tom.preston-werner.com/2014/06/06/debugging-rails-with-custom-instrumentation</id>
+   <content type="html">&lt;p&gt;﻿—
+layout: post
+author: Jack Kinsella
+title: Debugging Rails with Custom Instrumentation
+—&lt;/p&gt;
+
+&lt;p&gt;Part 9 in the series &lt;a href=&quot;/2014/06/06/a-comprehensive-guide-to-debugging-rails.html&quot;&gt;A Comprehensive Guide To Debugging Rails&lt;/a&gt;
+## Our Custom Mirrors ##&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;debugging_id:&lt;/strong&gt; Within the HTML on some web-pages (product page, sample page) we place invisible code indicating the database ID of the object that page is based off, which you can use to quickly find the record within the Rails console during debugging sessions. This beats typing multi-parameter string-based searches. Deaden your doubts about the value of this techniques by comparing the short Product.find(313) with the clunky &lt;code&gt;Product.where(permalink: &quot;medicine&quot;, year:2011, institution: &quot;University of Oxford&quot; )&lt;/code&gt;. To see these debugging IDs open up a relevant page, enable the web-inspector, search (Command-F) for “debugging” and read the ID within the source code. Within the admin side of the website, where the placement of a visible debugging ID poses no risk of alienating customers, we often include the debugging ID within the page’s viewable HTML, obviating the need for “inspect element”.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Explanatory exception messages:&lt;/strong&gt; Improve exception messages by including information helpful for investigation or debugging. For example the pictured exception message returns the IDs you’ll need to refer to in the console. &lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Exception Reports:&lt;/strong&gt; Whenever an unrescued exception is raised, the “exception_notifier” gem emails an exception report to the IT team. These contain an exception message, a backtrace and other information about the state of the software when the exception was raised. I often find the default information provided inadequate for debugging, so I insert a “rescue” statement, manually trigger the exception notifier with additional data, then re-raise the exception so that the code flow continues as if we had never interfered. For example:&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Archived Exception Reports:&lt;/strong&gt; Exception reports, having arrived into our Gmail account, are searchable through the Gmail interface. We used Gmail filters to label all incoming exception emails within Gmail as “exceptions”, meaning that we can do searches such as “ProductGenerator label:exceptions after:2014-3-17” to find all exceptions after 17th of March that mention the ProductGenerator class. (This assumes you archive exception emails instead of deleting them outright). I particularly like this approach for data-integrity issues, by which I mean cleaning database records following faulty SQL caused by a bug. Case in point: I received exception reports after running an erroneous Rake command and I wanted to see how many exceptions affected the product with ID 252, so I searched Gmail for “Spree::Product 252 label:exceptions after:2014-3-17”, and Gmail found all the archived exception reports containing both Spree::Product and the number 252. For this approach to work it assumes that you archive instead of delete your messages in Gmail/the desktop/phone applications you use to access Gmail. I mention multiple clients because, as I learned the hard way, each one might need to be configured separately.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Previous Debugging Records:&lt;/strong&gt; This one is highly specific to the Oxbridge Notes process for debugging, whereby even if no-one else will ever read the report, we record every thought about the bug, every experiment or fix tried, and every ruled out hypothesis into a file within the folder documentation/bugs. Before fixing a new bug search through this folder using the ack utility to find various identifying information pieces (such as the ExceptionName, part of the exception message, or the user_id in question). Often our previous bug reports will provide important clues on how to fix the current bug—or on dead alleys down which we previously squandered our time.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;MailView:&lt;/strong&gt; Quickly verify that all our emails compile and proof-read their contents by visiting /mail_view from development mode. This feature relies on the &lt;code&gt;mail_view&lt;/code&gt; gem. For every new email our software is supposed to send, you must add a corresponding entry to the app/mailers/mail_preview.rb file for that email to appear in this previewer.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Logging in as a particular user:&lt;/strong&gt; Sometimes you have to walk a mile in a user’s shoes to understand why your software broke. To do this &lt;a href=&quot;https://devcenter.heroku.com/articles/heroku-postgres-import-export&quot;&gt;download the production database freshly to your development machine&lt;/a&gt; (so as to take into account recent changes that might influence the bug), find the user experiencing bugs in the Rails console &lt;code&gt;user = User.find_by_email &quot;something@hotmail.com&quot;&lt;/code&gt;, then reset that user’s password to something generic (we have a custom method to do just that: user.default). This method will print out a new password for that user, and you can use this to log in as that user in development mode. This new password does not affect the user’s production account, which retains the password as the user originally set it. (And yes, logging in as a user is acceptable in our business since this debugging technique is outlined within our website’s privacy policy and the most sensitive information you’d see by doing this is a customer’s purchase history, information that was already readily available in our standard Admin area.)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Undeleted Failed Delayed Jobs:&lt;/strong&gt; We use the “delayed_job” gem to queue up background tasks, but by default this does not alert you whenever a background task fails. That’s a lot of important missing information— therefore thanks to a custom modification we made to DelayedJob (&lt;a href=&quot;https://gist.github.com/jackkinsella/842395841a0fff204e35&quot;&gt;gist&lt;/a&gt; here), an email is sent every time an exception is raised during a background job with heaps of useful debugging information.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Undeleted Failed Delayed Jobs:&lt;/strong&gt; The exception notification system for DelayedJobs outline above has been known to fail in the past, and in such cases you want to refer to the DelayedJob database items in production for further debugging. Check for the presence of jobs with errors in production by typing our custom DelayedJob &lt;code&gt;scope Delayed::Job.with_errors&lt;/code&gt;. If any results appear then view the error backtrace for an individual failed job with &lt;code&gt;puts failed_job.last_error&lt;/code&gt;. Read the calling function that caused the error, alongside its inputs with &lt;code&gt;puts failed_job.handler&lt;/code&gt; (we use puts in both cases because it displays the yaml output in a readable manner). Example output (I’ll explain below…)&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Notice that the above output shows the caller’s object type (Email), the method called on it (send_zip_file), the arguments to the method, such as the email address for the email’s from field, would have been below, but I removed them from the screengrab to protect the identity of my customers. &lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;S3 files and folders&lt;/strong&gt; Access your s3 account either through AWS web application dashboard or through third party desktop software such as s3Hub. Once in, inspect various folders to insure that the right files were uploaded/deleted in the right directories, and appear with the right filenames and with the correct headers and permissions. If you’re not sure what folder a particular model saves its data to, refer to that model’s source code and look at the the first argument to &lt;code&gt;has_attached_file&lt;/code&gt;. For example &lt;code&gt;has_attached_file :data&lt;/code&gt;, means you want to browse to the /datas folder on s3.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Never Swallow an Error:&lt;/strong&gt; Some errors and failures are so routine that they can hardly be called exceptional. For example, certain document conversion operations we carry out at Oxbridge Notes have a failure rate. The nicest possible solution would be to fix the root cause once and for all. Absent a year-long study of the .docx file format and the C# programming language, that ain’t going to happen. The next best thing is to accept the failure within our normal code flow, but save that information within the database for later, in case we want to retry the operation, use an alternative algorithm, or simply control user-flow based on this information. I use the [&lt;a href=&quot;https://github.com/pboling/flag_shih_tzu&quot;&gt;FlagShihTzu&lt;/a&gt; gem for this purpose because it enables me to add an ever-increasing number of true/false attributes with names of my choosing to a single column in my model’s database table, by default on the column “flags”. This means that as the list of possible errors increase, I can add the capacity to record these errors without needing to modify the database. When it comes to debugging, I can quickly ascertain that this particular record had experienced issues, say with image_extraction.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Debugging Rails With Chrome Devtools</title>
+   <link href="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-chrome-devtools.html"/>
+   <updated>2014-06-06T00:00:00+02:00</updated>
+   <id>http://tom.preston-werner.com/2014/06/06/debugging-rails-with-chrome-devtools</id>
+   <content type="html">&lt;p&gt;﻿—
+layout: post
+author: Jack Kinsella
+title: Debugging Rails With Chrome DevTools
+—&lt;/p&gt;
+
+&lt;p&gt;Part 2 in the series &lt;a href=&quot;/2014/06/06/a-comprehensive-guide-to-debugging-rails.html&quot;&gt;A Comprehensive Guide To Debugging Rails&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;chrome-devtools-mirrors&quot;&gt;Chrome DevTools Mirrors&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Chrome DevTools Elements:&lt;/strong&gt; The Elements tab is helpful in debugging HTML and CSS and for receiving rapid feedback about experimental design changes. To activate DevTools Elements right click a HTML element on any webpage and select “inspect element”. You’ll see a pane that includes the source code of the final HTML page, as output by your Rails application. Useful features here include dragging and dropping elements into different positions within the HTML source code (thereby modifying layout), swapping HTML tags names by double clicking and renaming (e.g. double click a “p” element and type “h1” to transform it), modifying a HTML attribute (e.g. changing “class=big” to the “small” class by clicking “big” and typing), and adding a new HTML attribute by double clicking the element in question and typing out the attribute. In the right hand column of the Element pane you have tools for working with CSS. Begin by selecting a HTML element in the left hand pane (e.g. a div element you’d like to style differently). In the “styles” tab you’ll see the CSS selector classes (e.g. div.large_box ) and the CSS styling commands attached to that selector, giving you an oversight of all the CSS selectors that operate upon that particular element, information not easily discerned from reading CSS files (due to the compilation of many CSS files, presence of inline stylesheets and Javascripts that modify the page’s style). Next hover over one particular styling command (e.g. font-size) and you’ll see a tick box that enables you to turn the style off temporarily (refreshing the page returns the style to normal). Double click the value assigned to that styling command (e.g. the “12px”, attached to font-size), and you can modify it, either by typing a new value or using the arrow keys to select another value. Double click on the closing brace “}” of any selector to add a new CSS statement (e.g. “font-weight: bold”) . As you already know, CSS layouting sucks. Thankfully, clicking on the “computed” tab in DevTools Elements shows a coloured diagram of the selected element, with its pixel size, alongside its padding, border and margins. Finally, click on the “event listeners” tab (which is usually hidden by an “expand options” arrow) to see a list of the Javascript events (e.g. click, double click) and elements (e.g. p, h1) that have some Javascript functionality attached.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Chrome DevTools JS Errors:&lt;/strong&gt; Open up any web page then activate the Chrome Javascript Console (Command+Alt+J). Look for automatically detected Javascript errors. Should you have any of these, such as a syntax error caused by using an incorrect character to end a line (e.g. a colon instead of a semicolon), then you’ll see a clickable red “x” sign in the top right of the DevTools menu. Clicking will detail the error&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Chrome DevTools Console:&lt;/strong&gt;. Activate with (Command+Alt+J) and you have a REPL console at your disposal for executing Javascript code and running experiments on page. One gotcha: when debugging your Javascript be aware that due to minification and uglification by Rails, you might only be able to see the Javascript code in human-understandable format within development mode.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Chrome DevTools Javascript Debugger:&lt;/strong&gt; Refer to &lt;a href=&quot;https://developer.chrome.com/devtools/docs/javascript-debugging&quot;&gt;Google’s excellent documentation on DevTools Debugger&lt;/a&gt; for details. Here’s the most important parts with regards to debugging Rails:
+    &lt;ul&gt;
+      &lt;li&gt;set debugging breakpoints by inserting the keyword “debugger” into your Javascript source code or entering it visually within DevTools (Sources &amp;gt; Select JS File &amp;gt; Click on some line number so that a blue tag appears). The JS debugger functions much like binding.pry above.&lt;/li&gt;
+      &lt;li&gt;set Javascript conditions for the breakpoint to trigger (Right click “edit” when hovering over a breakpoint)&lt;/li&gt;
+      &lt;li&gt;view the call stack (i.e. backtrace) and list variables in action at that point (Sources &amp;gt; Call Stack)&lt;/li&gt;
+      &lt;li&gt;bring up the Javascript console to look around or experiment within the function where the breakpoint was called (keyword ESC)&lt;/li&gt;
+      &lt;li&gt;hover over variables within the breakpointed code in the left-hand panel to reveal their currently assigned values&lt;/li&gt;
+      &lt;li&gt;set breakpoints on Javascript events, such as whenever you click or keypress (Sources &amp;gt; Event Listener Breakpoints)&lt;/li&gt;
+      &lt;li&gt;set breakpoints on XHR (AJAX) requests to a specified URL (example usages: when a download for the file “/chapter_1.txt” starts; when a form POSTs to one of your Rails routes) (Sources &amp;gt; XHR Breakpoints &amp;gt; +)&lt;/li&gt;
+      &lt;li&gt;pretty print, such that minified Javascript that otherwise has its entire contents written onto one massively overloaded line of code, is spread out onto many separate lines, making it easier to read and visually insert debugging breakpoints. (Source Code File &amp;gt; Curly Braces)&lt;/li&gt;
+      &lt;li&gt;Jump to a particular function by popping up an autocomplete search containing all the function names(Command + Shift + 0). Much like using Ctags in your text editor.&lt;/li&gt;
+      &lt;li&gt;set breakpoints on DOM manipulations of a specific HTML element (e.g. when a paragraph is added/removed from a div; when an elements “hidden” attribute is modified). (Elements Tab &amp;gt; Select Element &amp;gt; “Break On”).&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Chrome DevTools Network tab:&lt;/strong&gt; Sometimes you want to inspect what resources (images, documents, APIs, javascripts, css files) were requested by your application, and whether these successfully downloaded. Chrome DevTool’s Network tab provides a listing of each resource requested alongside the HTTP method used and the HTTP status returned (e.g. 200, 404), For greater detail click on one of these resources and you’ll be able to view HTTP headers (including caching information, accept headers and host information), or preview the contents of a resource. If you see no resources within the Network tab despite expecting otherwise, then you need refresh the page, this time with the web inspector open before requesting/refreshing the page.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Debugging Rails With Built In Tools</title>
+   <link href="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-built-in-tools.html"/>
+   <updated>2014-06-06T00:00:00+02:00</updated>
+   <id>http://tom.preston-werner.com/2014/06/06/debugging-rails-with-built-in-tools</id>
+   <content type="html">&lt;p&gt;﻿—
+layout: post
+author: Jack Kinsella
+title: Debugging Rails With Built-in Tools
+—&lt;/p&gt;
+
+&lt;p&gt;Part 2 in the series &lt;a href=&quot;/2014/06/06/a-comprehensive-guide-to-debugging-rails.html&quot;&gt;A Comprehensive Guide To Debugging Rails&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;ruby--rails-built-in-mirrors&quot;&gt;Ruby / Rails Built-in Mirrors&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Ruby compiler checks:&lt;/strong&gt; Run &lt;code&gt;$ ruby -c myfile.rb&lt;/code&gt; to ask Ruby to check the syntax of your script and find serious errors that would stop your program from even starting. The syntax checker does not actually run your code, so there’s no need to worry about the program being syntax checked performing some destructive action that would occur were the code executed normally. Given the size of a Rails project, it would be a pain in the ass to run this command after every file change. Luckily for us, editor plugins such as Syntactic automatically run the syntax check on saving a file, displaying any resulting errors within Vim.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Gemfile.lock:&lt;/strong&gt; Contains the exact list of gems used within your application and their version numbers. Useful to refer to because your normal &lt;code&gt;Gemfile&lt;/code&gt; only displays a fraction of the gems within your application: a single gem within your Gemfile may require 10 others as dependencies, and these extra gems pulled in will only be listed within your &lt;code&gt;Gemfile.lock&lt;/code&gt;. That’s not the only reason you should refer to the &lt;code&gt;Gemfile.lock&lt;/code&gt; page. Often, and for good reasons, we do not fully specify our gem’s version number in the &lt;code&gt;Gemfile&lt;/code&gt;. For example you might see optimistic versioning such as ‘&amp;gt;1.0.1’ or ‘~&amp;gt;1.1’, which could result in a wide variety of exact versions in use. When troubleshooting, figure out the exact version by referring to the Gemfile.lock.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Middleware lister:&lt;/strong&gt; Rack middleware is a filter that can be used to intercept a web request and alter the response. Some Rails or Rack related gems insert middleware at various stages in the request, and when debugging you sometimes need to be aware of what middleware has been added and in what order. Run &lt;code&gt;$ rake middleware&lt;/code&gt; to list the middleware in use. This command can also be useful to ensure that custom middleware you added was picked up by the Rails application and placed in the right place within the middleware chain.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;View application routes:&lt;/strong&gt; List all the URLs your Rails application responds to, the associated URL helpers available within your controllers and views, the parameters each URL expects, and the controller action that route maps to. With pre-Rails 4 you’ll need the &lt;strong&gt;sextant&lt;/strong&gt; gem installed to view at &lt;a href=&quot;http://localhost:3000/rails/routes&quot;&gt;http://localhost:3000/rails/routes&lt;/a&gt;, with Rails 4 the same output is viewable at &lt;a href=&quot;http://localhost:3000/rails/info/routes&quot;&gt;http://localhost:3000/rails/info/routes&lt;/a&gt;. In all versions you can also list the routes after a brutally long load time with the command line $ rails routes.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;SQL database access:&lt;/strong&gt; Useful to run SQL commands manually when debugging, exploring, or dealing with data integrity issues not easily repaired at the Rails levels (such as primary key problems). Access in production with &lt;code&gt;$ heroku run dbconsole&lt;/code&gt; and in development with &lt;code&gt;$ rails dbconsole&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;List available rake tasks:&lt;/strong&gt; Rake provides command line interfaces to maintenance tasks in your Rails app, many but not all of which are related to modifying the database structure. &lt;code&gt;$ rake -T&lt;/code&gt; lists all these Rake tasks and prints not just those built into Rails, but also those packaged into your included gems or added by us through custom code within with our project’s &lt;code&gt;Rakefile&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;better_errors / frames:&lt;/strong&gt; OK this one isn’t built into Rails—you need to add two gems to your Gemfile: “better_errors” and “binding_of_caller”. Once installed these gems operate in the development environment such that any unrescued exception raised when using the web application from the browser will show the “better_errors” debugging error page instead of the less informative standard Rails error page. The key helpful features with “better_errors” are a) the possibility to inspect local and instance variables; b) the possibility to do code experiments in the REPL provided; and c) the possibility to navigate to any previous frames in the stackframe (see the section on debugging for further explanation of frames). Failing ajax request will not usually show the “better_errors” page, since typically no new webpage was requested. To see the “better_errors”” console following a failed AJAX request, visit the URL /__&lt;code&gt;better_errors&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>A Comprehensive Guide To Debugging Rails</title>
+   <link href="http://www.jackkinsella.ie/2014/06/06/a-comprehensive-guide-to-debugging-rails.html"/>
+   <updated>2014-06-06T00:00:00+02:00</updated>
+   <id>http://tom.preston-werner.com/2014/06/06/a-comprehensive-guide-to-debugging-rails</id>
+   <content type="html">&lt;p&gt;﻿—
+layout: post
+author: Jack Kinsella
+title: A Comprehensive Guide To Debugging Rails
+subtitle: Feedback systems for finding errors in your web application
+—&lt;/p&gt;
+
+&lt;p&gt;The most important tool a musician owns is not their instrument; it’s their mirror. Observable physical issues precede degradations in sound, and the saxophonist practicing “blind” may never notice that a misplacement of their thumb over a key caused the grating tone that has tormented them-and their neighbours–for months.&lt;/p&gt;
+
+&lt;p&gt;Code problem identification, which is the essence of debugging, benefits similarly from the use of observation, but its mirrors, peering instead into a software process, take the form of logs, debuggers, alerts, OS-level tools, and the instrumentation you design and insert into your codebase.&lt;/p&gt;
+
+&lt;p&gt;For three months I’ve jotted down every mirror I glance at in tending to my law notes selling software as part of my efforts to create documentation that will enable another programmer to take my place. This article therefore focuses on the mirrors available to a programmer like me, a web developer working with legacy code in Ruby on Rails, Javascript, Git, OS X, and Heroku. The specifics differ to the extent that your stack deviates from mine, but any web developer should find some measure of value in these techniques.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ruby / Rails Built-in Mirrors&lt;/li&gt;
+  &lt;li&gt;Pry Console&lt;/li&gt;
+  &lt;li&gt;Rails Debugging with Pry&lt;/li&gt;
+  &lt;li&gt;Operating System Level Mirrors&lt;/li&gt;
+  &lt;li&gt;Git Source Control Mirrors&lt;/li&gt;
+  &lt;li&gt;Online and Third Party Mirrors&lt;/li&gt;
+  &lt;li&gt;Logs, aka Historic Mirrors&lt;/li&gt;
+  &lt;li&gt;Memcached Mirrors&lt;/li&gt;
+  &lt;li&gt;Our Custom Mirrors&lt;/li&gt;
+  &lt;li&gt;Chrome DevTools Mirrors&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
  
  <entry>
    <title>On Passive Income</title>
@@ -699,7 +1248,7 @@ McKenzie&lt;/a&gt;.&lt;/p&gt;
 	&lt;li&gt;&lt;a href=&quot;http://www.supermemo.com/articles/genius.htm&quot;&gt;Genius and Creativity&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&quot;captioned-image&quot;&gt;
-&lt;p&gt;&lt;img src='/images/janki/jack-kinsella.jpg'&gt;&lt;br /&gt;
+&lt;p&gt;&lt;img src=&#39;/images/janki/jack-kinsella.jpg&#39;&gt;&lt;br /&gt;
 &lt;p&gt;My Jankiest Face&lt;/p&gt;&lt;/p&gt;
 &lt;/div&gt;</content>
  </entry>
