@@ -10,6 +10,8 @@ Part 4 in the series [A Comprehensive Guide To Debugging Rails](/2014/06/06/a-co
 
 *If you don't yet know what a debugging session is, think of it as opening the Rails console at a chosen point in the execution path.*
 
+I assume below that you have installed the [Pry-debugger](https://github.com/nixme/pry-debugger) and the [pry-stack_explorer](https://github.com/pry/pry-stack_explorer) gems.
+
 At any point in your source code (including within the downloaded code of the gems included into your Gemfile and conveniently opened in the text editor with bundle open gem_name) you can insert the line binding.pry. Whenever the Ruby interpreter executes that line, it stops what it's doing and opens a Pry REPL session at that point.  Had you been interacting with the website via the browser you'll need to switch programs to the terminal console tab in which your Rails server was running for you to see the Pry session.
 
 For the sake of clarity in explaining what is to follow I include a code-snippet here.

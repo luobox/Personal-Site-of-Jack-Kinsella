@@ -4,7 +4,7 @@
  <title>Jack Kinsella</title>
  <link href="http://www.jackinsella.ie/atom.xml" rel="self"/>
  <link href="http://www.jackkinsella.ie/"/>
- <updated>2014-06-08T19:19:10+02:00</updated>
+ <updated>2014-06-08T19:55:35+02:00</updated>
  <id>http://www.jackkinsella.ie/</id>
  <author>
    <name>Jack Kinsella</name>
@@ -70,6 +70,8 @@
 &lt;h2 id=&quot;rails-debugging-with-pry&quot;&gt;Rails Debugging with Pry&lt;/h2&gt;
 
 &lt;p&gt;&lt;em&gt;If you don’t yet know what a debugging session is, think of it as opening the Rails console at a chosen point in the execution path.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;I assume below that you have installed the &lt;a href=&quot;https://github.com/nixme/pry-debugger&quot;&gt;Pry-debugger&lt;/a&gt; and the &lt;a href=&quot;https://github.com/pry/pry-stack_explorer&quot;&gt;pry-stack_explorer&lt;/a&gt; gems.&lt;/p&gt;
 
 &lt;p&gt;At any point in your source code (including within the downloaded code of the gems included into your Gemfile and conveniently opened in the text editor with bundle open gem_name) you can insert the line binding.pry. Whenever the Ruby interpreter executes that line, it stops what it’s doing and opens a Pry REPL session at that point.  Had you been interacting with the website via the browser you’ll need to switch programs to the terminal console tab in which your Rails server was running for you to see the Pry session.&lt;/p&gt;
 
