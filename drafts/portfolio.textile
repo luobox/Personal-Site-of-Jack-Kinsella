@@ -39,11 +39,6 @@
                 <span>Articles</span>
               </a>
             </li>
-            <li class="projects">
-              <a href="/portfolio.html">
-                <span>Portfolio</span>
-              </a>
-            </li>
             <li class="about">
               <a href="/about.html">
                 <span>About</span>
@@ -73,7 +68,7 @@
 </ul>
 <h2 id="oxbridge_notes">Oxbridge Notes</h2>
 <p><a href="http://www.oxbridgenotes.co.uk">Visit Oxbridge Notes</a></p>
-<p>An online marketplace where students can upload their college notes and sell them, earning a commission on every sale. I built and designed this app from scratch and have maintained it for nearly two years. I was the only programmer working on this project.</p>
+<p>An online marketplace where students can upload their college notes and sell them, earning a commission on every sale. I built and designed this app from scratch and have maintained it for nearly five years. As of June 2014 I am the only programmer working on this project.</p>
 <h3>E-Commerce and Design</h3>
 <p><img src="images/oxbridge_notes_home2.png" alt="" /></p>
 <p>Above, you can see categories of notes such as &#8220;Law&#8221; or &#8220;Medicine&#8221; displayed in the left sidebar. In the centre is a selection of products, shown for <span class="caps">SEO</span> purposes.  Visitors to the website can add packages of notes to their cart exactly like in any other e-commerce website. Upon payment their notes are automatically delivered to them. No staff are needed to make or process sales.</p>
