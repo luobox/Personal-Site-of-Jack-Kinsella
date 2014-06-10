@@ -11,15 +11,18 @@ Code problem identification, which is the essence of debugging, benefits similar
 
 For three months I've jotted down every mirror I glance at when tending to [Oxbridge Notes](http://www.oxbridgenotes.com) as part of my efforts to create documentation that will enable another programmer to take my place. This article therefore focuses on the mirrors available to a programmer like me, a web developer working with legacy code in Ruby on Rails, Javascript, Git, OS X, and Heroku. The specifics differ to the extent that your stack deviates from mine, but any web developer should find some measure of value in these techniques.
 
+I've marked the sections I believe contain the information least often
+seen in other similar guides.
+
 - [ Ruby / Rails Built-in Tools](/2014/06/06/debugging-rails-with-built-in-tools.html)
 - [ Pry Console ](/2014/06/06/debugginging-rails-with-pry-console.html)
 - [ Pry Debugger ](/2014/06/06/debugging-rails-with-pry-debugger.html)
-- [ Operating System Level Mirrors ](/2014/06/06/debugging-rails-with-operating-system-tools.html)
+- [ Operating System Level Mirrors ](/2014/06/06/debugging-rails-with-operating-system-tools.html) [*fresh info*]
 - [ Git Source Control Mirrors ](/2014/06/06/debugging-rails-with-git.html)
-- [ Online and Third Party Mirrors ](/2014/06/06/debugging-rails-with-online-or-third-party-tools.html)
-- [ Logs, aka Historic Mirrors ](/2014/06/06/debugging-rails-with-logs.html)
+- [ Online and Third Party Mirrors ](/2014/06/06/debugging-rails-with-online-or-third-party-tools.html) [*fresh info*]
+- [ Logs, aka Historic Mirrors ](/2014/06/06/debugging-rails-with-logs.html) [*fresh info in second half*]
 - [ Memcached Mirrors ](/2014/06/06/debugging-rails-with-memcached.html)
-- [ Custom Instrumentation](/2014/06/06/debugging-rails-with-custom-instrumentation.html)
+- [ Custom Instrumentation](/2014/06/06/debugging-rails-with-custom-instrumentation.html) [*fresh info*]
 - [ Chrome DevTools Mirrors ](/2014/06/06/debugging-rails-with-chrome-devtools.html)
 
 I'd like to credit Ed Tee at [GigSounder](http://gigsounder.com) and

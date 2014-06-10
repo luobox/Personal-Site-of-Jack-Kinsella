@@ -4,7 +4,7 @@
  <title>Jack Kinsella</title>
  <link href="http://www.jackinsella.ie/atom.xml" rel="self"/>
  <link href="http://www.jackkinsella.ie/"/>
- <updated>2014-06-09T10:37:20+02:00</updated>
+ <updated>2014-06-10T12:10:42+02:00</updated>
  <id>http://www.jackkinsella.ie/</id>
  <author>
    <name>Jack Kinsella</name>
@@ -515,16 +515,19 @@ Rendered /Users/jkinsella/.rvm/gems/ruby-1.9.3-p545@oxnotes/bundler/gems/spree-e
 
 &lt;p&gt;For three months I’ve jotted down every mirror I glance at when tending to &lt;a href=&quot;http://www.oxbridgenotes.com&quot;&gt;Oxbridge Notes&lt;/a&gt; as part of my efforts to create documentation that will enable another programmer to take my place. This article therefore focuses on the mirrors available to a programmer like me, a web developer working with legacy code in Ruby on Rails, Javascript, Git, OS X, and Heroku. The specifics differ to the extent that your stack deviates from mine, but any web developer should find some measure of value in these techniques.&lt;/p&gt;
 
+&lt;p&gt;I’ve marked the sections I believe contain the information least often
+seen in other similar guides.&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;/2014/06/06/debugging-rails-with-built-in-tools.html&quot;&gt; Ruby / Rails Built-in Tools&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;/2014/06/06/debugginging-rails-with-pry-console.html&quot;&gt; Pry Console &lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;/2014/06/06/debugging-rails-with-pry-debugger.html&quot;&gt; Pry Debugger &lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/2014/06/06/debugging-rails-with-operating-system-tools.html&quot;&gt; Operating System Level Mirrors &lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/2014/06/06/debugging-rails-with-operating-system-tools.html&quot;&gt; Operating System Level Mirrors &lt;/a&gt; [&lt;em&gt;fresh info&lt;/em&gt;]&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;/2014/06/06/debugging-rails-with-git.html&quot;&gt; Git Source Control Mirrors &lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/2014/06/06/debugging-rails-with-online-or-third-party-tools.html&quot;&gt; Online and Third Party Mirrors &lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/2014/06/06/debugging-rails-with-logs.html&quot;&gt; Logs, aka Historic Mirrors &lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/2014/06/06/debugging-rails-with-online-or-third-party-tools.html&quot;&gt; Online and Third Party Mirrors &lt;/a&gt; [&lt;em&gt;fresh info&lt;/em&gt;]&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/2014/06/06/debugging-rails-with-logs.html&quot;&gt; Logs, aka Historic Mirrors &lt;/a&gt; [&lt;em&gt;fresh info in second half&lt;/em&gt;]&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;/2014/06/06/debugging-rails-with-memcached.html&quot;&gt; Memcached Mirrors &lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/2014/06/06/debugging-rails-with-custom-instrumentation.html&quot;&gt; Custom Instrumentation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/2014/06/06/debugging-rails-with-custom-instrumentation.html&quot;&gt; Custom Instrumentation&lt;/a&gt; [&lt;em&gt;fresh info&lt;/em&gt;]&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;/2014/06/06/debugging-rails-with-chrome-devtools.html&quot;&gt; Chrome DevTools Mirrors &lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
