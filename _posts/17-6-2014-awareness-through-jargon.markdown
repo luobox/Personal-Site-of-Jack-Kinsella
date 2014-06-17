@@ -204,4 +204,4 @@ Those of you who already know me are aware that I spend about half my waking lif
 
 Anecdotally then, I believe there's something to jargon identification, and I write today to encourage others to experiment with it as a means of skill-building in underdeveloped disciplines. I'd also hope that you share your vocabulary—I for one am hungry for novel concepts.
 
-Thanks to language expert [Ulyßes Lutetiæ-Berolini](https://www.facebook.com/ulysseh)for criticism and feedback on arguments and my editor [Joseph Rosalie Doherty-Bailey](http://josephrosalie.tumblr.com/) for fixing my grammar.
+Thanks to language expert [Ulyßes Lutetiæ-Berolini](https://www.facebook.com/ulysseh) for criticism and feedback on arguments and my editor [Joseph Rosalie Doherty-Bailey](http://josephrosalie.tumblr.com/) for fixing my grammar.
