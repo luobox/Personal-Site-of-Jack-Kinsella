@@ -4,7 +4,7 @@
  <title>Jack Kinsella</title>
  <link href="http://www.jackinsella.ie/atom.xml" rel="self"/>
  <link href="http://www.jackkinsella.ie/"/>
- <updated>2014-06-17T09:38:24+02:00</updated>
+ <updated>2014-06-17T09:50:43+02:00</updated>
  <id>http://www.jackkinsella.ie/</id>
  <author>
    <name>Jack Kinsella</name>
@@ -48,23 +48,23 @@
 &lt;table&gt;
   &lt;tr&gt;
     &lt;td&gt;Similar anagram&lt;/td&gt;
-    &lt;td&gt;Who will I get there (how)&lt;/td&gt;
+    &lt;td&gt;&lt;i&gt;Who will I get there &lt;/i&gt;(how)&lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt;Double white space&lt;/td&gt;
-    &lt;td&gt;In fact he  feels terrible&lt;/td&gt;
+    &lt;td&gt;&lt;i&gt;In fact he  feels terrible&lt;/i&gt;&lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt;Double consonant not added&lt;/td&gt;
-    &lt;td&gt;It happens in al circles (all)&lt;/td&gt;
+    &lt;td&gt;&lt;i&gt;It happens in al circles&lt;/i&gt; (all)&lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt;Doubled the wrong letter&lt;/td&gt;
-    &lt;td&gt;I feel into a trap (fell)&lt;/td&gt;
+    &lt;td&gt;&lt;i&gt;I feel into a trap&lt;/i&gt; (fell)&lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt;Switched letter order&lt;/td&gt;
-    &lt;td&gt;I nealry wrote (nearly)&lt;/td&gt;
+    &lt;td&gt;&lt;i&gt;I nealry wrote &lt;/i&gt;(nearly)&lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt;Overlooked nook&lt;/td&gt;
@@ -72,19 +72,19 @@
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt;Singular/plural mix-up&lt;/td&gt;
-    &lt;td&gt;(addressed to many) Gentleman, I had a dream. (Gentlemen)&lt;/td&gt;
+    &lt;td&gt;(addressed to many) &lt;i&gt;Gentleman, I had a dream.&lt;/i&gt; (Gentlemen)&lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt;Relic post-editing&lt;/td&gt;
-    &lt;td&gt;going to rest for until tomorrow night (I originally wrote the sentence ‘going to rest for the evening’ then edited without removing the preposition &quot;for&quot; )&lt;/td&gt;
+    &lt;td&gt;&lt;i&gt;going to rest for until tomorrow night &lt;/i&gt;(I originally wrote the sentence ‘going to rest for the evening’ then edited without removing the preposition &quot;for&quot; )&lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt;Missing word&lt;/td&gt;
-    &lt;td&gt;Thanks (for) a fantastic introduction!&lt;/td&gt;
+    &lt;td&gt;&lt;i&gt;Thanks (for) a fantastic introduction!&lt;/i&gt;&lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt;Forgotten full stop&lt;/td&gt;
-    &lt;td&gt;I doubt that you’ll end up on the wrong side of the law ()The sheriff said...
+    &lt;td&gt;&lt;i&gt;I doubt that you’ll end up on the wrong side of the law ()The sheriff said...&lt;/i&gt;
 
 &lt;/td&gt;
   &lt;/tr&gt;
@@ -94,58 +94,73 @@
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt;Spell checker pass danger&lt;/td&gt;
-    &lt;td&gt;our past purchases loved that product (purchasers)
+    &lt;td&gt;&lt;i&gt;our past purchases loved that product&lt;/i&gt; (purchasers)
 
+&lt;br /&gt;
 Word variants that pass spellcheck don&#39;t get called to your attention and therefore give you undue confidence. Proofread nevertheless.&lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt;Similar sounding letter&lt;/td&gt;
-    &lt;td&gt;come of the people present (some)&lt;/td&gt;
+    &lt;td&gt;&lt;i&gt;come of the people present&lt;/i&gt; (some)&lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt;Inconsistent introductory word
 &lt;/td&gt;
-    &lt;td&gt;Half my anki writing cards started with &quot;typo&quot; and the other half with &quot;typos&quot;. **Aside:** This is important to me because the consistency allows me to filter and sort my data using software tools. For writing outside of database this won’t be important.&lt;/td&gt;
+    &lt;td&gt;Half my anki writing cards started with &quot;typo&quot; and the other half with &quot;typos&quot;.
+
+&lt;br /&gt;
+ **Aside:** This is important to me because the consistency allows me to filter and sort my data using software tools. For writing outside of database this won’t be important.&lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt;Double word immediately repeated&lt;/td&gt;
-    &lt;td&gt;improve the the sound&lt;/td&gt;
+    &lt;td&gt;&lt;i&gt;improve the the sound&lt;/i&gt;&lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt;Unbalanced punctuation&lt;/td&gt;
-    &lt;td&gt;I said “come home . Then he said...&lt;/td&gt;
+    &lt;td&gt;&lt;i&gt;I said “come home . Then he said...&lt;/i&gt;
+    &lt;br /&gt;
+   &lt;i&gt;There is a difference between &quot;a small business-man&quot; and a &quot;small
+business man&quot; &lt;/i&gt; (quotation marks do not include &quot;a&quot; the second time)
+   &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt;Pluralize too many words&lt;/td&gt;
-    &lt;td&gt;have ranked number one in Google for many legal searches terms (search terms)&lt;/td&gt;
+    &lt;td&gt;&lt;i&gt;have ranked number one in Google for many legal searches terms&lt;/i&gt; (search terms)&lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt;Mixing up a similar concept&lt;/td&gt;
-    &lt;td&gt;I booked six rooms in the hostel (beds)&lt;/td&gt;
+    &lt;td&gt;&lt;i&gt;I booked six rooms in the hostel&lt;/i&gt; (beds)&lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt;Wrong letter&lt;/td&gt;
-    &lt;td&gt;I spotted a type in your message (typo)&lt;/td&gt;
+    &lt;td&gt;&lt;i&gt;I spotted a type in your message &lt;/i&gt;(typo)&lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt;Losing repeated run of letters within a word&lt;/td&gt;
-    &lt;td&gt;I am imaging you as a doctor (imagining)
+    &lt;td&gt;&lt;i&gt;I am imaging you as a doctor&lt;/i&gt; (imagining)
 
+&lt;br /&gt;
 forgot to repeat the string “in”&lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt;Used the opposite word&lt;/td&gt;
-    &lt;td&gt;append search query with “\v”
-
+    &lt;td&gt;&lt;i&gt;append search query with “\v”&lt;/i&gt;
+        &lt;br /&gt;
 should be “prepend”&lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt;Homophone&lt;/td&gt;
-    &lt;td&gt;The problem with stories is that these loose detail&lt;/td&gt;
+    &lt;td&gt;&lt;i&gt;The problem with stories is that these &lt;b&gt;loose&lt;/b&gt; detail
+
+&lt;/i&gt;
+&lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt;Word inserted into wrong position&lt;/td&gt;
-    &lt;td&gt;We change our minds () less much often than we think&lt;/td&gt;
+    &lt;td&gt;&lt;i&gt;We change our minds () less much often than we think
+
+&lt;/i&gt;
+&lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt;Near Name (non-standard spelling of a common name)&lt;/td&gt;
@@ -153,25 +168,33 @@ should be “prepend”&lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt;Capitalizing words important to you, despite them not being capitalised according to the rules of English grammar&lt;/td&gt;
-    &lt;td&gt;I studied Art.
-I lost my Passport.&lt;/td&gt;
+    &lt;td&gt;&lt;i&gt;I studied Art. &lt;br /&gt;I lost my Passport.
+
+&lt;/i&gt;
+&lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt;Unnecessary / omitted hyphen&lt;/td&gt;
-    &lt;td&gt;The engine will eventually break-down.  (break down)
-We had an eye-witness report (eyewitness)
+    &lt;td&gt;&lt;i&gt;The engine will eventually break-down.&lt;/i&gt;  (break down)
+&lt;br /&gt;
+&lt;i&gt;We had an eye-witness report (eyewitness)
 
+&lt;/i&gt;
 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt;Inconsistent formatting&lt;/td&gt;
-    &lt;td&gt;I said, “hey Rob”
+    &lt;td&gt;&lt;i&gt;I said, “hey Rob”
+&lt;br /&gt;
 Rob said, ‘yea Jack’ (“”)
-
+&lt;/i&gt;
+&lt;br /&gt;
 (In titles) Titles With Every Word Capitalised
+&lt;br /&gt;
 But others with just the first
+&lt;br /&gt;
 And others with some Words Capitalised
-
+&lt;br /&gt;
 Solve by stipulating your own formatting guidelines before writing a piece.&lt;/td&gt;
   &lt;/tr&gt;
 &lt;/table&gt;

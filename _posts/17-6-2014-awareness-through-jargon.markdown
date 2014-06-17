@@ -38,23 +38,23 @@ Below I’ve included a summary of my categories:
 <table>
   <tr>
     <td>Similar anagram</td>
-    <td>Who will I get there (how)</td>
+    <td><i>Who will I get there </i>(how)</td>
   </tr>
   <tr>
     <td>Double white space</td>
-    <td>In fact he  feels terrible</td>
+    <td><i>In fact he  feels terrible</i></td>
   </tr>
   <tr>
     <td>Double consonant not added</td>
-    <td>It happens in al circles (all)</td>
+    <td><i>It happens in al circles</i> (all)</td>
   </tr>
   <tr>
     <td>Doubled the wrong letter</td>
-    <td>I feel into a trap (fell)</td>
+    <td><i>I feel into a trap</i> (fell)</td>
   </tr>
   <tr>
     <td>Switched letter order</td>
-    <td>I nealry wrote (nearly)</td>
+    <td><i>I nealry wrote </i>(nearly)</td>
   </tr>
   <tr>
     <td>Overlooked nook</td>
@@ -62,19 +62,19 @@ Below I’ve included a summary of my categories:
   </tr>
   <tr>
     <td>Singular/plural mix-up</td>
-    <td>(addressed to many) Gentleman, I had a dream. (Gentlemen)</td>
+    <td>(addressed to many) <i>Gentleman, I had a dream.</i> (Gentlemen)</td>
   </tr>
   <tr>
     <td>Relic post-editing</td>
-    <td>going to rest for until tomorrow night (I originally wrote the sentence ‘going to rest for the evening’ then edited without removing the preposition "for" )</td>
+    <td><i>going to rest for until tomorrow night </i>(I originally wrote the sentence ‘going to rest for the evening’ then edited without removing the preposition "for" )</td>
   </tr>
   <tr>
     <td>Missing word</td>
-    <td>Thanks (for) a fantastic introduction!</td>
+    <td><i>Thanks (for) a fantastic introduction!</i></td>
   </tr>
   <tr>
     <td>Forgotten full stop</td>
-    <td>I doubt that you’ll end up on the wrong side of the law ()The sheriff said...
+    <td><i>I doubt that you’ll end up on the wrong side of the law ()The sheriff said...</i>
 
 </td>
   </tr>
@@ -84,58 +84,73 @@ Below I’ve included a summary of my categories:
   </tr>
   <tr>
     <td>Spell checker pass danger</td>
-    <td>our past purchases loved that product (purchasers)
+    <td><i>our past purchases loved that product</i> (purchasers)
 
+<br>
 Word variants that pass spellcheck don't get called to your attention and therefore give you undue confidence. Proofread nevertheless.</td>
   </tr>
   <tr>
     <td>Similar sounding letter</td>
-    <td>come of the people present (some)</td>
+    <td><i>come of the people present</i> (some)</td>
   </tr>
   <tr>
     <td>Inconsistent introductory word
 </td>
-    <td>Half my anki writing cards started with "typo" and the other half with "typos". **Aside:** This is important to me because the consistency allows me to filter and sort my data using software tools. For writing outside of database this won’t be important.</td>
+    <td>Half my anki writing cards started with "typo" and the other half with "typos".
+
+<br>
+ **Aside:** This is important to me because the consistency allows me to filter and sort my data using software tools. For writing outside of database this won’t be important.</td>
   </tr>
   <tr>
     <td>Double word immediately repeated</td>
-    <td>improve the the sound</td>
+    <td><i>improve the the sound</i></td>
   </tr>
   <tr>
     <td>Unbalanced punctuation</td>
-    <td>I said “come home . Then he said...</td>
+    <td><i>I said “come home . Then he said...</i>
+    <br>
+   <i>There is a difference between "a small business-man" and a "small
+business man" </i> (quotation marks do not include "a" the second time)
+   </td>
   </tr>
   <tr>
     <td>Pluralize too many words</td>
-    <td>have ranked number one in Google for many legal searches terms (search terms)</td>
+    <td><i>have ranked number one in Google for many legal searches terms</i> (search terms)</td>
   </tr>
   <tr>
     <td>Mixing up a similar concept</td>
-    <td>I booked six rooms in the hostel (beds)</td>
+    <td><i>I booked six rooms in the hostel</i> (beds)</td>
   </tr>
   <tr>
     <td>Wrong letter</td>
-    <td>I spotted a type in your message (typo)</td>
+    <td><i>I spotted a type in your message </i>(typo)</td>
   </tr>
   <tr>
     <td>Losing repeated run of letters within a word</td>
-    <td>I am imaging you as a doctor (imagining)
+    <td><i>I am imaging you as a doctor</i> (imagining)
 
+<br>
 forgot to repeat the string “in”</td>
   </tr>
   <tr>
     <td>Used the opposite word</td>
-    <td>append search query with “\v”
-
+    <td><i>append search query with “\v”</i>
+        <br>
 should be “prepend”</td>
   </tr>
   <tr>
     <td>Homophone</td>
-    <td>The problem with stories is that these loose detail</td>
+    <td><i>The problem with stories is that these <b>loose</b> detail
+
+</i>
+</td>
   </tr>
   <tr>
     <td>Word inserted into wrong position</td>
-    <td>We change our minds () less much often than we think</td>
+    <td><i>We change our minds () less much often than we think
+
+</i>
+</td>
   </tr>
   <tr>
     <td>Near Name (non-standard spelling of a common name)</td>
@@ -143,24 +158,33 @@ should be “prepend”</td>
   </tr>
   <tr>
     <td>Capitalizing words important to you, despite them not being capitalised according to the rules of English grammar</td>
-    <td>I studied Art.I lost my Passport.</td>
+    <td><i>I studied Art. <br>I lost my Passport.
+
+</i>
+</td>
   </tr>
   <tr>
     <td>Unnecessary / omitted hyphen</td>
-    <td>The engine will eventually break-down.  (break down)
-We had an eye-witness report (eyewitness)
+    <td><i>The engine will eventually break-down.</i>  (break down)
+<br>
+<i>We had an eye-witness report (eyewitness)
 
+</i>
 </td>
   </tr>
   <tr>
     <td>Inconsistent formatting</td>
-    <td>I said, “hey Rob”
+    <td><i>I said, “hey Rob”
+<br>
 Rob said, ‘yea Jack’ (“”)
-
+</i>
+<br>
 (In titles) Titles With Every Word Capitalised
+<br>
 But others with just the first
+<br>
 And others with some Words Capitalised
-
+<br>
 Solve by stipulating your own formatting guidelines before writing a piece.</td>
   </tr>
 </table>
