@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8"/>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>Portfolio | Jack Kinsella - Analyst Berlin</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <!-- Typekit script -->
+      <script type="text/javascript" src="http://use.typekit.com/xnr7evu.js"></script>
+      <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <meta name="author" content="Jack Kinsella" />
+      <!-- Can never be removed if we want continued webmaster tools-->
+      <meta name="google-site-verification" content="937-6YOj2Gnp0ZDEH9UNd3MhKNUwA2JzyVsnhqKG-nU" />
+      <link rel="stylesheet"  type="text/css" href="/css/main.css" />
+      <link rel="stylesheet"  type="text/css" href="/css/code_highlights.css" />
+      <link rel="stylesheet"  type="text/css" href="/css/widescreen.css" />
+      <script>var typosServerDomain = "http://obscure-taiga-5849.herokuapp.com";</script>
+      <script src="http://obscure-taiga-5849.herokuapp.com/js/typos.js"></script>
+      <link rel="apple-touch-icon" sizes="114x114" href="/images/avatar.jpg"/>
+
+      <meta name="description" content="Jack Kinsella's website: Analyst interested in social observation, marketing, computer programming, and music composition"/>
+      <body lang="en" id="main-layout"   class="vcard ">
+        <header id="masthead">
+        <div class="wrapper">
+          <a id="logo" href="/" rel="author">
+            <div>
+              <figure class="jk-logo frame">
+              <img src="/images/rails-developer-berlin.jpg" alt=Analyst"/>
+              </figure>
+              <h1 class="fn">Jack Kinsella</h1>
+              <p class="title">Analyst, Berlin</p>
+            </div>
+          </a>
+          <nav>
+          <ul>
+            <li class="index">
+              <a href="/articles.html">
+                <span>Articles</span>
+              </a>
+            </li>
+            <li class="about">
+              <a href="/about.html">
+                <span>About</span>
+              </a>
+            </li>
+          </ul>
+          </nav>
+        </div>
+        </header>
+
+        <article id="content" class="hentry">
+
+        <header>
+        <div>
+          <h1 class="entry-title">Portfolio</h1>
+          <p>A selection of web apps I've designed and built.</p>
+        </div>
+        </header>
+
+        <div class="wrapper">
+          <div class="entry-content">
+            <ul>
+	<li><a href="#oxbridge_notes">Oxbridge Notes</a></li>
+	<li><a href="#second_conscience">Second Conscience</a></li>
+	<li><a href="#hired_help">Hired Help</a></li>
+	<li><a href="#bolivian_express">Bolivian Express</a></li>
+</ul>
+<h2 id="oxbridge_notes">Oxbridge Notes</h2>
+<p><a href="http://www.oxbridgenotes.co.uk">Visit Oxbridge Notes</a></p>
+<p>An online marketplace where students can upload their college notes and sell them, earning a commission on every sale. I built and designed this app from scratch and have maintained it for nearly five years. As of June 2014 I am the only programmer working on this project.</p>
+<h3>E-Commerce and Design</h3>
+<p><img src="images/oxbridge_notes_home2.png" alt="" /></p>
+<p>Above, you can see categories of notes such as &#8220;Law&#8221; or &#8220;Medicine&#8221; displayed in the left sidebar. In the centre is a selection of products, shown for <span class="caps">SEO</span> purposes.  Visitors to the website can add packages of notes to their cart exactly like in any other e-commerce website. Upon payment their notes are automatically delivered to them. No staff are needed to make or process sales.</p>
+<p>I cut down on development time by taking an open source e-commerce store for T-Shirts and modifying it to sell digital downloads. I would try to take similar shortcuts with your work, rather than needlessly build from scratch. This could potentially cut down on development time dramatically.</p>
+<h3>ABTesting and Conversion Optimisation</h3>
+<p><img src="images/oxbridge_notes_abtests.png" alt="" /></p>
+<p>AB testing is a technique in heavy use in websites such as Google or Amazon. Its purpose to show multiple variations of your website of your users and then measure which one leads to higher sales. If you have 100 visitors a day, AB testing can turn 2 purchases into 12 purchases, all with the same amount of daily traffic.</p>
+<p>I built an internal AB testing system. The example above shows the results of an ongoing test whereby 50% of visitors see a version of the checkout page with a plain checkout button, and the other 50% see a version with a pretty green button. The administrator learns not only the result of the test, but also whether he can rely on the result as statistically valid. Despite the standard button (surprisingly) being ahead in the race, this result is not yet statistically valid and we&#8217;ll have to wait a little longer to find out which version wins.</p>
+<p>When the administrator clicks &#8220;End experiment and pick this&#8221;, his chosen version will be shown to customers from then on.</p>
+<h3>Custom Activity Feed</h3>
+<p>Administrators of the website can see all user activities such as sign ups, seller deletions, customer queries, new files added, notes packs added to the cart, and summaries of changes made by sellers to live products. This gives administrators a bird&#8217;s eye awareness of how their business is doing and what their users are up to.</p>
+<h3>Seller Area with File Management</h3>
+<p><img src="images/oxbridge_notes_file_management.png" alt="" /></p>
+<p>Sellers of notes can add and remove additional notes, and changes they make will modify the notes for sale on the website&#8217;s front-end. Shown above is a screen in the seller&#8217;s administrative area where they manage the files included in certain packets of notes they have up on sale.</p>
+<h3>Financial Reporting</h3>
+<p><img src="images/oxbridge_notes_orders_overview.png" alt="" /></p>
+<p>The administrator has an overview of all the orders made over specified periods of time, broken down by category. Using this data he learns what products sell best, and so he knows where he ought to focus his marketing efforts.</p>
+<h3>Document Conversions</h3>
+<p>I built a document conversion server which converts <span class="caps">WORD</span> and other documents to PDFs and <span class="caps">HTML</span>, and then displays the first few pages of these as samples to potential customers. These samples attract many customers.</p>
+<h3><span class="caps">SEO</span></h3>
+<p>Oxbridge Notes includes a thorough automated <span class="caps">SEO</span> function, including synchronised title tags, h1 tags, b tags, <span class="caps">URL</span> permalinks, body text and internal links, all of which signal to Google that the page should rank for the keywords our tracking indicated led to the highest sales historically.</p>
+<p>The software generates hundreds of advertising keyboards based on the contents of the notes for sale, and administrators can feed these keywords into Google Adwords campaigns, driving yet more customers to the website.</p>
+<h2 id="second_conscience">Second Conscience</h2>
+<p><a href="http://www.secondconscience.com">Visit Second Consience</a></p>
+<p>At the end of every day Benjamin Franklin graded his own adherence to thirteen virtues, aiming to minimize transgressions. This personal project was my attempt to bring his behavioural modification tool into the electronic age. Users add numerous &#8220;habits&#8221; and attempt to win awards by completing them continuously for extended periods. The website is called second conscience because it reinforces your own conscience by harassing you with guilt emails if you forget to log in or transgress too frequently.</p>
+<p>In building the application I researched behavioural psychology as applied in prisons and schools, and I modelled token economies within the application&#8217;s fourteen-dimensional badge system.</p>
+<p>The project is not being maintained so it may have degraded somewhat.</p>
+<p><img src="images/second_conscience_habits.png" alt="" /></p>
+<h2 id="bolivian_express">Bolivian Express</h2>
+<p><a href="http://www.bolivianexpress.org">Visit Bolivian Express</a></p>
+<p>I was the sole developer and designer for Bolivian Express, Bolivia&#8217;s major English language newspaper. Features include a <span class="caps">CMS</span> for articles and web pages, and a bespoke system for managing intern hires and payments via Paypal. I did a Rails 2.0 to Rails 3.0 upgrade on the project.</p>
+<p><img src="images/bolivian_express_calendar.png" alt="" /></p>
+<h2 id="hired_help">Hired Help</h2>
+<p><a href="http://www.hiredhelp.ie">Visit Hired Help</a></p>
+<p>Whilst the project was started by another programmer I took over as lead developer in a team of three and, amongst other things, squashed latent bugs, added automated tests and backup systems, did heavy refactoring, and built a private search engine gem for the faceted searches you see below.</p>
+<p><img src="images/hired_help_faceted_search.png" alt="" /></p>
+          </div>
+        </div>
+
+        </article>
+
+        <footer id="colophon">
+        <div class="wrapper">
+          <p><i> Jack Kinsella calls himself an analyst because it's suitably nondescript and affords him the possibility of being inconsistent in interests. He owns <a href="http://www.oxbridgenotes.co.uk">Oxbridge Notes</a>, co-founded <a href="http://www.bolivianexpress.org">Bolivian Express</a>, and co-organises the elite private marketing group, Growth Hacker Berlin. Follow me if you enjoyed my writing.</i></p>
+
+          <section class="links about_and_follow">
+          <ul>
+            <li>
+              <a href="http://twitter.com/jackkinsella">
+                Twitter @jackkinsella
+              </a>
+            </li>
+            <li id="followBlog">
+              <a href="http://feeds.feedburner.com/jackkinsella">
+                RSS Feed
+              </a>
+            </li>
+            <li id="email">
+              <script type="text/javascript" language="javascript">
+                <!--
+                ML="sonS0.:>rei hC2\"cgf@u?abljkt/%m=<";
+                MI="PF;<89BO?NF:HK16IF@J5J:209HHFCANF:H5@1NE0DGI9@KO=120DHK:2AM>43:K9?7IF@J5J:209HHFCANF:H5@1NPLF7";
+                OT="";
+                for(j=0;j<MI.length;j++){
+                  OT+=ML.charAt(MI.charCodeAt(j)-48);
+                }document.write(OT);
+// --></script>
+            </a>
+          </li>
+        </ul>
+      </section>
+        <section id="copyright">
+        <p>
+          Coded and created by Jack Kinsella.
+      </p>
+      </section>
+    </div>
+    </footer>
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-11447599-9']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+       })();
+
+</script>
+
+       </body>
+     </html>
