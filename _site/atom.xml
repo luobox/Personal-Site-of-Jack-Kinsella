@@ -4,7 +4,7 @@
  <title>Jack Kinsella</title>
  <link href="http://www.jackinsella.ie/atom.xml" rel="self"/>
  <link href="http://www.jackkinsella.ie/"/>
- <updated>2014-06-20T12:22:57+02:00</updated>
+ <updated>2014-06-23T11:39:31+02:00</updated>
  <id>http://www.jackkinsella.ie/</id>
  <author>
    <name>Jack Kinsella</name>
@@ -50,7 +50,7 @@
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt;Double white space&lt;/td&gt;
-    &lt;td&gt;&lt;i&gt;In fact he  feels terrible&lt;/i&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;i&gt;In fact he&amp;nbsp; feels terrible&lt;/i&gt;&lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt;Double consonant not added&lt;/td&gt;
@@ -115,7 +115,7 @@ Word variants that pass spellcheck don&#39;t get called to your attention and th
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt;Unbalanced punctuation&lt;/td&gt;
-    &lt;td&gt;&lt;i&gt;I said “come home . Then he said...&lt;/i&gt;
+    &lt;td&gt;&lt;i&gt;I said “come home.&lt;/i&gt;
     &lt;br /&gt;
    &lt;i&gt;There is a difference between &quot;a small business-man&quot; and a &quot;small
 business man&quot; &lt;/i&gt; (quotation marks do not include &quot;a&quot; the second time)
@@ -203,7 +203,7 @@ Solve by stipulating your own formatting guidelines before writing a piece.&lt;/
 
 &lt;p&gt;&lt;strong&gt;Realisation two:&lt;/strong&gt; typos were generally caused by blips in my attention. They could therefore be dramatically reduced by heightening awareness while typing. For one, I started attentively watching the cursor on the screen as I typed. Looking at the keyboard, as I tended to do while typing, increased typos. Therefore, proper touch typing discipline was instrumental in reducing typos, along with following the letters of each word as they passed by on the computer screen. Related too, although far from perfectly implemented by me, was the employment of the meditative practice of awareness about when your attention was drifting.&lt;/p&gt;
 
-&lt;p&gt;These realisations did not come cheaply and could not have been arrived at without sustained observation. I do not believe in magic in matters of the mind; logic and reasoning do not act in a vacuum—they must be fed experiential observations in order for them to extract patterns. A genius might extract patterns from fewer samples or from samples only analogously related, but no person— no matter how brilliant—can conjure knowledge out of nothing. (Indeed so strongly do I believe in the necessity of observation that I base my computer programming strategy on &lt;a href=&quot;http://www.jackkinsella.ie/2014/06/06/a-comprehensive-guide-to-debugging-rails.html&quot;&gt;copious feedback systems.&lt;/a&gt;) The unexpected pleasant side-effect of my jargon acquisition experiment was that I amassed accurate, catalogued observations about the circumstances of my typos, which later provided the raw material for my reasoning to act upon.&lt;/p&gt;
+&lt;p&gt;These realisations did not come cheaply and could not have been arrived at without sustained observation. I do not believe in magic in matters of the mind; logic and reasoning do not act in a vacuum—they must be fed experiential observations in order for them to extract patterns. A genius might extract patterns from fewer samples or from samples only analogously related, but no person—no matter how brilliant—can conjure knowledge out of nothing. (Indeed so strongly do I believe in the necessity of observation that I base my computer programming strategy on &lt;a href=&quot;http://www.jackkinsella.ie/2014/06/06/a-comprehensive-guide-to-debugging-rails.html&quot;&gt;copious feedback systems.&lt;/a&gt;) The unexpected pleasant side-effect of my jargon acquisition experiment was that I amassed accurate, catalogued observations about the circumstances of my typos, which later provided the raw material for my reasoning to act upon.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Aside:&lt;/strong&gt; Although not something I personally figured out, I should nevertheless mention the standard advice on proofreading, for it is valuable and is something I do in practice rely heavily upon. In order of descending effectiveness a) ask a friend to proofread for you; b) proofread by reading aloud and slowly; c) print out before proofreading; d) wait at least 48 hours after writing to proofread so as to give your mind enough time to forget the exact wording and not automatically fill in the gaps as you read.&lt;/p&gt;
 

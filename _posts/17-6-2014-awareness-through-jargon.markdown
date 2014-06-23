@@ -40,7 +40,7 @@ Below I’ve included a summary of my categories:
   </tr>
   <tr>
     <td>Double white space</td>
-    <td><i>In fact he  feels terrible</i></td>
+    <td><i>In fact he&nbsp; feels terrible</i></td>
   </tr>
   <tr>
     <td>Double consonant not added</td>
@@ -105,7 +105,7 @@ Word variants that pass spellcheck don't get called to your attention and theref
   </tr>
   <tr>
     <td>Unbalanced punctuation</td>
-    <td><i>I said “come home . Then he said...</i>
+    <td><i>I said “come home.</i>
     <br>
    <i>There is a difference between "a small business-man" and a "small
 business man" </i> (quotation marks do not include "a" the second time)
@@ -194,7 +194,7 @@ Alongside categories of typos, I also took note of the circumstances within whic
 
 **Realisation two:** typos were generally caused by blips in my attention. They could therefore be dramatically reduced by heightening awareness while typing. For one, I started attentively watching the cursor on the screen as I typed. Looking at the keyboard, as I tended to do while typing, increased typos. Therefore, proper touch typing discipline was instrumental in reducing typos, along with following the letters of each word as they passed by on the computer screen. Related too, although far from perfectly implemented by me, was the employment of the meditative practice of awareness about when your attention was drifting.
 
-These realisations did not come cheaply and could not have been arrived at without sustained observation. I do not believe in magic in matters of the mind; logic and reasoning do not act in a vacuum—they must be fed experiential observations in order for them to extract patterns. A genius might extract patterns from fewer samples or from samples only analogously related, but no person— no matter how brilliant—can conjure knowledge out of nothing. (Indeed so strongly do I believe in the necessity of observation that I base my computer programming strategy on [copious feedback systems.](http://www.jackkinsella.ie/2014/06/06/a-comprehensive-guide-to-debugging-rails.html)) The unexpected pleasant side-effect of my jargon acquisition experiment was that I amassed accurate, catalogued observations about the circumstances of my typos, which later provided the raw material for my reasoning to act upon.
+These realisations did not come cheaply and could not have been arrived at without sustained observation. I do not believe in magic in matters of the mind; logic and reasoning do not act in a vacuum—they must be fed experiential observations in order for them to extract patterns. A genius might extract patterns from fewer samples or from samples only analogously related, but no person—no matter how brilliant—can conjure knowledge out of nothing. (Indeed so strongly do I believe in the necessity of observation that I base my computer programming strategy on [copious feedback systems.](http://www.jackkinsella.ie/2014/06/06/a-comprehensive-guide-to-debugging-rails.html)) The unexpected pleasant side-effect of my jargon acquisition experiment was that I amassed accurate, catalogued observations about the circumstances of my typos, which later provided the raw material for my reasoning to act upon.
 
 **Aside:** Although not something I personally figured out, I should nevertheless mention the standard advice on proofreading, for it is valuable and is something I do in practice rely heavily upon. In order of descending effectiveness a) ask a friend to proofread for you; b) proofread by reading aloud and slowly; c) print out before proofreading; d) wait at least 48 hours after writing to proofread so as to give your mind enough time to forget the exact wording and not automatically fill in the gaps as you read.
 
