@@ -108,8 +108,8 @@ then you have dreadful working conditions.
 
 I don't see this freedom highlighted enough in the 4HWW community, but
 you ought to consider how frequently, at what times, and with what
-regularity your passive income stream requires you to be present to work
-For example, before I outsourced customer service, I needed to check my
+regularity your passive income stream requires you to be present to
+work. For example, before I outsourced customer service, I needed to check my
 emails at least once every two days, which, limited certain types of
 travel where I was without WI-FI, and lead to great stress when I
 couldn't get online.
