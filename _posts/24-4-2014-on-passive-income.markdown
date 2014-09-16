@@ -110,7 +110,7 @@ I don't see this freedom highlighted enough in the 4HWW community, but
 you ought to consider how frequently, at what times, and with what
 regularity your passive income stream requires you to be present to
 work. For example, before I outsourced customer service, I needed to check my
-emails at least once every two days, which, limited certain types of
+emails at least once every two days, which limited certain types of
 travel where I was without WI-FI, and lead to great stress when I
 couldn't get online.
 
@@ -394,7 +394,7 @@ A disciplined approach to expensing hardware equipment(monitors,
 laptops, etc.), web-services, home-office expenses, financial
 transaction costs, educational costs(books, courses), and business-related travel dramatically cuts
 down your tax bill, leaving you to enjoy a higher percentage of
-take-home pay on a smaller income. It's not about how much money you
+take-home pay on your income. It's not about how much money you
 make: it's about how much you take home after all taxes. Soon after you
 start earning, ask an accountant (or, if you don't have the money,
 an experienced businessman) to teach you how to properly and legally expense.
