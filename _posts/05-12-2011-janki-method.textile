@@ -9,9 +9,9 @@ fb_title: Janki Method - A More Efficient Way To Learn To Program
 ---
 
 <div class="highlight">
-h2(section-title). MUST READ: Major Update To JANKI Method
+h4(section-title). EDIT: Update To JANKI Method
 
-For nearly two years after I wrote this post I continued to use flashcards for learning programming and made a number of large refinements. I wrote about "Janki Method Refined":http://www.oxbridgenotes.co.uk/articles/janki_method_refined on my company blog. Open it up in a new tab and read it next to get a complete picture.
+For nearly four years after I wrote this post I have continued to use flashcards to learn and have made a number of refinements to my recommendations. I summarised these points in "(1) Janki Method Refined":http://www.oxbridgenotes.co.uk/articles/janki_method_refined and a separate article, "(2) Guide to Autodidactism/Note-taking/SRS":http://www.oxbridgenotes.com/articles/autodidactism/oxbridge_notes_guide_to_autodidactism/note_taking. Open both pieces in new tabs for later reading to get a complete and nuanced picture.
 </div>
 
 This is a guide to becoming a productive programmer quickly. In his book _Outliers_, Malcolm Gladwell told the world it takes 10,000 hours to master something. Practice three hours a day, and you will shine in ten short years. Millions of readers felt inspired since they too could become the next Bill Gates, if only they put in the hours. As the days turned to months we discovered that 10,000 hours was a lot longer than we anticipated. Limitless potential transformed into fantasy about what might have been.

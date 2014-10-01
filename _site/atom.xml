@@ -4,7 +4,7 @@
  <title>Jack Kinsella</title>
  <link href="http://www.jackinsella.ie/atom.xml" rel="self"/>
  <link href="http://www.jackkinsella.ie/"/>
- <updated>2014-09-30T12:25:47+01:00</updated>
+ <updated>2014-10-01T08:27:25+01:00</updated>
  <id>http://www.jackkinsella.ie/</id>
  <author>
    <name>Jack Kinsella</name>
@@ -1268,8 +1268,8 @@ McKenzie&lt;/a&gt;.&lt;/p&gt;
    <updated>2011-12-05T00:00:00+00:00</updated>
    <id>http://tom.preston-werner.com/2011/12/05/janki-method</id>
    <content type="html">&lt;div class=&quot;highlight&quot;&gt;
-&lt;h2 class=&quot;section-title&quot;&gt;&lt;span class=&quot;caps&quot;&gt;MUST&lt;/span&gt; &lt;span class=&quot;caps&quot;&gt;READ&lt;/span&gt;: Major Update To &lt;span class=&quot;caps&quot;&gt;JANKI&lt;/span&gt; Method&lt;/h2&gt;
-&lt;p&gt;For nearly two years after I wrote this post I continued to use flashcards for learning programming and made a number of large refinements. I wrote about &lt;a href=&quot;http://www.oxbridgenotes.co.uk/articles/janki_method_refined&quot;&gt;Janki Method Refined&lt;/a&gt; on my company blog. Open it up in a new tab and read it next to get a complete picture.&lt;/p&gt;
+&lt;h4 class=&quot;section-title&quot;&gt;&lt;span class=&quot;caps&quot;&gt;EDIT&lt;/span&gt;: Update To &lt;span class=&quot;caps&quot;&gt;JANKI&lt;/span&gt; Method&lt;/h4&gt;
+&lt;p&gt;For nearly four years after I wrote this post I have continued to use flashcards to learn and have made a number of refinements to my recommendations. I summarised these points in &lt;a href=&quot;http://www.oxbridgenotes.co.uk/articles/janki_method_refined&quot; class=&quot;1&quot;&gt;Janki Method Refined&lt;/a&gt; and a separate article, &lt;a href=&quot;http://www.oxbridgenotes.com/articles/autodidactism/oxbridge_notes_guide_to_autodidactism/note_taking&quot; class=&quot;2&quot;&gt;Guide to Autodidactism/Note-taking/&lt;span class=&quot;caps&quot;&gt;SRS&lt;/span&gt;&lt;/a&gt;. Open both pieces in new tabs for later reading to get a complete and nuanced picture.&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;This is a guide to becoming a productive programmer quickly. In his book &lt;em&gt;Outliers&lt;/em&gt;, Malcolm Gladwell told the world it takes 10,000 hours to master something. Practice three hours a day, and you will shine in ten short years. Millions of readers felt inspired since they too could become the next Bill Gates, if only they put in the hours. As the days turned to months we discovered that 10,000 hours was a lot longer than we anticipated. Limitless potential transformed into fantasy about what might have been.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Janki Method&lt;/strong&gt; is an attempt to shorten the time needed to learn programming. It grew out of my impatient dream to build an automated web business that would free me financially, geographically and temporally. I didn&amp;#8217;t want to wait 10,000 hours. I suspect you don&amp;#8217;t either.&lt;/p&gt;
