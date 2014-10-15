@@ -23,4 +23,4 @@ bq. "Insanely committed to learning and developing his skills; helped to archite
 
 h2(#education). Education
 
-Maximum possible score in Irish national-level school examinations. I studied medicine for one year at UCD, attaining the highest result in year in physics. Unhappy with my education at UCD, I switched to law at "Oxford":http://www.ox.ac.uk/ and graduated in 2009. I have since taught myself programming, online marketing, and am beginning music theory and composition. I hope my education will continue for many years to come.
+I studied medicine for one year at UCD, but unhappy with my studies, I switched to law at "Oxford":http://www.ox.ac.uk/ and graduated in 2009. In some sense, I'm always studying, having taught myself computer programming, online marketing, and music theory/composition in the years since graduating.

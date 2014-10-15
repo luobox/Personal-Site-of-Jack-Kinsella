@@ -4,7 +4,7 @@
  <title>Jack Kinsella</title>
  <link href="http://www.jackinsella.ie/atom.xml" rel="self"/>
  <link href="http://www.jackkinsella.ie/"/>
- <updated>2014-10-01T08:27:25+01:00</updated>
+ <updated>2014-10-15T11:57:14+02:00</updated>
  <id>http://www.jackkinsella.ie/</id>
  <author>
    <name>Jack Kinsella</name>
@@ -13,7 +13,7 @@
  <entry>
    <title>Awareness through the creation of jargon</title>
    <link href="http://www.jackkinsella.ie/2014/06/17/awareness-through-jargon.html"/>
-   <updated>2014-06-17T00:00:00+01:00</updated>
+   <updated>2014-06-17T00:00:00+02:00</updated>
    <id>http://tom.preston-werner.com/2014/06/17/awareness-through-jargon</id>
    <content type="html">&lt;p&gt;The &lt;em&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/Linguistic_relativity&quot;&gt;Sapir-Whorf hypothesis&lt;/a&gt;&lt;/em&gt; holds that linguistic categories and usage influence thought and behaviour. While it’s relatively uncontroversial that such a link exists, the strength of the link is hotly debated. An example of a strong statement of this hypothesis is the fictional Newspeak language in Orwell’s &lt;em&gt;1984&lt;/em&gt;, a language used as a tool of oppression that functions through the removal of the vocabulary of revolution. Personally I don’t believe the strong version of this hypothesis—in such a situation I’d assume the linguistically deprived citizens would plan their revolutions through circumlocution. The weaker form of the Sapir-Whorf hypothesis only claims that there is an influence between language and thought. For the same reason that we’re more likely to eat apples if there’s a pack of them in our homes, we’re more likely to think about and express concepts for which we have vocabulary conveniently at hand. Vocabulary packages and reifies our thoughts for our own future consumption and for communication with others. I think the weaker form of the Sapir-Whorf hypothesis is true, and from this assumption followed a “what if”: What if I invented my own vocabulary so as to influence how I thought about a particular field? Would the readily available invented jargon rush to mind and enable me to see in greater detail?&lt;/p&gt;
 
@@ -220,7 +220,7 @@ Solve by stipulating your own formatting guidelines before writing a piece.&lt;/
  <entry>
    <title>Debugging Rails with Pry Console</title>
    <link href="http://www.jackkinsella.ie/2014/06/06/debugginging-rails-with-pry-console.html"/>
-   <updated>2014-06-06T00:00:00+01:00</updated>
+   <updated>2014-06-06T00:00:00+02:00</updated>
    <id>http://tom.preston-werner.com/2014/06/06/debugginging-rails-with-pry-console</id>
    <content type="html">&lt;p&gt;Part 3 in the series &lt;a href=&quot;/2014/06/06/a-comprehensive-guide-to-debugging-rails.html&quot;&gt;A Comprehensive Guide To Debugging Rails&lt;/a&gt;&lt;/p&gt;
 
@@ -270,7 +270,7 @@ Solve by stipulating your own formatting guidelines before writing a piece.&lt;/
  <entry>
    <title>Debugging Rails with Pry Debugger</title>
    <link href="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-pry-debugger.html"/>
-   <updated>2014-06-06T00:00:00+01:00</updated>
+   <updated>2014-06-06T00:00:00+02:00</updated>
    <id>http://tom.preston-werner.com/2014/06/06/debugging-rails-with-pry-debugger</id>
    <content type="html">&lt;p&gt;Part 4 in the series &lt;a href=&quot;/2014/06/06/a-comprehensive-guide-to-debugging-rails.html&quot;&gt;A Comprehensive Guide To Debugging Rails&lt;/a&gt;&lt;/p&gt;
 
@@ -345,7 +345,7 @@ end
  <entry>
    <title>Debugging Rails with Operating System Tools</title>
    <link href="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-operating-system-tools.html"/>
-   <updated>2014-06-06T00:00:00+01:00</updated>
+   <updated>2014-06-06T00:00:00+02:00</updated>
    <id>http://tom.preston-werner.com/2014/06/06/debugging-rails-with-operating-system-tools</id>
    <content type="html">&lt;p&gt;Part 5 in the series &lt;a href=&quot;/2014/06/06/a-comprehensive-guide-to-debugging-rails.html&quot;&gt;A Comprehensive Guide To Debugging Rails&lt;/a&gt;&lt;/p&gt;
 
@@ -409,7 +409,7 @@ end
  <entry>
    <title>Debugging Rails with Online or Third Party Tools</title>
    <link href="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-online-or-third-party-tools.html"/>
-   <updated>2014-06-06T00:00:00+01:00</updated>
+   <updated>2014-06-06T00:00:00+02:00</updated>
    <id>http://tom.preston-werner.com/2014/06/06/debugging-rails-with-online-or-third-party-tools</id>
    <content type="html">&lt;p&gt;Part 7 in the series &lt;a href=&quot;/2014/06/06/a-comprehensive-guide-to-debugging-rails.html&quot;&gt;A Comprehensive Guide To Debugging Rails&lt;/a&gt;&lt;/p&gt;
 
@@ -443,7 +443,7 @@ end
  <entry>
    <title>Debugging Rails with Memcached</title>
    <link href="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-memcached.html"/>
-   <updated>2014-06-06T00:00:00+01:00</updated>
+   <updated>2014-06-06T00:00:00+02:00</updated>
    <id>http://tom.preston-werner.com/2014/06/06/debugging-rails-with-memcached</id>
    <content type="html">&lt;p&gt;Part 9 in the series &lt;a href=&quot;/2014/06/06/a-comprehensive-guide-to-debugging-rails.html&quot;&gt;A Comprehensive Guide To Debugging Rails&lt;/a&gt;&lt;/p&gt;
 
@@ -463,7 +463,7 @@ end
  <entry>
    <title>Debugging Rails with Logs</title>
    <link href="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-logs.html"/>
-   <updated>2014-06-06T00:00:00+01:00</updated>
+   <updated>2014-06-06T00:00:00+02:00</updated>
    <id>http://tom.preston-werner.com/2014/06/06/debugging-rails-with-logs</id>
    <content type="html">&lt;p&gt;Part 8 in the series &lt;a href=&quot;/2014/06/06/a-comprehensive-guide-to-debugging-rails.html&quot;&gt;A Comprehensive Guide To Debugging Rails&lt;/a&gt;&lt;/p&gt;
 
@@ -533,7 +533,7 @@ Rendered /Users/jkinsella/.rvm/gems/ruby-1.9.3-p545@oxnotes/bundler/gems/spree-e
  <entry>
    <title>Debugging Rails with Git</title>
    <link href="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-git.html"/>
-   <updated>2014-06-06T00:00:00+01:00</updated>
+   <updated>2014-06-06T00:00:00+02:00</updated>
    <id>http://tom.preston-werner.com/2014/06/06/debugging-rails-with-git</id>
    <content type="html">&lt;p&gt;Part 6 in the series &lt;a href=&quot;/2014/06/06/a-comprehensive-guide-to-debugging-rails.html&quot;&gt;A Comprehensive Guide To Debugging Rails&lt;/a&gt;&lt;/p&gt;
 
@@ -565,7 +565,7 @@ Rendered /Users/jkinsella/.rvm/gems/ruby-1.9.3-p545@oxnotes/bundler/gems/spree-e
  <entry>
    <title>Debugging Rails with Custom Instrumentation</title>
    <link href="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-custom-instrumentation.html"/>
-   <updated>2014-06-06T00:00:00+01:00</updated>
+   <updated>2014-06-06T00:00:00+02:00</updated>
    <id>http://tom.preston-werner.com/2014/06/06/debugging-rails-with-custom-instrumentation</id>
    <content type="html">&lt;p&gt;Part 10 in the series &lt;a href=&quot;/2014/06/06/a-comprehensive-guide-to-debugging-rails.html&quot;&gt;A Comprehensive Guide To Debugging Rails&lt;/a&gt;&lt;/p&gt;
 
@@ -617,7 +617,7 @@ Rendered /Users/jkinsella/.rvm/gems/ruby-1.9.3-p545@oxnotes/bundler/gems/spree-e
  <entry>
    <title>Debugging Rails With Chrome DevTools</title>
    <link href="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-chrome-devtools.html"/>
-   <updated>2014-06-06T00:00:00+01:00</updated>
+   <updated>2014-06-06T00:00:00+02:00</updated>
    <id>http://tom.preston-werner.com/2014/06/06/debugging-rails-with-chrome-devtools</id>
    <content type="html">&lt;p&gt;Part 11 in the series &lt;a href=&quot;/2014/06/06/a-comprehensive-guide-to-debugging-rails.html&quot;&gt;A Comprehensive Guide To Debugging Rails&lt;/a&gt;&lt;/p&gt;
 
@@ -679,7 +679,7 @@ Rendered /Users/jkinsella/.rvm/gems/ruby-1.9.3-p545@oxnotes/bundler/gems/spree-e
  <entry>
    <title>Debugging Rails With Built-in Tools</title>
    <link href="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-built-in-tools.html"/>
-   <updated>2014-06-06T00:00:00+01:00</updated>
+   <updated>2014-06-06T00:00:00+02:00</updated>
    <id>http://tom.preston-werner.com/2014/06/06/debugging-rails-with-built-in-tools</id>
    <content type="html">&lt;p&gt;Part 2 in the series &lt;a href=&quot;/2014/06/06/a-comprehensive-guide-to-debugging-rails.html&quot;&gt;A Comprehensive Guide To Debugging Rails&lt;/a&gt;&lt;/p&gt;
 
@@ -714,7 +714,7 @@ Rendered /Users/jkinsella/.rvm/gems/ruby-1.9.3-p545@oxnotes/bundler/gems/spree-e
  <entry>
    <title>A Comprehensive Guide To Debugging Rails</title>
    <link href="http://www.jackkinsella.ie/2014/06/06/a-comprehensive-guide-to-debugging-rails.html"/>
-   <updated>2014-06-06T00:00:00+01:00</updated>
+   <updated>2014-06-06T00:00:00+02:00</updated>
    <id>http://tom.preston-werner.com/2014/06/06/a-comprehensive-guide-to-debugging-rails</id>
    <content type="html">&lt;p&gt;The most important tool a musician owns is not their instrument; it’s their mirror. Observable physical issues precede degradations in sound, and the saxophonist practicing “blind” may never notice that a misplacement of their thumb over a key caused the grating tone that has tormented them-and their neighbours-for months.&lt;/p&gt;
 
@@ -749,7 +749,7 @@ programming mentors and teachers.&lt;/p&gt;
  <entry>
    <title>On Passive Income</title>
    <link href="http://www.jackkinsella.ie/2014/04/24/on-passive-income.html"/>
-   <updated>2014-04-24T00:00:00+01:00</updated>
+   <updated>2014-04-24T00:00:00+02:00</updated>
    <id>http://tom.preston-werner.com/2014/04/24/on-passive-income</id>
    <content type="html">&lt;p&gt;On 23 April, 2014 I gave this speech to the Berlin chapter of the &lt;a href=&quot;http://www.meetup.com/4HWW-Entrepreneurs-and-Lifestyle-Designers&quot;&gt;4
 Hour Work Week Entrepreneurs and Lifestyle Designers
@@ -1250,7 +1250,7 @@ McKenzie&lt;/a&gt;.&lt;/p&gt;
  <entry>
    <title>Automating Popularity</title>
    <link href="http://www.jackkinsella.ie/2011/12/14/automating-popularity.html"/>
-   <updated>2011-12-14T00:00:00+00:00</updated>
+   <updated>2011-12-14T00:00:00+01:00</updated>
    <id>http://tom.preston-werner.com/2011/12/14/automating-popularity</id>
    <content type="html">&lt;p&gt;Two years ago I wrote a program that logged into my Facebook account and pretended to be me. I wanted to test the hypothesis that &lt;strong&gt;automatic tools could make someone more popular&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;If I could build a script that caused more friends to get in touch with me, then my hypothesis would be proven true. If, instead, the script had no effect on my popularity or was detected as a fraud by the people in my network, then my hypothesis would be proven false.&lt;/p&gt;
@@ -1265,7 +1265,7 @@ McKenzie&lt;/a&gt;.&lt;/p&gt;
  <entry>
    <title>Janki Method</title>
    <link href="http://www.jackkinsella.ie/2011/12/05/janki-method.html"/>
-   <updated>2011-12-05T00:00:00+00:00</updated>
+   <updated>2011-12-05T00:00:00+01:00</updated>
    <id>http://tom.preston-werner.com/2011/12/05/janki-method</id>
    <content type="html">&lt;div class=&quot;highlight&quot;&gt;
 &lt;h4 class=&quot;section-title&quot;&gt;&lt;span class=&quot;caps&quot;&gt;EDIT&lt;/span&gt;: Update To &lt;span class=&quot;caps&quot;&gt;JANKI&lt;/span&gt; Method&lt;/h4&gt;
@@ -1443,7 +1443,7 @@ McKenzie&lt;/a&gt;.&lt;/p&gt;
  <entry>
    <title>Why Bother With Cucumber Testing?</title>
    <link href="http://www.jackkinsella.ie/2011/09/26/why-bother-with-cucumber-testing.html"/>
-   <updated>2011-09-26T00:00:00+01:00</updated>
+   <updated>2011-09-26T00:00:00+02:00</updated>
    <id>http://tom.preston-werner.com/2011/09/26/why-bother-with-cucumber-testing</id>
    <content type="html">&lt;p&gt;I recently heard an account of a web development project from both the point of view of the consultancy doing the work and the client. A member of the consultancy told me how they educated a technologically backward client about agile processes. Although this might be tedious for the client initially, with time the client would appreciate their wisdom. Glowing business referrals would follow forever more.&lt;/p&gt;
 &lt;p&gt;A few days later I bumped into the client:&lt;/p&gt;
@@ -1532,7 +1532,7 @@ McKenzie&lt;/a&gt;.&lt;/p&gt;
  <entry>
    <title>Textmate to VIM</title>
    <link href="http://www.jackkinsella.ie/2011/09/05/textmate-to-vim.html"/>
-   <updated>2011-09-05T00:00:00+01:00</updated>
+   <updated>2011-09-05T00:00:00+02:00</updated>
    <id>http://tom.preston-werner.com/2011/09/05/textmate-to-vim</id>
    <content type="html">&lt;p&gt;When I switched from Textmate to &lt;span class=&quot;caps&quot;&gt;VIM&lt;/span&gt; I felt like a tourist lost on a Japanese subway without a guide, translator or hope. I was unable to find in &lt;span class=&quot;caps&quot;&gt;VIM&lt;/span&gt; the features I&amp;#8217;d come to love and rely on in Textmate. I yearned for ⌘ + T to summon my models, a project drawer to manage my files, and snippets to save my fingers.&lt;/p&gt;
 &lt;p&gt;Instead of accommodating my needs, &lt;span class=&quot;caps&quot;&gt;VIM&lt;/span&gt; sat firm and unresponsive, save for a judgemental beep. Even though I was supposed to go cold turkey on Textmate, I met her by night for a guilty after-hours edit.&lt;/p&gt;
