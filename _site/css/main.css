@@ -766,4 +766,10 @@ p#first_about {
     font-size: 1.125em;
   }
 }
-
+/*override mailchimp*/
+#mc_embed_signup form {
+  padding: 0px !important;
+}
+#mc_embed_signup .button {
+  background-color: #CD0021 !important;
+}
